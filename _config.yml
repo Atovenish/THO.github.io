@@ -8,6 +8,4 @@ theme: minima
 repository: "Atovenish/THO.github.io"
 url: "https://atovenish.github.io"
 baseurl: "/THO.github.io"
-plugins:
-- jekyll-remote-theme # add this line to the plugins list if you already have one
 gem "github-pages", group: :jekyll_plugins
