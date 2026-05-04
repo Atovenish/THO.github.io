@@ -29,7 +29,7 @@
       .full-banner {
         width: 100%;
         margin-bottom: 30px;
-        order: -1; /* Luôn nằm trên cùng */
+        order: -1; 
       }
       .full-banner img {
         width: 100%;
@@ -45,7 +45,7 @@
         position: sticky !important;
         top: 20px;
         align-self: flex-start;
-        float: none !important; /* Xóa float cũ của theme */
+        float: none !important; 
         margin: 0 !important;
       }
 
@@ -61,7 +61,7 @@
       /* NỘI DUNG CHÍNH (SECTION) */
       section { 
         width: calc(100% - 320px) !important; 
-        float: none !important; /* Xóa float cũ của theme */
+        float: none !important; 
         margin: 0 !important;
         padding: 0 !important;
       }
@@ -78,8 +78,7 @@
       .index-box {
         margin-top: 20px; 
         border-top: 1px solid #30363d; 
-        border-bottom: 1px solid #30363d; 
-        padding: 20px 0;
+        padding: 20px 0 0 0;
       }
       .index-box h3 {
         font-size: 1.1em; 
@@ -94,13 +93,11 @@
         line-height: 2.2;
       }
 
-      /* FOOTER */
-      footer { 
-        width: 100%;
-        margin-top: 60px;
-        padding: 20px 0;
+      /* CHÂN TRANG NẰM TRONG SIDEBAR */
+      .sidebar-footer {
+        margin-top: 30px;
+        padding-top: 20px;
         border-top: 1px solid #30363d;
-        text-align: left;
         font-size: 0.8em;
         color: #8b949e;
       }
@@ -110,11 +107,11 @@
         .wrapper { flex-direction: column; }
         header, section { width: 100% !important; position: static !important; }
         header { margin-bottom: 40px !important; border-bottom: 1px solid #30363d; padding-bottom: 20px; }
+        .sidebar-footer { border-top: none; padding-top: 0; }
       }
     </style>
 
     {% seo %}
-    <!-- Thêm các file CSS mặc định của theme để giữ lại các định dạng cơ bản khác -->
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
   </head>
   
@@ -138,6 +135,7 @@
 
         <p style="font-size: 0.9em;">{{ site.description }}</p>
 
+        <!-- Khung INDEX -->
         <div class="index-box">
           <h3>INDEX</h3>
           <ul>
@@ -148,17 +146,18 @@
             <li><a href="{{ "/about.html" | relative_url }}"><b>ABOUT THO</b></a></li>
           </ul>
         </div>
+
+        <!-- Khung Footer bám theo Sidebar -->
+        <div class="sidebar-footer">
+          <p>Trạm dữ liệu Solaris-3 &mdash; Nội dung thuộc về The Hideous One</p>
+        </div>
+
       </header>
       
       <!-- CỘT PHẢI (NỘI DUNG) -->
       <section>
         {{ content }}
       </section>
-
-      <!-- CHÂN TRANG -->
-      <footer>
-        <p>Trạm dữ liệu Solaris-3 &mdash; Nội dung thuộc về The Hideous One</p>
-      </footer>
       
     </div>
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
