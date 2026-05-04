@@ -7,6 +7,11 @@ show_downloads: false
 remote_theme: pages-themes/minimal
 repository: "Atovenish/THO.github.io"
 url: "https://atovenish.github.io"
+# Jekyll configuration for markdown
+markdown: kramdown
+kramdown:
+  input: GFM
+  toc_levels: 1..6
 
 # Optional: Add Google Analytics if you have a tracking ID
 # google_analytics: YOUR_TRACKING_ID
