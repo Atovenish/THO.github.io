@@ -1,9 +1,12 @@
-title: "The Hideous One"
-description: "Hi, This THO (The Hideous One). Here I write about stuff around me. Usually its about the game called Wuthering Waves but I also want to try new things too."
-logo: "/assets/img/logo.png"
+title: The Hideous One
+description: "Hi, I'm THO (The Hideous One). Here I write about stuff around me. Usually it's about the game called Wuthering Waves, but I also want to try new things too."
+logo: /assets/img/logo.png
 show_downloads: false
-theme: minima
+
+# GitHub Pages settings
 remote_theme: pages-themes/minimal
 repository: "Atovenish/THO.github.io"
-url: "https://THO.github.io"
-baseurl: ""
+url: "https://atovenish.github.io"
+
+# Optional: Add Google Analytics if you have a tracking ID
+# google_analytics: YOUR_TRACKING_ID
