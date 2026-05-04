@@ -9,6 +9,12 @@
     <style>
       body { background-color: #0d1117 !important; color: #c9d1d9 !important; }
       .wrapper { background-color: #0d1117 !important; }
+
+      /* ÉP CHỮ ĐẬM (BOLD) THÀNH MÀU TRẮNG SÁNG */
+      strong, b { color: #ffffff !important; font-weight: bold; }
+      
+      /* GIỮ MÀU TRẮNG CHO CÁC ĐOẠN TRÍCH DẪN (BLOCKQUOTE) */
+      blockquote { color: #c9d1d9 !important; border-left: 4px solid #30363d !important; padding-left: 15px; font-style: italic; }
       h1, h2, h3, h4, h5, h6 { color: #ffffff !important; }
       a { color: #58a6ff !important; text-decoration: none; }
       a:hover { text-decoration: underline; }
@@ -53,13 +59,13 @@
 
         <!-- KHUNG INDEX ĐIỀU HƯỚNG BÊN TRÁI -->
         <div style="margin-top: 20px; border-top: 1px solid #30363d; border-bottom: 1px solid #30363d; padding: 20px 0;">
-          <h3 style="font-size: 1.1em; color: #58a6ff !important; margin-bottom: 15px; margin-top: 0;">📌 DANH MỤC</h3>
+          <h3 style="font-size: 1.1em; color: #58a6ff !important; margin-bottom: 15px; margin-top: 0;"> INDEX</h3>
           <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95em; line-height: 2;">
-            <li><a href="{{ "/" | absolute_url }}">🏠 Trang chủ</a></li>
-            <li><a href="#"> Personal </a></li>
-            <li><a href="#"> Theory and Analysis Wuthering Wave </a></li>
-            <li><a href="#"> Another Game Analysis </a></li>
-            <li><a href="#"> The Hideous One</a></li>
+            <li><a href="{{ "/" | absolute_url }}"> Main </a></li>
+            <li><a href="#"> <b>PERSONAL</b> </a></li>
+            <li><a href="#"> <b>WUTHERING WAVE THEORY AND ANALYSIS</b> </a></li>
+            <li><a href="#"> <b>ANOTHER GAME</b> </a></li>
+            <li><a href="#"> <b>ABOUT THO</b></a></li>
           </ul>
         </div>
 
