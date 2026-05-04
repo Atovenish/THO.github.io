@@ -7,50 +7,68 @@
     
     <style>
       /* ========================================== */
-      /* NỀN TĨNH CHO TOÀN BỘ WEBSITE               */
+      /* 1. RESET BODY VÀ MÀU DỰ PHÒNG              */
       /* ========================================== */
       body { 
-        /* Nhớ đổi tên file ảnh background của bạn vào đây nhé */
-        background-image: url('{{ "/assets/img/main-bg.jpg" | relative_url }}') !important;
-        background-size: cover !important;
-        background-position: center !important;
-        background-attachment: fixed !important;
-        background-color: #0d1117 !important; /* Màu dự phòng */
+        background-color: #0d1117 !important; 
         color: #c9d1d9 !important; 
         margin: 0;
         padding: 0;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
       }
+
+      /* ========================================== */
+      /* 2. LỚP ẢO DƯỚI CÙNG (CHỨA ẢNH NỀN ANTI-LAG)*/
+      /* ========================================== */
+      body::before {
+        content: "";
+        position: fixed; 
+        top: 0; left: 0; right: 0; bottom: 0;
+        z-index: -1; 
+        
+        /* Nhớ tải ảnh main-bg.jpg vào thư mục assets/img/ nhé */
+        background-image: url('{{ "/assets/img/main-bg.jpg" | relative_url }}') !important;
+        background-size: cover !important;
+        background-position: center !important;
+        
+        /* Ép xung GPU để cuộn trang mượt mà */
+        transform: translateZ(0);
+        will-change: transform;
+      }
       
       /* ========================================== */
-      /* KHỐI CONTENT NỔI BẬT (FLOATING CARD)       */
+      /* 3. KHỐI CONTENT NỔI BẬT (GLASSMORPHISM)    */
       /* ========================================== */
       .wrapper { 
         max-width: 1100px;
-        width: 90%; /* Bóp gọn lại một chút để lộ ảnh nền 2 bên */
-        margin: 50px auto; /* Cách top/bottom 50px và tự động canh giữa */
+        width: 90%; 
+        margin: 50px auto; 
         padding: 40px;
         
-        /* Hiệu ứng Kính mờ (Glassmorphism) */
-        background-color: rgba(13, 17, 23, 0.85) !important; /* Đen trong suốt 85% */
-        backdrop-filter: blur(12px); /* Làm nhòe background phía sau */
-        -webkit-backdrop-filter: blur(12px); /* Hỗ trợ cho Safari */
+        /* Hiệu ứng kính mờ */
+        background-color: rgba(13, 17, 23, 0.85) !important; 
+        backdrop-filter: blur(12px); 
+        -webkit-backdrop-filter: blur(12px); 
         
-        /* Viền sáng mỏng và Bo góc */
+        /* Viền sáng và đổ bóng */
         border: 1px solid rgba(255, 255, 255, 0.08); 
         border-radius: 24px; 
-        
-        /* Đổ bóng sâu để tách biệt khỏi nền */
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7); 
         
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+
+        /* Tối ưu hiệu suất cho kính mờ */
+        transform: translateZ(0);
+        will-change: transform, backdrop-filter;
       }
 
       /* ========================================== */
-      /* BANNER TRONG KHUÔN BO GÓC                  */
+      /* 4. CÁC THÀNH PHẦN BÊN TRONG KHUNG          */
       /* ========================================== */
+      
+      /* BANNER */
       .full-banner {
         width: 100%;
         margin-bottom: 30px;
@@ -58,13 +76,13 @@
       }
       .full-banner img {
         width: 100%;
-        border-radius: 12px; /* Banner cũng được bo góc nhẹ cho đồng bộ */
+        border-radius: 12px; 
         max-height: 400px;
         object-fit: cover;
         display: block;
       }
 
-      /* SIDEBAR (HEADER) */
+      /* SIDEBAR (CỘT TRÁI) */
       header { 
         width: 260px !important; 
         position: sticky !important;
@@ -73,16 +91,14 @@
         float: none !important; 
         margin: 0 !important;
       }
-
       header h1 a { color: #ffffff !important; text-decoration: none; }
-
       .sidebar-logo {
         max-width: 180px;
         margin-bottom: 20px;
         display: block;
       }
 
-      /* NỘI DUNG CHÍNH (SECTION) */
+      /* NỘI DUNG CHÍNH (CỘT PHẢI) */
       section { 
         width: calc(100% - 320px) !important; 
         float: none !important; 
@@ -90,12 +106,14 @@
         padding: 0 !important;
       }
 
+      /* KIỂU CHỮ & ĐỊNH DẠNG TEXT */
       h1, h2, h3, h4, h5, h6 { color: #ffffff !important; margin-top: 0; }
       strong, b { color: #ffffff !important; font-weight: bold; }
       a { color: #58a6ff !important; text-decoration: none; }
       a:hover { text-decoration: underline; }
       p, li { line-height: 1.6; }
       hr { border: 0; border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 20px 0; }
+      blockquote { color: #c9d1d9 !important; border-left: 4px solid rgba(255, 255, 255, 0.1) !important; padding-left: 15px; font-style: italic; }
 
       /* KHUNG INDEX */
       .index-box {
@@ -106,6 +124,7 @@
       .index-box h3 { font-size: 1.1em; color: #58a6ff !important; margin-bottom: 15px; }
       .index-box ul { list-style: none; padding: 0; margin: 0; font-size: 0.9em; line-height: 2.2; }
 
+      /* CHÂN TRANG TRONG SIDEBAR */
       .sidebar-footer {
         margin-top: 30px;
         padding-top: 20px;
@@ -114,10 +133,11 @@
         color: #8b949e;
       }
 
-      /* ĐIỀU CHỈNH TRÊN ĐIỆN THOẠI */
+      /* ========================================== */
+      /* 5. GIAO DIỆN DI ĐỘNG (RESPONSIVE)          */
+      /* ========================================== */
       @media (max-width: 900px) {
-        .wrapper { width: 95%; margin: 20px auto; padding: 20px; border-radius: 16px; }
-        .wrapper { flex-direction: column; }
+        .wrapper { width: 95%; margin: 20px auto; padding: 20px; border-radius: 16px; flex-direction: column; }
         header, section { width: 100% !important; position: static !important; }
         header { margin-bottom: 40px !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 20px; }
         .sidebar-footer { border-top: none; padding-top: 0; }
@@ -131,12 +151,14 @@
   <body>
     <div class="wrapper">
 
+      <!-- BANNER BÀI VIẾT -->
       {% if page.banner or site.banner %}
       <div class="full-banner">
         <img src="{{ (page.banner | default: site.banner) | relative_url }}" alt="Banner">
       </div>
       {% endif %}
       
+      <!-- CỘT TRÁI (SIDEBAR & ĐIỀU HƯỚNG) -->
       <header>
         <h1><a href="{{ "/" | relative_url }}">{{ site.title | default: "The Hideous One" }}</a></h1>
 
@@ -162,6 +184,7 @@
         </div>
       </header>
       
+      <!-- CỘT PHẢI (NỘI DUNG CHÍNH) -->
       <section>
         {{ content }}
       </section>
