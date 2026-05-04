@@ -6,26 +6,26 @@ layout: default
 <!-- PHẦN 1: BÀI GIỚI THIỆU CỐ ĐỊNH Ở TRANG CHỦ -->
 <!-- ========================================== -->
 
-# Khởi động: Hành trình giải mã thế giới Wuthering Waves
+# Terminal Access: The Hideous One
 
-Chào mừng các bạn đến với trạm dừng chân mới, nơi chúng ta sẽ cùng nhau bóc tách và đi sâu vào những bí ẩn kiến tạo nên thế giới của **Wuthering Waves**. 
+Chào mừng các Tri giả đến với The Hideous One. 
 
-Thay vì chỉ dừng lại ở các bài hướng dẫn build nhân vật hay tối ưu sát thương, blog này được sinh ra với một mục đích duy nhất: **Phân tích cấu trúc cốt truyện và lore (lịch sử thế giới) của game một cách hệ thống nhất.**
+Đây là trang phân tích xàm của THO hay nhất mà các Tri giả chưa từng hay biết. The Hideous One chuyên đi **Phân tích các khía cạnh của thế giới Solaris một cách (xàm) chuyên môn và chuyên sâu.**
 
-## Bạn sẽ tìm thấy gì ở đây?
+## Tri giả sẽ tìm thấy gì ở đây?
 
-Thế giới Solaris-3 bao chứa rất nhiều khái niệm phức tạp và những câu chuyện nền bị chôn vùi. Trong thời gian tới, blog sẽ tập trung vào các chủ đề chính sau:
+Thế giới Solaris-3 bao chứa rất nhiều khái niệm phức tạp và những câu chuyện nền bị chôn vùi. Trang chính là nơi sẽ tập trung vào các chủ đề về thế giới Wuthering Wave ấy như
 
-*   **Hệ thống Thần thoại Roya:** Nguồn gốc, hệ quả và cách nó thao túng dòng chảy lịch sử của các vùng đất.
-*   **Giải mã Aleph-1:** Cấu trúc thực sự đằng sau thực thể này là gì? Các giả thuyết về bản chất không gian và thời gian trong game.
-*   **Hiện tượng Voidstorm (Bão Hư Không):** Phân tích cơ chế vật lý và nguyên nhân hình thành của những cơn bão tàn phá này.
+*   **Chu kì Reverberation:** Nguồn gốc, hệ quả và cách nó hoạt động trong thế giới Solaris và vũ trụ Wuthering Wave.
+*   **Giải mã Somnoire:** Somnoire, nơi mà mọi thứ không phải là thực tế
+*   **Đặc tính khoa học và tính chất vật lý của các cá thể** Phân tích cơ chế vật lý và nguyên nhân hình thành nên thế giới này.
 
-![Bầu trời Solaris-3](/assets/img/THO_thumb.jpg)
+![Thumbnail](/assets/img/THO_thumb.jpg)
 *Hình ảnh minh họa*
 
-> "Âm thanh là cội nguồn của vạn vật, nhưng cũng là thứ kết liễu tất cả." 
+> "Lament đã biết tất cả thành những quy luật khác nhau thông qua cơ chế chung sóng, chỉ riêng trừ... **lực hấp dẫn**" 
 
-Hy vọng blog này sẽ trở thành một cuốn từ điển nhỏ, giúp những ai đam mê cốt truyện của Wuthering Waves có một cái nhìn sâu sắc và toàn diện hơn!
+Hy vọng THO này sẽ trở thành một chốn thông tin nho nhỏ, giúp những ai đam mê thế giới của Wuthering Waves có một cái nhìn sâu sắc và toàn diện hơn!
 
 ---
 
