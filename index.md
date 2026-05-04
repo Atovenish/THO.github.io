@@ -103,16 +103,24 @@ end
 
 ### Definition lists can be used with HTML syntax.
 
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
+## Danh sách bài viết
+
+<ul>
+  {% for post in site.posts %}
+    <li style="margin-bottom: 20px; list-style: none;">
+      <!-- Kiểm tra xem bài viết có biến thumbnail không -->
+      {% if post.thumbnail %}
+        <img src="{{ post.thumbnail | relative_url }}" alt="{{ post.title }}" style="max-width: 200px; display: block; margin-bottom: 10px; border-radius: 8px;">
+      {% endif %}
+      
+      <h3>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </h3>
+      <span style="color: gray; font-size: 0.9em;">{{ post.date | date: "%d/%m/%Y" }}</span>
+      <p>{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+    </li>
+  {% endfor %}
+</ul>
 
 ```
 Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
