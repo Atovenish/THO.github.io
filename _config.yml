@@ -2,10 +2,10 @@ title: The Hideous One
 description: [Hi, This THO (The Hideous One). Here I write about stuff around me. Usually its about the game called Wuthering Wave but I also want to try new thing too.]
 logo: /assets/img/logo.png
 baseurl: "/THO.github.io"
-show_downloads: true
+show_downloads: false
 google_analytics:
 theme: minima
-banner: "/assets/img/THO_thumb.jpg"
+banner: /assets/img/THO_thumb.jpg
 plugins:
 - jekyll-remote-theme # add this line to the plugins list if you already have one
 gem "github-pages", group: :jekyll_plugins
