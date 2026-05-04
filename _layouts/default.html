@@ -5,124 +5,159 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <!-- CODE CSS CHO DARK MODE (NỀN ĐEN, CHỮ TRẮNG) -->
-  <style>
-        body { 
-          background-color: #0d1117 !important; 
-          color: #c9d1d9 !important; 
-          display: flex; 
-          flex-direction: column; 
-          min-height: 100vh; 
-        }
-        
-        .wrapper { 
-          background-color: #0d1117 !important; 
-          max-width: 900px; 
-          margin: 0 auto; 
-          display: flex; 
-          flex-wrap: wrap; 
-          padding: 20px; 
-        }
-  
-        /* Đảm bảo Sidebar (header) không bị đè */
-        header { 
-          width: 270px; 
-          position: sticky; /* Giúp menu trượt theo khi cuộn trang */
-          top: 20px; 
-          align-self: flex-start; 
-          padding-right: 20px; 
-        }
-  
-        /* Đảm bảo nội dung chính (section) chiếm không gian còn lại */
-        section { 
-          width: calc(100% - 300px); 
-          min-width: 300px; 
-        }
-  
-        /* Fix lỗi footer chồng lấp */
-        footer { 
-          width: 100%; 
-          margin-top: auto; 
-          padding: 20px 0; 
-          border-top: 1px solid #30363d; 
-          clear: both; 
-        }
-  
-        h1, h2, h3, h4, h5, h6 { color: #ffffff !important; }
-        strong, b { color: #ffffff !important; font-weight: bold; }
-        a { color: #58a6ff !important; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        hr { border-color: #30363d !important; }
-  
-        /* Responsive cho điện thoại */
-        @media (max-width: 768px) {
-          header, section { width: 100%; position: static; }
-          header { border-bottom: 1px solid #30363d; margin-bottom: 20px; }
-        }
-      </style>
+    <style>
+      /* THIẾT LẬP NỀN TỐI TOÀN TRANG */
+      body { 
+        background-color: #0d1117 !important; 
+        color: #c9d1d9 !important; 
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      }
+      
+      /* CONTAINER CHÍNH */
+      .wrapper { 
+        max-width: 1100px;
+        margin: 0 auto; 
+        padding: 40px 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      /* BANNER TOÀN TRANG */
+      .full-banner {
+        width: 100%;
+        margin-bottom: 30px;
+        order: -1; /* Luôn nằm trên cùng */
+      }
+      .full-banner img {
+        width: 100%;
+        border-radius: 8px;
+        max-height: 400px;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* SIDEBAR (HEADER) - CỐ ĐỊNH KHI CUỘN */
+      header { 
+        width: 260px !important; 
+        position: sticky !important;
+        top: 20px;
+        align-self: flex-start;
+        float: none !important; /* Xóa float cũ của theme */
+        margin: 0 !important;
+      }
+
+      header h1 a { color: #ffffff !important; text-decoration: none; }
+
+      /* LOGO KHÔNG BO TRÒN */
+      .sidebar-logo {
+        max-width: 180px;
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      /* NỘI DUNG CHÍNH (SECTION) */
+      section { 
+        width: calc(100% - 320px) !important; 
+        float: none !important; /* Xóa float cũ của theme */
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      /* CẤU HÌNH CHỮ VÀ BOLD */
+      h1, h2, h3, h4, h5, h6 { color: #ffffff !important; margin-top: 0; }
+      strong, b { color: #ffffff !important; font-weight: bold; }
+      a { color: #58a6ff !important; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      p, li { line-height: 1.6; }
+      hr { border: 0; border-top: 1px solid #30363d; margin: 20px 0; }
+
+      /* KHUNG INDEX */
+      .index-box {
+        margin-top: 20px; 
+        border-top: 1px solid #30363d; 
+        border-bottom: 1px solid #30363d; 
+        padding: 20px 0;
+      }
+      .index-box h3 {
+        font-size: 1.1em; 
+        color: #58a6ff !important; 
+        margin-bottom: 15px;
+      }
+      .index-box ul {
+        list-style: none; 
+        padding: 0; 
+        margin: 0; 
+        font-size: 0.9em; 
+        line-height: 2.2;
+      }
+
+      /* FOOTER */
+      footer { 
+        width: 100%;
+        margin-top: 60px;
+        padding: 20px 0;
+        border-top: 1px solid #30363d;
+        text-align: left;
+        font-size: 0.8em;
+        color: #8b949e;
+      }
+
+      /* RESPONSIVE CHO MOBILE */
+      @media (max-width: 900px) {
+        .wrapper { flex-direction: column; }
+        header, section { width: 100% !important; position: static !important; }
+        header { margin-bottom: 40px !important; border-bottom: 1px solid #30363d; padding-bottom: 20px; }
+      }
+    </style>
 
     {% seo %}
+    <!-- Thêm các file CSS mặc định của theme để giữ lại các định dạng cơ bản khác -->
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
-    <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <![endif]-->
   </head>
   
   <body>
     <div class="wrapper">
 
-      <!-- ========================================== -->
-      <!-- BANNER XUẤT HIỆN Ở TRÊN CÙNG TOÀN TRANG -->
-      <!-- ========================================== -->
-      {% if page.banner %}
-        <div style="width: 100%; margin-bottom: 40px; clear: both;">
-          <img src="{{ page.banner | relative_url }}" alt="Banner bài viết" style="width: 100%; border-radius: 8px; object-fit: cover; max-height: 350px;">
-        </div>
-      {% elsif site.banner %}
-        <div style="width: 100%; margin-bottom: 40px; clear: both;">
-          <img src="{{ site.banner | relative_url }}" alt="Banner mặc định" style="width: 100%; border-radius: 8px; object-fit: cover; max-height: 350px;">
-        </div>
+      <!-- KHU VỰC BANNER -->
+      {% if page.banner or site.banner %}
+      <div class="full-banner">
+        <img src="{{ (page.banner | default: site.banner) | relative_url }}" alt="Banner">
+      </div>
       {% endif %}
       
-      <!-- ========================================== -->
-      <!-- CỘT BÊN TRÁI (KHU VỰC LOGO & INDEX) -->
-      <!-- ========================================== -->
+      <!-- CỘT TRÁI (SIDEBAR) -->
       <header>
-        <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
+        <h1><a href="{{ "/" | relative_url }}">{{ site.title | default: "The Hideous One" }}</a></h1>
 
-        <!-- Logo không bo tròn -->
         {% if site.logo %}
-          <img src="{{site.logo | relative_url}}" alt="Logo" style="max-width: 150px; margin-bottom: 20px;" />
+          <img src="{{ site.logo | relative_url }}" alt="Logo" class="sidebar-logo" />
         {% endif %}
 
-        <p style="font-size: 0.95em; line-height: 1.5; margin-bottom: 25px;">{{ site.description | default: site.github.project_tagline }}</p>
+        <p style="font-size: 0.9em;">{{ site.description }}</p>
 
-        <!-- KHUNG INDEX ĐIỀU HƯỚNG BÊN TRÁI -->
-        <div style="margin-top: 20px; border-top: 1px solid #30363d; border-bottom: 1px solid #30363d; padding: 20px 0;">
-          <h3 style="font-size: 1.1em; color: #58a6ff !important; margin-bottom: 15px; margin-top: 0;"> <b>INDEX</b></h3>
-          <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95em; line-height: 2;">
-            <li><a href="{{ "/" | absolute_url }}"> <b> MAIN </b> </a></li>
-            <li><a href="#"> <b>PERSONAL</b> </a></li>
-            <li><a href="#"> <b>WUTHERING WAVE THEORY AND ANALYSIS</b> </a></li>
-            <li><a href="#"> <b>ANOTHER GAME</b> </a></li>
-            <li><a href="#"> <b>ABOUT THO</b></a></li>
+        <div class="index-box">
+          <h3>INDEX</h3>
+          <ul>
+            <li><a href="{{ "/" | relative_url }}">Main</a></li>
+            <li><a href="{{ "/personal.html" | relative_url }}"><b>PERSONAL</b></a></li>
+            <li><a href="{{ "/wuwa-theory.html" | relative_url }}"><b>WUTHERING WAVE THEORY</b></a></li>
+            <li><a href="{{ "/another-game.html" | relative_url }}"><b>ANOTHER GAME</b></a></li>
+            <li><a href="{{ "/about.html" | relative_url }}"><b>ABOUT THO</b></a></li>
           </ul>
         </div>
-
       </header>
       
-      <!-- ========================================== -->
-      <!-- CỘT BÊN PHẢI (NỘI DUNG CHÍNH) -->
-      <!-- ========================================== -->
+      <!-- CỘT PHẢI (NỘI DUNG) -->
       <section>
         {{ content }}
       </section>
 
-      <!-- ========================================== -->
       <!-- CHÂN TRANG -->
-      <!-- ========================================== -->
-      <footer style="clear: both; padding-top: 40px;">
-        <p><small>Trạm dữ liệu phân tích Wuthering Waves &mdash; The Hideous One</small></p>
+      <footer>
+        <p>Trạm dữ liệu Solaris-3 &mdash; Nội dung thuộc về The Hideous One</p>
       </footer>
       
     </div>
