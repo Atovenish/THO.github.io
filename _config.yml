@@ -8,5 +8,4 @@ theme: minima
 remote_theme: pages-themes/minimal
 repository: "Atovenish/THO.github.io"
 url: "https://atovenish.github.io"
-baseurl: "/THO.github.io"
 gem "github-pages", group: :jekyll_plugins
