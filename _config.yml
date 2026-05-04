@@ -1,17 +1,22 @@
-title: The Hideous One
+title: "The Hideous One"
 description: "Hi, I'm THO (The Hideous One). Here I write about stuff around me. Usually it's about the game called Wuthering Waves, but I also want to try new things too."
-logo: /assets/img/THO_logo.png
+logo: "/assets/img/THO_logo.png"
 show_downloads: false
 
-# GitHub Pages settings
+# ==========================================
+# CẤU HÌNH GIAO DIỆN VÀ ĐƯỜNG DẪN
+# ==========================================
+theme: minima
 remote_theme: pages-themes/minimal
-repository: "Atovenish/THO.github.io"
+
+repository: "Atovenish/atovenish.github.io"
 url: "https://atovenish.github.io"
-# Jekyll configuration for markdown
+baseurl: ""
+
+# ==========================================
+# CẤU HÌNH BIÊN DỊCH MARKDOWN
+# ==========================================
 markdown: kramdown
 kramdown:
   input: GFM
   toc_levels: 1..6
-
-# Optional: Add Google Analytics if you have a tracking ID
-# google_analytics: YOUR_TRACKING_ID
