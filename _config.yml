@@ -2,3 +2,5 @@ remote_theme: pages-themes/minimal@v0.2.0
 plugins:
 - jekyll-remote-theme # add this line to the plugins list if you already have one
 gem "github-pages", group: :jekyll_plugins
+title: [The Hideous One and sloppiest analysis]
+description: [Hi, This THO (The Hideous One). Here I write about stuff around me. Usually its about the game called Wuthering Wave but I also want to try new thing too.]
