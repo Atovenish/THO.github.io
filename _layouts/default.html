@@ -1,15 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <meta name="description" content="Your description here">
-    <meta name="keywords" content="keyword1, keyword2">
-    <meta name="author" content="Your Name">
-    <!-- SEO Tag correctly placed within head section -->
-</head>
-<body>
-    <h1>Hello World</h1>
-</body>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Code ép giao diện luôn hiển thị nền trắng chữ đen cho dễ đọc -->
+    <style>
+      body { background-color: #ffffff !important; color: #333333 !important; }
+      .wrapper { background-color: #ffffff !important; }
+      h1, h2, h3, h4, h5, h6 { color: #111111 !important; }
+      a { color: #007acc !important; }
+    </style>
+
+    {% seo %}
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+  </head>
+  
+  <body>
+    <div class="wrapper">
+      
+      <!-- Cột bên trái (Sidebar) -->
+      <header>
+        <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
+
+        <!-- Logo được thu nhỏ và bo tròn -->
+        {% if site.logo %}
+          <img src="{{site.logo | relative_url}}" alt="Logo" style="max-width: 150px; border-radius: 50%; margin-bottom: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+        {% endif %}
+
+        <p>{{ site.description | default: site.github.project_tagline }}</p>
+
+        <!-- Nếu bạn muốn tắt nút download, code này sẽ ẩn nó đi -->
+        {% if site.show_downloads %}
+        <ul class="downloads">
+          <li><a href="{{ site.github.zip_url }}">Download <strong>ZIP File</strong></a></li>
+          <li><a href="{{ site.github.tar_url }}">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="{{ site.github.repository_url }}">View On <strong>GitHub</strong></a></li>
+        </ul>
+        {% endif %}
+      </header>
+      
+      <!-- Cột bên phải (Nội dung chính) -->
+      <section>
+        
+        <!-- Code hiển thị Banner (Nếu bạn khai báo trong _config.yml hoặc bài viết) -->
+        {% if page.banner %}
+          <img src="{{ page.banner | relative_url }}" alt="Banner bài viết" style="width: 100%; border-radius: 8px; margin-bottom: 20px; object-fit: cover; max-height: 350px;">
+        {% elsif site.banner %}
+          <img src="{{ site.banner | relative_url }}" alt="Banner mặc định" style="width: 100%; border-radius: 8px; margin-bottom: 20px; object-fit: cover; max-height: 350px;">
+        {% endif %}
+
+        <!-- ĐÂY CHÍNH LÀ TRÁI TIM CỦA BLOG: NƠI HIỂN THỊ NỘI DUNG MARKDOWN -->
+        {{ content }}
+
+      </section>
+
+      <!-- Chân trang -->
+      <footer>
+        <p><small>Trạm dữ liệu phân tích Wuthering Waves &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+      
+    </div>
+    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+  </body>
 </html>
