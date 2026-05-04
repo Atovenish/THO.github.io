@@ -1,6 +1,7 @@
 title: The Hideous One 
 description: [Hi, This THO (The Hideous One). Here I write about stuff around me. Usually its about the game called Wuthering Wave but I also want to try new thing too.]
 logo: /assets/img/logo.png
+baseurl: "/THO.github.io"
 show_downloads: true
 google_analytics:
 theme: jekyll-theme-minimal
