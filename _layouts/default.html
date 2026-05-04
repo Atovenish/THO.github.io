@@ -5,12 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <!-- Code ép giao diện luôn hiển thị nền trắng chữ đen cho dễ đọc -->
+    <!-- CODE CSS CHO DARK MODE (NỀN ĐEN, CHỮ TRẮNG) -->
     <style>
-      body { background-color: #ffffff !important; color: #333333 !important; }
-      .wrapper { background-color: #ffffff !important; }
-      h1, h2, h3, h4, h5, h6 { color: #111111 !important; }
-      a { color: #007acc !important; }
+      body { background-color: #0d1117 !important; color: #c9d1d9 !important; }
+      .wrapper { background-color: #0d1117 !important; }
+      h1, h2, h3, h4, h5, h6 { color: #ffffff !important; }
+      /* Đổi màu link sang xanh dương nhạt cho nổi bật trên nền đen */
+      a { color: #58a6ff !important; }
+      /* Màu viền (đường kẻ ngang) sáng nhẹ lên một chút */
+      hr { border-color: #30363d !important; }
     </style>
 
     {% seo %}
@@ -27,14 +30,13 @@
       <header>
         <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
 
-        <!-- Logo được thu nhỏ và bo tròn -->
+        <!-- ĐÃ BỎ BO TRÒN LOGO VÀ ĐỔ BÓNG -->
         {% if site.logo %}
-          <img src="{{site.logo | relative_url}}" alt="Logo" style="max-width: 150px; border-radius: 50%; margin-bottom: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+          <img src="{{site.logo | relative_url}}" alt="Logo" style="max-width: 150px; margin-bottom: 20px;" />
         {% endif %}
 
         <p>{{ site.description | default: site.github.project_tagline }}</p>
 
-        <!-- Nếu bạn muốn tắt nút download, code này sẽ ẩn nó đi -->
         {% if site.show_downloads %}
         <ul class="downloads">
           <li><a href="{{ site.github.zip_url }}">Download <strong>ZIP File</strong></a></li>
@@ -47,14 +49,14 @@
       <!-- Cột bên phải (Nội dung chính) -->
       <section>
         
-        <!-- Code hiển thị Banner (Nếu bạn khai báo trong _config.yml hoặc bài viết) -->
+        <!-- Code hiển thị Banner -->
         {% if page.banner %}
           <img src="{{ page.banner | relative_url }}" alt="Banner bài viết" style="width: 100%; border-radius: 8px; margin-bottom: 20px; object-fit: cover; max-height: 350px;">
         {% elsif site.banner %}
           <img src="{{ site.banner | relative_url }}" alt="Banner mặc định" style="width: 100%; border-radius: 8px; margin-bottom: 20px; object-fit: cover; max-height: 350px;">
         {% endif %}
 
-        <!-- ĐÂY CHÍNH LÀ TRÁI TIM CỦA BLOG: NƠI HIỂN THỊ NỘI DUNG MARKDOWN -->
+        <!-- NỘI DUNG BÀI VIẾT MARKDOWN SẼ HIỂN THỊ Ở ĐÂY -->
         {{ content }}
 
       </section>
