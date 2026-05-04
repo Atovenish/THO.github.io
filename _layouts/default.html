@@ -6,20 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- CODE CSS CHO DARK MODE (NỀN ĐEN, CHỮ TRẮNG) -->
-    <style>
-      body { background-color: #0d1117 !important; color: #c9d1d9 !important; }
-      .wrapper { background-color: #0d1117 !important; }
-
-      /* ÉP CHỮ ĐẬM (BOLD) THÀNH MÀU TRẮNG SÁNG */
-      strong, b { color: #ffffff !important; font-weight: bold; }
-      
-      /* GIỮ MÀU TRẮNG CHO CÁC ĐOẠN TRÍCH DẪN (BLOCKQUOTE) */
-      blockquote { color: #c9d1d9 !important; border-left: 4px solid #30363d !important; padding-left: 15px; font-style: italic; }
-      h1, h2, h3, h4, h5, h6 { color: #ffffff !important; }
-      a { color: #58a6ff !important; text-decoration: none; }
-      a:hover { text-decoration: underline; }
-      hr { border-color: #30363d !important; }
-    </style>
+  <style>
+        body { 
+          background-color: #0d1117 !important; 
+          color: #c9d1d9 !important; 
+          display: flex; 
+          flex-direction: column; 
+          min-height: 100vh; 
+        }
+        
+        .wrapper { 
+          background-color: #0d1117 !important; 
+          max-width: 900px; 
+          margin: 0 auto; 
+          display: flex; 
+          flex-wrap: wrap; 
+          padding: 20px; 
+        }
+  
+        /* Đảm bảo Sidebar (header) không bị đè */
+        header { 
+          width: 270px; 
+          position: sticky; /* Giúp menu trượt theo khi cuộn trang */
+          top: 20px; 
+          align-self: flex-start; 
+          padding-right: 20px; 
+        }
+  
+        /* Đảm bảo nội dung chính (section) chiếm không gian còn lại */
+        section { 
+          width: calc(100% - 300px); 
+          min-width: 300px; 
+        }
+  
+        /* Fix lỗi footer chồng lấp */
+        footer { 
+          width: 100%; 
+          margin-top: auto; 
+          padding: 20px 0; 
+          border-top: 1px solid #30363d; 
+          clear: both; 
+        }
+  
+        h1, h2, h3, h4, h5, h6 { color: #ffffff !important; }
+        strong, b { color: #ffffff !important; font-weight: bold; }
+        a { color: #58a6ff !important; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        hr { border-color: #30363d !important; }
+  
+        /* Responsive cho điện thoại */
+        @media (max-width: 768px) {
+          header, section { width: 100%; position: static; }
+          header { border-bottom: 1px solid #30363d; margin-bottom: 20px; }
+        }
+      </style>
 
     {% seo %}
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
@@ -59,9 +99,9 @@
 
         <!-- KHUNG INDEX ĐIỀU HƯỚNG BÊN TRÁI -->
         <div style="margin-top: 20px; border-top: 1px solid #30363d; border-bottom: 1px solid #30363d; padding: 20px 0;">
-          <h3 style="font-size: 1.1em; color: #58a6ff !important; margin-bottom: 15px; margin-top: 0;"> INDEX</h3>
+          <h3 style="font-size: 1.1em; color: #58a6ff !important; margin-bottom: 15px; margin-top: 0;"> <b>INDEX</b></h3>
           <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95em; line-height: 2;">
-            <li><a href="{{ "/" | absolute_url }}"> Main </a></li>
+            <li><a href="{{ "/" | absolute_url }}"> <b> MAIN </b> </a></li>
             <li><a href="#"> <b>PERSONAL</b> </a></li>
             <li><a href="#"> <b>WUTHERING WAVE THEORY AND ANALYSIS</b> </a></li>
             <li><a href="#"> <b>ANOTHER GAME</b> </a></li>
