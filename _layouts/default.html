@@ -10,9 +10,8 @@
       body { background-color: #0d1117 !important; color: #c9d1d9 !important; }
       .wrapper { background-color: #0d1117 !important; }
       h1, h2, h3, h4, h5, h6 { color: #ffffff !important; }
-      /* Đổi màu link sang xanh dương nhạt cho nổi bật trên nền đen */
-      a { color: #58a6ff !important; }
-      /* Màu viền (đường kẻ ngang) sáng nhẹ lên một chút */
+      a { color: #58a6ff !important; text-decoration: none; }
+      a:hover { text-decoration: underline; }
       hr { border-color: #30363d !important; }
     </style>
 
@@ -25,45 +24,59 @@
   
   <body>
     <div class="wrapper">
+
+      <!-- ========================================== -->
+      <!-- BANNER XUẤT HIỆN Ở TRÊN CÙNG TOÀN TRANG -->
+      <!-- ========================================== -->
+      {% if page.banner %}
+        <div style="width: 100%; margin-bottom: 40px; clear: both;">
+          <img src="{{ page.banner | relative_url }}" alt="Banner bài viết" style="width: 100%; border-radius: 8px; object-fit: cover; max-height: 350px;">
+        </div>
+      {% elsif site.banner %}
+        <div style="width: 100%; margin-bottom: 40px; clear: both;">
+          <img src="{{ site.banner | relative_url }}" alt="Banner mặc định" style="width: 100%; border-radius: 8px; object-fit: cover; max-height: 350px;">
+        </div>
+      {% endif %}
       
-      <!-- Cột bên trái (Sidebar) -->
+      <!-- ========================================== -->
+      <!-- CỘT BÊN TRÁI (KHU VỰC LOGO & INDEX) -->
+      <!-- ========================================== -->
       <header>
         <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
 
-        <!-- ĐÃ BỎ BO TRÒN LOGO VÀ ĐỔ BÓNG -->
+        <!-- Logo không bo tròn -->
         {% if site.logo %}
           <img src="{{site.logo | relative_url}}" alt="Logo" style="max-width: 150px; margin-bottom: 20px;" />
         {% endif %}
 
-        <p>{{ site.description | default: site.github.project_tagline }}</p>
+        <p style="font-size: 0.95em; line-height: 1.5; margin-bottom: 25px;">{{ site.description | default: site.github.project_tagline }}</p>
 
-        {% if site.show_downloads %}
-        <ul class="downloads">
-          <li><a href="{{ site.github.zip_url }}">Download <strong>ZIP File</strong></a></li>
-          <li><a href="{{ site.github.tar_url }}">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="{{ site.github.repository_url }}">View On <strong>GitHub</strong></a></li>
-        </ul>
-        {% endif %}
+        <!-- KHUNG INDEX ĐIỀU HƯỚNG BÊN TRÁI -->
+        <div style="margin-top: 20px; border-top: 1px solid #30363d; border-bottom: 1px solid #30363d; padding: 20px 0;">
+          <h3 style="font-size: 1.1em; color: #58a6ff !important; margin-bottom: 15px; margin-top: 0;">📌 DANH MỤC</h3>
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95em; line-height: 2;">
+            <li><a href="{{ "/" | absolute_url }}">🏠 Trang chủ</a></li>
+            <li><a href="#"> Personal </a></li>
+            <li><a href="#"> Theory and Analysis Wuthering Wave </a></li>
+            <li><a href="#"> Another Game Analysis </a></li>
+            <li><a href="#"> The Hideous One</a></li>
+          </ul>
+        </div>
+
       </header>
       
-      <!-- Cột bên phải (Nội dung chính) -->
+      <!-- ========================================== -->
+      <!-- CỘT BÊN PHẢI (NỘI DUNG CHÍNH) -->
+      <!-- ========================================== -->
       <section>
-        
-        <!-- Code hiển thị Banner -->
-        {% if page.banner %}
-          <img src="{{ page.banner | relative_url }}" alt="Banner bài viết" style="width: 100%; border-radius: 8px; margin-bottom: 20px; object-fit: cover; max-height: 350px;">
-        {% elsif site.banner %}
-          <img src="{{ site.banner | relative_url }}" alt="Banner mặc định" style="width: 100%; border-radius: 8px; margin-bottom: 20px; object-fit: cover; max-height: 350px;">
-        {% endif %}
-
-        <!-- NỘI DUNG BÀI VIẾT MARKDOWN SẼ HIỂN THỊ Ở ĐÂY -->
         {{ content }}
-
       </section>
 
-      <!-- Chân trang -->
-      <footer>
-        <p><small>Trạm dữ liệu phân tích Wuthering Waves &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      <!-- ========================================== -->
+      <!-- CHÂN TRANG -->
+      <!-- ========================================== -->
+      <footer style="clear: both; padding-top: 40px;">
+        <p><small>Trạm dữ liệu phân tích Wuthering Waves &mdash; The Hideous One</small></p>
       </footer>
       
     </div>
