@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <!-- Google Fonts: Syne (Brutalist Display) & JetBrains Mono (Terminal) -->
+    <!-- Google Fonts Stack tương thích 1:1 với Avant Garde (League Spartan) & Interstate (Overpass / Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800;900&family=Overpass:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -20,11 +20,18 @@
         --border-color: rgba(92, 225, 230, 0.15);
         --text-primary: #e6edf3;
         --text-secondary: #7d8b99;
-        --accent-tho: #5ce1e6;         /* Xanh ngọc phát quang The Hideous One */
+        --accent-tho: #5ce1e6;         /* Cyan The Hideous One */
         --accent-glow: rgba(92, 225, 230, 0.12);
-        --font-display: 'Syne', sans-serif;
-        --font-body: 'Space Grotesk', -apple-system, sans-serif;
-        --font-mono: 'JetBrains Mono', monospace;
+
+        /* HỆ FONT ĐẶC TẢ */
+        /* ITC Avant Garde Gothic Bold -> Dành cho Logo, H1, H2, H3 */
+        --font-display: "ITC Avant Garde Gothic", "Avant Garde", "League Spartan", "Century Gothic", -apple-system, sans-serif;
+        
+        /* Interstate -> Dành cho Content, Body text, Danh sách */
+        --font-body: "Interstate", "Overpass", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        
+        /* Terminal & Directory Index */
+        --font-mono: "JetBrains Mono", monospace;
       }
 
       /* RESET & BASE */
@@ -82,7 +89,7 @@
         letter-spacing: 0.15em;
       }
 
-      /* BANNER KHUNG HỘP */
+      /* BANNER */
       .full-banner {
         width: 100%;
         margin-bottom: 35px;
@@ -111,8 +118,8 @@
       header h1 {
         font-family: var(--font-display);
         font-weight: 800;
-        font-size: 1.6em;
-        letter-spacing: 0.04em;
+        font-size: 1.55em;
+        letter-spacing: -0.02em; /* Avant Garde đặc trưng có tracking nén nhẹ hoặc dãn hẳn */
         text-transform: uppercase;
         margin: 0 0 15px 0;
       }
@@ -122,10 +129,16 @@
         max-width: 140px;
         margin-bottom: 15px;
         display: block;
+        filter: drop-shadow(0 0 6px rgba(92, 225, 230, 0.3));
+        transition: filter 0.3s ease;
+      }
+      .sidebar-logo:hover {
+        filter: drop-shadow(0 0 14px rgba(92, 225, 230, 0.8));
       }
 
       .site-desc {
-        font-size: 0.85em; 
+        font-family: var(--font-body);
+        font-size: 0.88em; 
         color: var(--text-secondary);
         line-height: 1.6;
       }
@@ -138,14 +151,15 @@
         padding: 0 !important;
       }
 
-      /* TYPOGRAPHY */
+      /* TYPOGRAPHY ITC AVANT GARDE CHO TOÀN BỘ HEADING */
       h1, h2, h3, h4, h5, h6 { 
         font-family: var(--font-display); 
         color: #ffffff !important; 
         text-transform: uppercase;
-        letter-spacing: 0.05em;
+        letter-spacing: 0.02em;
         margin-top: 1.4em; 
         margin-bottom: 0.6em; 
+        font-weight: 800;
       }
       section > h1:first-child, section > h2:first-child, section > h3:first-child { margin-top: 0; }
       
@@ -156,13 +170,25 @@
       }
       h3 { font-size: 1.15em; color: var(--accent-tho) !important; }
 
-      p { line-height: 1.75; margin-bottom: 18px; font-size: 0.98em; }
-      li { line-height: 1.7; margin-bottom: 8px; }
+      /* NỘI DUNG NHỎ: INTERSTATE */
+      p { 
+        font-family: var(--font-body);
+        line-height: 1.72; 
+        margin-bottom: 18px; 
+        font-size: 0.95em; 
+        letter-spacing: -0.01em;
+      }
+      li { 
+        font-family: var(--font-body);
+        line-height: 1.68; 
+        margin-bottom: 8px; 
+        font-size: 0.95em;
+      }
       strong, b { color: #ffffff !important; font-weight: 700; }
       a { color: var(--accent-tho) !important; text-decoration: none; }
       a:hover { text-decoration: underline; }
 
-      /* BLOCKQUOTE / ARCHIVE LOG */
+      /* BLOCKQUOTE */
       blockquote { 
         font-family: var(--font-mono);
         color: var(--text-secondary) !important; 
@@ -173,7 +199,7 @@
         font-size: 0.88em;
       }
 
-      /* INDEX MENU DIRECTORY */
+      /* INDEX MENU */
       .index-box {
         margin-top: 25px; 
         border-top: 1px solid var(--border-color); 
@@ -259,7 +285,7 @@
 
         <p class="site-desc">{{ site.description }}</p>
 
-        <!-- INDEX VỚI TỰ ĐỘNG ACTIVE MÀU CYAN THO -->
+        <!-- INDEX -->
         <div class="index-box">
           <h3>// DIRECTORY</h3>
           <ul>
