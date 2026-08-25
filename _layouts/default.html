@@ -5,20 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <!-- Font Awesome cho Icon -->
+    <!-- Google Fonts: Syne (Brutalist Display) & JetBrains Mono (Terminal) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-      /* RESET & BASE */
-      body { 
-        background-color: #0d1117 !important; 
-        color: #c9d1d9 !important; 
-        margin: 0;
-        padding: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      :root {
+        --bg-color: #07090e;
+        --card-bg: rgba(10, 14, 20, 0.92);
+        --border-color: rgba(92, 225, 230, 0.15);
+        --text-primary: #e6edf3;
+        --text-secondary: #7d8b99;
+        --accent-tho: #5ce1e6;         /* Xanh ngọc phát quang The Hideous One */
+        --accent-glow: rgba(92, 225, 230, 0.12);
+        --font-display: 'Syne', sans-serif;
+        --font-body: 'Space Grotesk', -apple-system, sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
       }
 
-      /* NỀN TĨNH ANTI-LAG BẰNG GPU */
+      /* RESET & BASE */
+      body { 
+        background-color: var(--bg-color) !important; 
+        color: var(--text-primary) !important; 
+        margin: 0;
+        padding: 0;
+        font-family: var(--font-body);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* NỀN TĨNH BẢO VỆ GPU */
       body::before {
         content: "";
         position: fixed; 
@@ -31,35 +50,49 @@
         will-change: transform;
       }
       
-      /* CONTAINER FLOATING CARD */
+      /* FLOATING CARD - BRUTALIST SHARP GEOMETRY */
       .wrapper { 
-        max-width: 1100px;
+        max-width: 1140px;
         width: 90%; 
         margin: 40px auto; 
         padding: 40px;
-        background-color: rgba(13, 17, 23, 0.88) !important; 
-        backdrop-filter: blur(12px); 
-        -webkit-backdrop-filter: blur(12px); 
-        border: 1px solid rgba(255, 255, 255, 0.08); 
-        border-radius: 20px; 
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7); 
+        background-color: var(--card-bg) !important; 
+        backdrop-filter: blur(14px); 
+        -webkit-backdrop-filter: blur(14px); 
+        border: 1px solid var(--border-color); 
+        border-radius: 2px;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85); 
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        position: relative;
         transform: translateZ(0);
       }
 
-      /* BANNER */
+      /* TOP TERMINAL TAG */
+      .wrapper::after {
+        content: "// TERMINAL: SOLARIS-3 // PROTOCOL: THO_RESONANCE";
+        position: absolute;
+        top: 12px;
+        right: 20px;
+        font-family: var(--font-mono);
+        font-size: 0.68em;
+        color: var(--accent-tho);
+        opacity: 0.7;
+        letter-spacing: 0.15em;
+      }
+
+      /* BANNER KHUNG HỘP */
       .full-banner {
         width: 100%;
-        margin-bottom: 30px;
+        margin-bottom: 35px;
         order: -1; 
       }
       .full-banner img {
         width: 100%;
-        border-radius: 12px; 
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+        border-radius: 0px; 
+        border: 1px solid var(--border-color);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
         max-height: 380px;
         object-fit: cover;
         display: block;
@@ -67,89 +100,137 @@
 
       /* SIDEBAR */
       header { 
-        width: 250px !important; 
+        width: 260px !important; 
         position: sticky !important;
         top: 20px;
         align-self: flex-start;
         float: none !important; 
         margin: 0 !important;
       }
+
+      header h1 {
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: 1.6em;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        margin: 0 0 15px 0;
+      }
       header h1 a { color: #ffffff !important; text-decoration: none; }
+
       .sidebar-logo {
-        max-width: 160px;
+        max-width: 140px;
         margin-bottom: 15px;
         display: block;
       }
 
-      /* NỘI DUNG CHÍNH */
+      .site-desc {
+        font-size: 0.85em; 
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      /* NỘI DUNG CHÍNH (SECTION) */
       section { 
-        width: calc(100% - 300px) !important; 
+        width: calc(100% - 310px) !important; 
         float: none !important; 
         margin: 0 !important;
         padding: 0 !important;
       }
 
-      /* TYPOGRAPHY & SPACING */
-      h1, h2, h3, h4, h5, h6 { color: #ffffff !important; margin-top: 1.2em; margin-bottom: 0.6em; }
+      /* TYPOGRAPHY */
+      h1, h2, h3, h4, h5, h6 { 
+        font-family: var(--font-display); 
+        color: #ffffff !important; 
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-top: 1.4em; 
+        margin-bottom: 0.6em; 
+      }
       section > h1:first-child, section > h2:first-child, section > h3:first-child { margin-top: 0; }
-      h2 { font-size: 1.5em; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 8px; }
-      h3 { font-size: 1.2em; }
+      
+      h2 { 
+        font-size: 1.45em; 
+        border-bottom: 2px solid var(--border-color); 
+        padding-bottom: 8px; 
+      }
+      h3 { font-size: 1.15em; color: var(--accent-tho) !important; }
+
       p { line-height: 1.75; margin-bottom: 18px; font-size: 0.98em; }
       li { line-height: 1.7; margin-bottom: 8px; }
-      strong, b { color: #ffffff !important; font-weight: 600; }
-      a { color: #58a6ff !important; text-decoration: none; }
+      strong, b { color: #ffffff !important; font-weight: 700; }
+      a { color: var(--accent-tho) !important; text-decoration: none; }
       a:hover { text-decoration: underline; }
+
+      /* BLOCKQUOTE / ARCHIVE LOG */
       blockquote { 
-        color: #8b949e !important; 
-        border-left: 3px solid #58a6ff !important; 
-        padding-left: 15px; 
-        margin: 20px 0;
-        font-style: italic; 
+        font-family: var(--font-mono);
+        color: var(--text-secondary) !important; 
+        background: rgba(92, 225, 230, 0.03);
+        border-left: 3px solid var(--accent-tho) !important; 
+        padding: 12px 18px; 
+        margin: 24px 0;
+        font-size: 0.88em;
       }
 
-      /* INDEX MENU CÓ ACTIVE STATE */
+      /* INDEX MENU DIRECTORY */
       .index-box {
-        margin-top: 20px; 
-        border-top: 1px solid rgba(255, 255, 255, 0.08); 
-        padding-top: 15px;
+        margin-top: 25px; 
+        border-top: 1px solid var(--border-color); 
+        padding-top: 18px;
       }
-      .index-box h3 { font-size: 1em; color: #58a6ff !important; margin-bottom: 12px; letter-spacing: 0.05em; }
-      .index-box ul { list-style: none; padding: 0; margin: 0; font-size: 0.9em; }
-      .index-box li { margin-bottom: 4px; }
+      .index-box h3 { 
+        font-family: var(--font-mono);
+        font-size: 0.85em; 
+        color: var(--accent-tho) !important; 
+        margin-bottom: 12px; 
+        letter-spacing: 0.15em; 
+      }
+      .index-box ul { list-style: none; padding: 0; margin: 0; }
+      .index-box li { margin-bottom: 2px; }
       .index-box a {
+        font-family: var(--font-mono);
         display: block;
-        padding: 6px 10px;
-        border-radius: 6px;
-        color: #8b949e !important;
-        transition: all 0.2s ease;
+        padding: 8px 12px;
+        border-radius: 0px;
+        font-size: 0.82em;
+        letter-spacing: 0.06em;
+        color: var(--text-secondary) !important;
+        border-left: 2px solid transparent;
+        transition: all 0.15s ease-in-out;
       }
       .index-box a:hover {
         color: #ffffff !important;
-        background: rgba(255, 255, 255, 0.04);
+        background: rgba(92, 225, 230, 0.05);
+        border-left: 2px solid rgba(92, 225, 230, 0.4);
         text-decoration: none;
       }
       .index-box a.active {
         color: #ffffff !important;
-        background: rgba(88, 166, 255, 0.12);
-        border-left: 3px solid #58a6ff;
-        font-weight: 600;
+        background: var(--accent-glow);
+        border-left: 2px solid var(--accent-tho);
+        font-weight: 700;
         text-decoration: none;
+        box-shadow: inset 1px 0 8px rgba(92, 225, 230, 0.1);
       }
 
-      /* FOOTER TRONG SIDEBAR */
+      /* FOOTER */
       .sidebar-footer {
-        margin-top: 25px;
+        margin-top: 30px;
         padding-top: 15px;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        font-size: 0.8em;
-        color: #8b949e;
+        border-top: 1px solid var(--border-color);
+        font-family: var(--font-mono);
+        font-size: 0.72em;
+        letter-spacing: 0.05em;
+        color: var(--text-secondary);
       }
 
       /* MOBILE */
       @media (max-width: 900px) {
         .wrapper { width: 95%; margin: 15px auto; padding: 20px; flex-direction: column; }
+        .wrapper::after { display: none; }
         header, section { width: 100% !important; position: static !important; }
-        header { margin-bottom: 30px !important; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px; }
+        header { margin-bottom: 30px !important; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; }
         .sidebar-footer { border-top: none; padding-top: 0; }
       }
     </style>
@@ -170,28 +251,28 @@
       
       <!-- SIDEBAR -->
       <header>
-        <h1><a href="{{ "/" | relative_url }}">{{ site.title | default: "The Hideous One" }}</a></h1>
+        <h1><a href="{{ "/" | relative_url }}">{{ site.title | default: "THE HIDEOUS ONE" }}</a></h1>
 
         {% if site.logo %}
           <img src="{{ site.logo | relative_url }}" alt="Logo" class="sidebar-logo" />
         {% endif %}
 
-        <p style="font-size: 0.88em; color: #8b949e;">{{ site.description }}</p>
+        <p class="site-desc">{{ site.description }}</p>
 
-        <!-- INDEX VỚI TỰ ĐỘNG HIGHLIGHT ACTIVE -->
+        <!-- INDEX VỚI TỰ ĐỘNG ACTIVE MÀU CYAN THO -->
         <div class="index-box">
-          <h3>INDEX</h3>
+          <h3>// DIRECTORY</h3>
           <ul>
-            <li><a href="{{ "/" | relative_url }}" class="{% if page.url == '/' or page.url == '/index.html' %}active{% endif %}">MAIN</a></li>
-            <li><a href="{{ "/personal.html" | relative_url }}" class="{% if page.url contains 'personal' %}active{% endif %}">PERSONAL</a></li>
-            <li><a href="{{ "/wuwa-theory.html" | relative_url }}" class="{% if page.url contains 'wuwa-theory' %}active{% endif %}">WUTHERING WAVE THEORY</a></li>
-            <li><a href="{{ "/another-game.html" | relative_url }}" class="{% if page.url contains 'another-game' %}active{% endif %}">ANOTHER GAME</a></li>
-            <li><a href="{{ "/about.html" | relative_url }}" class="{% if page.url contains 'about' %}active{% endif %}">ABOUT THO</a></li>
+            <li><a href="{{ "/" | relative_url }}" class="{% if page.url == '/' or page.url == '/index.html' %}active{% endif %}">01. MAIN</a></li>
+            <li><a href="{{ "/personal.html" | relative_url }}" class="{% if page.url contains 'personal' %}active{% endif %}">02. PERSONAL</a></li>
+            <li><a href="{{ "/wuwa-theory.html" | relative_url }}" class="{% if page.url contains 'wuwa-theory' %}active{% endif %}">03. WUTHERING WAVE THEORY</a></li>
+            <li><a href="{{ "/another-game.html" | relative_url }}" class="{% if page.url contains 'another-game' %}active{% endif %}">04. ANOTHER GAME</a></li>
+            <li><a href="{{ "/about.html" | relative_url }}" class="{% if page.url contains 'about' %}active{% endif %}">05. ABOUT THO</a></li>
           </ul>
         </div>
 
         <div class="sidebar-footer">
-          <p>Trạm dữ liệu Solaris-3 &mdash; The Hideous One</p>
+          <p>TERMINAL: SOLARIS-3 // ARCHIVE: THO</p>
         </div>
       </header>
       
