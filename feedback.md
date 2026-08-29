@@ -18,10 +18,9 @@ title: "THO's FEEDBACK"
     </style>
   </head>
   <body>
-    <iframe data-tally-src="https://tally.so/r/2EG0Qg?transparentBackground=1" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" title="FEEDBACK THO // GÓP Ý"></iframe>
+    <iframe data-tally-src="https://tally.so/r/2EG0Qg" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" title="FEEDBACK THO // GÓP Ý"></iframe>
   </body>
 </html>
-  
 </div>
 
 <script src="https://tally.so/widgets/embed.js"></script>
