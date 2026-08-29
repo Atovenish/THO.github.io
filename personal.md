@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: "Personal Archive"
 ---
 
@@ -7,7 +7,7 @@ title: "Personal Archive"
 > *"Lưu trữ hồ sơ nghiên cứu, nhật ký cá nhân và các dự án bên lề của THO / Irvy."*
 
 <div class="archive-list" style="margin-top: 25px;">
-{% assign personal_posts = site.categories['personal'] %}
+{% assign personal_posts = site.posts | where_exp: "item", "item.categories contains 'personal'" %}
 {% for post in personal_posts %}
   <div style="padding: 14px 16px; margin-bottom: 12px; background: rgba(255,255,255,0.02); border-left: 2px solid var(--accent-tho); border-top: 1px solid var(--border-color); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
     <span style="font-family: var(--font-mono); font-size: 0.78em; color: var(--accent-tho);">LOG_{{ post.date | date: "%Y%m%d" }} // {{ post.date | date: "%d/%m/%Y" }}</span>
