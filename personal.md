@@ -16,7 +16,7 @@ title: "Personal Archive"
       <p style="font-size: 0.85em; color: var(--text-secondary); margin: 0;">{{ post.description }}</p>
     {% endif %}
   </div>
-{% empty %}
+{% else %}
   <p style="font-family: var(--font-mono); font-size: 0.85em; color: var(--text-secondary);">[NO LOGS REGISTERED IN SECTOR 02]</p>
 {% endfor %}
 </div>
