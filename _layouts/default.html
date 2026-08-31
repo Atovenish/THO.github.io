@@ -273,14 +273,15 @@
       <div class="full-banner">
         <img src="{{ page.banner | default: site.banner | relative_url }}" alt="Banner">
       </div>
-      {% endif %}
+      {% endunless %}
+    {% endif %}
       
       <!-- SIDEBAR -->
       <header>
         <h1><a href="{{ "/" | relative_url }}">{{ site.title | default: "THE HIDEOUS ONE" }}</a></h1>
 
         <!-- CHỈ HIỆN LOGO VÀ INFO Ở TRANG DANH MỤC -->
-        {% unless page.layout == 'post' %}
+        {% unless page.layout == 'post' or page.layout == 'report' %}
           {% if site.logo %}
             <img src="{{ site.logo | relative_url }}" alt="Logo" class="sidebar-logo" />
           {% endif %}
@@ -288,7 +289,7 @@
         {% endunless %}
 
         <!-- NÚT QUAY LẠI CHỈ HIỆN Ở BÀI VIẾT (POST) -->
-        {% if page.layout == 'post' %}
+        {% if page.layout == 'post' or page.layout == 'report' %}
           <div style="margin-top: 30px; margin-bottom: 30px;">
             <a href="{{ "/" | relative_url }}" style="font-family: var(--font-mono); font-size: 0.85em; color: var(--accent-tho) !important; padding: 10px 15px; border: 1px solid var(--border-color); background: rgba(92,225,230,0.05); display: inline-block; text-decoration: none; letter-spacing: 0.1em; transition: all 0.2s ease; box-shadow: inset 0 0 8px rgba(92,225,230,0.1);">
               < RETURN TO ROOT
@@ -297,7 +298,7 @@
         {% endif %}
 
         <!-- INDEX CHỈ HIỆN Ở TRANG DANH MỤC -->
-        {% unless page.layout == 'post' %}
+        {% unless page.layout == 'post' or page.layout == 'report' %}
         <div class="index-box">
           <h3>// DIRECTORY</h3>
           <ul>
