@@ -1,6 +1,7 @@
 ---
-layout: post
-title: "Tên bài phân tích"
+layout: report
+title: "Demo Resonator Report"
 categories: [wuwa-theory]
+report_type: "Overclock Diagnostic Report"
+avatar: "/assets/img/qingxiao-avatar.png"
 ---
-Hello demo, i am yolo.
