@@ -1,0 +1,31 @@
+---
+layout: default
+---
+<!-- KHUNG GIAO DIỆN SÁNG CHUẨN HUAXU ACADEMY -->
+<div class="resonator-report" style="background: #ebf0f4; color: #2c3e50; padding: 45px; border: 1px solid #bdc3c7; border-left: 4px solid var(--accent-tho); position: relative; border-radius: 2px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+  
+  <header style="border-bottom: 1px solid #95a5a6; padding-bottom: 15px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="flex: 1; padding-right: 20px;">
+      <p style="font-family: var(--font-mono); color: #7f8c8d; font-size: 0.85em; margin: 0 0 5px 0; letter-spacing: 0.1em;">// ARCHIVES: {{ page.report_type | default: "Forte Examination Report" | upcase }}</p>
+      <h1 style="color: #1a252f !important; font-family: 'Times New Roman', Times, serif; font-size: 2.4em; margin: 0;">{{ page.title }}</h1>
+    </div>
+    
+    {% if page.avatar %}
+    <div style="width: 140px; flex-shrink: 0; border: 2px solid #bdc3c7; background: #fff; padding: 4px; box-shadow: 5px 5px 15px rgba(0,0,0,0.1);">
+      <img src="{{ page.avatar | relative_url }}" alt="Resonator Avatar" style="width: 100%; display: block;">
+    </div>
+    {% endif %}
+  </header>
+
+  <!-- Ghi đè CSS chỉ cho phần nội dung chữ trong thẻ div này -->
+  <style>
+    .resonator-report p { color: #34495e !important; line-height: 1.8; margin-bottom: 20px; font-weight: 500; }
+    .resonator-report h2, .resonator-report h3 { color: #2c3e50 !important; border-bottom: none; font-family: 'Times New Roman', Times, serif; margin-top: 1.5em; }
+    .resonator-report blockquote { background: #e0e6ed; border-left: 3px solid #7f8c8d !important; color: #2c3e50 !important; }
+  </style>
+
+  <div class="report-content">
+    {{ content }}
+  </div>
+
+</div>
