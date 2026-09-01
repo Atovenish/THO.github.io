@@ -270,10 +270,11 @@
 
       <!-- BANNER -->
       {% if page.banner or site.banner %}
-       <div class="full-banner">
-         <img src="{{ page.banner | default: site.banner | relative_url }}" alt="Banner">
-       </div>
-       {% endunless %}
+        {% unless page.layout == 'report' %}
+        <div class="full-banner">
+          <img src="{{ page.banner | default: site.banner | relative_url }}" alt="Banner">
+        </div>
+        {% endunless %}
       {% endif %}
       
       <!-- SIDEBAR -->
