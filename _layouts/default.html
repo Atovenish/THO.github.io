@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Google Fonts Stack -->
-    <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
-    <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
-    <link href="[https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800;900&family=Overpass:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap](https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800;900&family=Overpass:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap)" rel="stylesheet">
-    <link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css)">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800;900&family=Overpass:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Thư viện Font Awesome (Giúp hiển thị icon Facebook, YouTube...) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
       :root {
@@ -103,12 +104,12 @@
       
       section p, section li { line-height: 1.72; margin-bottom: 18px; font-size: 0.95em; letter-spacing: -0.01em; color: #ffffff; }
       
-      /* Xóa !important để cho phép override từ thẻ span */
       section strong, section b { color: var(--accent-red); font-weight: 700; }
       section em, section i { color: var(--accent-yellow); font-style: italic; }
       
-      section a { color: var(--accent-tho) !important; text-decoration: none; border-bottom: 1px dashed var(--accent-tho); }
-      section a:hover { text-decoration: none; border-bottom-style: solid; }
+      /* FIX LỖI LINK: CHỈ ÁP DỤNG MÀU CYAN CHO LINK TRONG VĂN BẢN (P, LI), KHÔNG ẢNH HƯỞNG ĐẾN NÚT BẤM ABOUT.MD */
+      section p a, section li a { color: var(--accent-tho); text-decoration: none; border-bottom: 1px dashed var(--accent-tho); transition: all 0.2s ease; }
+      section p a:hover, section li a:hover { text-decoration: none; border-bottom-style: solid; text-shadow: 0 0 8px rgba(92,225,230,0.5); }
 
       /* REDACTED */
       .redacted {
@@ -117,7 +118,7 @@
       }
       .redacted:hover { background-color: transparent; color: #ffffff; user-select: auto; }
 
-      /* BLOCKQUOTE (CHỮ TRẮNG) */
+      /* BLOCKQUOTE */
       blockquote { 
         font-family: var(--font-mono); color: #ffffff; 
         background: rgba(92, 225, 230, 0.03); border-left: 3px solid var(--accent-tho); 
@@ -174,7 +175,7 @@
         box-shadow: 0 0 15px rgba(255, 51, 51, 0.4);
       }
 
-      /* CSS ÉP MÀU (ƯU TIÊN CAO NHẤT) */
+      /* CSS ÉP MÀU TÙY CHỈNH (MARKDOWN) */
       .c-red, .c-red * { color: var(--accent-red) !important; }
       .c-yellow, .c-yellow * { color: var(--accent-yellow) !important; }
       .c-cyan, .c-cyan * { color: var(--accent-tho) !important; }
@@ -215,12 +216,15 @@
       {% endif %}
       
       <header>
+        {% if site.logo %}
+          <a href="{{ "/" | relative_url }}">
+            <img src="{{ site.logo | relative_url }}" alt="Logo" class="sidebar-logo" />
+          </a>
+        {% endif %}
+
         <h1><a href="{{ "/" | relative_url }}">{{ site.title | default: "THE HIDEOUS ONE" }}</a></h1>
 
         {% unless page.layout == 'post' or page.layout == 'report' %}
-          {% if site.logo %}
-            <img src="{{ site.logo | relative_url }}" alt="Logo" class="sidebar-logo" />
-          {% endif %}
           <p class="site-desc">{{ site.description }}</p>
         {% endunless %}
 
@@ -233,7 +237,6 @@
         {% endif %}
 
         {% unless page.layout == 'post' or page.layout == 'report' %}
-         
          <div class="fbc-search">
            <i class="fas fa-search"></i>
            <input type="text" id="site-search" placeholder="SEARCH DATABASE...">
