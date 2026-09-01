@@ -1,7 +1,15 @@
 ---
 layout: report
-title: "Demo Resonator Report"
-categories: [wuwa-theory]
-report_type: "Overclock Diagnostic Report"
-avatar: "/assets/img/qingxiao-avatar.png"
+title: "SHOREKEEPER // ARCHIVE RECORD"
+report_type: "Forte Examination & Resonance Analysis"
+avatar: "/assets/img/Shorekeeper-avatar.png"
+
+stat1_val: "INSTANCE 2"
+stat1_label: "RESONANCE LEVEL"
+stat2_val: "STABLE"
+stat2_label: "FREQUENCIES"
+stat3_val: "UNKNOWN"
+stat3_label: "ORIGIN INDEX"
 ---
+
+Nội dung báo cáo viết ở đây...
