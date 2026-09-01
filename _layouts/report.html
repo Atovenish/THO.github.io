@@ -6,7 +6,7 @@ layout: default
     background: #040609 !important; 
     border: 1px solid rgba(92, 225, 230, 0.2);
     border-left: 4px solid var(--accent-red);
-    padding: 40px;
+    padding: 35px;
     font-family: var(--font-body);
     position: relative;
     border-radius: 2px;
@@ -14,74 +14,84 @@ layout: default
     box-sizing: border-box;
   }
 
-  /* HEADER BÁO CÁO */
-  .report-header {
+  /* THANH THÔNG TIN TRÊN CÙNG */
+  .report-meta-bar {
+    font-family: var(--font-mono);
+    font-size: 0.75em;
+    color: var(--text-secondary);
     border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding-bottom: 25px;
-    margin-bottom: 30px;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    gap: 20px;
-  }
-  
-  .report-header-left { 
-    flex: 1 1 auto; 
-    min-width: 0; /* Ngăn chặn text dài làm vỡ khung flex */
-  }
-  
-  .report-tag {
-    font-family: var(--font-mono);
-    color: var(--accent-red);
-    font-size: 0.82em;
-    margin: 0 0 8px 0;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
   }
-  
-  .report-title {
+
+  /* TIÊU ĐỀ CHÍNH */
+  .report-main-title {
+    font-family: var(--font-display);
+    font-size: 2em;
     color: #ffffff !important;
-    font-family: var(--font-display) !important;
-    font-size: 2.2em !important;
-    margin: 0 !important;
+    border-bottom: 3px double rgba(92, 225, 230, 0.3);
+    padding-bottom: 12px;
+    margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 0.02em;
-    word-break: break-word;
   }
 
-  /* AVATAR KHUNG FBC */
-  .report-avatar-box {
-    width: 130px;
-    flex-shrink: 0;
-    border: 1px solid var(--accent-tho);
-    background: rgba(10, 14, 20, 0.9);
-    padding: 4px;
-    box-shadow: 0 0 15px rgba(92,225,230,0.15);
+  /* BẢNG THÔNG TIN (SUBJECT, RECORDER, SEGMENT) ĐẶC TRƯNG WW */
+  .report-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 25px;
   }
-  
-  .report-avatar-box img {
-    width: 100%;
+  .info-box {
+    background: #0a0e14;
+    padding: 10px 15px;
+  }
+  .info-label {
     display: block;
-    filter: grayscale(20%) contrast(110%);
+    font-family: var(--font-mono);
+    font-size: 0.65em;
+    color: var(--text-secondary);
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+  .info-val {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    color: var(--accent-tho);
+    font-weight: 600;
   }
 
-  /* NỘI DUNG CHỮ TRONG REPORT */
-  .report-content p {
+  /* BỐ CỤC 2 CỘT: TEXT BÊN TRÁI, ẢNH BÊN PHẢI */
+  .report-body-grid {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+  }
+  .report-text-content {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .report-text-content p {
     color: #e6edf3 !important;
     line-height: 1.8;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     font-size: 0.95em;
   }
-  
-  .report-content h2, .report-content h3 {
+  .report-text-content h2, .report-text-content h3 {
     color: var(--accent-tho) !important;
     font-family: var(--font-display) !important;
     border-bottom: 1px solid rgba(92,225,230,0.15);
     padding-bottom: 6px;
-    margin-top: 1.8em;
+    margin-top: 1.5em;
   }
-  
-  .report-content blockquote {
+  .report-text-content blockquote {
     background: rgba(92, 225, 230, 0.03);
     border-left: 3px solid var(--accent-tho) !important;
     color: #ffffff !important;
@@ -89,13 +99,31 @@ layout: default
     padding: 12px 18px;
     margin: 20px 0;
   }
-  
-  .report-content blockquote p { 
-    color: #ffffff !important; 
-    margin: 0; 
+
+  /* KHUNG ẢNH CHÂN DUNG BÊN PHẢI */
+  .report-portrait-box {
+    width: 260px;
+    flex-shrink: 0;
+    border: 1px solid var(--accent-tho);
+    background: #0a0e14;
+    padding: 6px;
+    box-shadow: 0 0 20px rgba(92,225,230,0.15);
+  }
+  .report-portrait-box img {
+    width: 100%;
+    display: block;
+    filter: contrast(105%);
+  }
+  .portrait-caption {
+    font-family: var(--font-mono);
+    font-size: 0.65em;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-top: 8px;
+    letter-spacing: 0.05em;
   }
 
-  /* BỘ THÔNG SỐ (STATS BAR) DƯỚI BÁO CÁO */
+  /* BỘ THÔNG SỐ (STATS) DƯỚI CÙNG */
   .report-stats {
     display: flex;
     justify-content: flex-start;
@@ -104,51 +132,52 @@ layout: default
     padding-top: 20px;
     margin-top: 35px;
   }
-  
-  .report-stat-block { 
-    display: flex; 
-    flex-direction: column; 
-  }
-  
-  .report-stat-val { 
-    font-family: var(--font-display); 
-    font-size: 1.6em; 
-    font-weight: 800; 
-    line-height: 1; 
-    margin-bottom: 5px; 
-  }
-  
-  .report-stat-label { 
-    font-family: var(--font-mono); 
-    font-size: 0.65em; 
-    color: var(--text-secondary); 
-    letter-spacing: 0.05em; 
-  }
+  .report-stat-block { display: flex; flex-direction: column; }
+  .report-stat-val { font-family: var(--font-display); font-size: 1.6em; font-weight: 800; line-height: 1; margin-bottom: 5px; }
+  .report-stat-label { font-family: var(--font-mono); font-size: 0.65em; color: var(--text-secondary); letter-spacing: 0.05em; }
 
-  @media (max-width: 768px) {
-    .report-header { flex-direction: column-reverse; }
-    .report-avatar-box { width: 100px; }
-    .report-stats { justify-content: space-between; gap: 0; }
+  @media (max-width: 900px) {
+    .report-body-grid { flex-direction: column-reverse; }
+    .report-portrait-box { width: 100%; }
+    .report-info-grid { grid-template-columns: 1fr; }
   }
 </style>
 
 <div class="resonator-report">
   
-  <header class="report-header">
-    <div class="report-header-left">
-      <p class="report-tag">// ARCHIVES: {{ page.report_type | default: "Forte Examination Report" }}</p>
-      <h1 class="report-title">{{ page.title }}</h1>
+  <div class="report-meta-bar">
+    <span>// ARCHIVES: {{ page.report_type | default: "Forte Examination & Resonance Analysis" }}</span>
+    <span>SEGMENT: {{ page.record_segment | default: "A.A-001" }}</span>
+  </div>
+
+  <h1 class="report-main-title">{{ page.title }}</h1>
+
+  <div class="report-info-grid">
+    <div class="info-box">
+      <span class="info-label">SUBJECT</span>
+      <span class="info-val">{{ page.subject | default: page.title }}</span>
     </div>
-    
+    <div class="info-box">
+      <span class="info-label">RECORDER</span>
+      <span class="info-val">██████</span>
+    </div>
+    <div class="info-box">
+      <span class="info-label">RECORD SEGMENT</span>
+      <span class="info-val">{{ page.record_segment | default: "A.A-000" }}</span>
+    </div>
+  </div>
+
+  <div class="report-body-grid">
+    <div class="report-text-content">
+      {{ content }}
+    </div>
+
     {% if page.avatar %}
-    <div class="report-avatar-box">
-      <img src="{{ page.avatar | relative_url }}" alt="Resonator Avatar">
+    <div class="report-portrait-box">
+      <img src="{{ page.avatar | relative_url }}" alt="Resonator Portrait">
+      <div class="portrait-caption">VISUAL LOG // SUBJECT RECORD</div>
     </div>
     {% endif %}
-  </header>
-
-  <div class="report-content">
-    {{ content }}
   </div>
 
   {% if page.stat1_val %}
