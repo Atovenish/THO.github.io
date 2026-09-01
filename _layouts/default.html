@@ -16,7 +16,7 @@
         --bg-color: #07090e;
         --card-bg: rgba(10, 14, 20, 0.92);
         --border-color: rgba(92, 225, 230, 0.15);
-        --text-primary: #e6edf3;
+        --text-primary: #ffffff;       /* Main context chuyển sang Trắng hoàn toàn */
         --text-secondary: #7d8b99;
         
         /* HỆ THỐNG MÀU SẮC SOLARIS-3 */
@@ -42,12 +42,10 @@
 
       body::before {
         content: "";
-        position: fixed; 
-        top: 0; left: 0; right: 0; bottom: 0;
+        position: fixed; top: 0; left: 0; right: 0; bottom: 0;
         z-index: -1; 
         background-image: url('{{ "/assets/img/main-bg.jpg" | relative_url }}') !important;
-        background-size: cover !important;
-        background-position: center !important;
+        background-size: cover !important; background-position: center !important;
         transform: translateZ(0);
       }
       
@@ -62,11 +60,12 @@
         position: relative; transform: translateZ(0);
       }
 
-      .wrapper::after {
-        content: "// TERMINAL: SOLARIS-3 // PROTOCOL: THO_RESONANCE";
+      /* TOP TERMINAL TAG MỚI ĐÃ TÁCH MÀU */
+      .top-terminal-tag {
         position: absolute; top: 12px; right: 20px;
         font-family: var(--font-mono); font-size: 0.68em;
-        color: var(--accent-tho); opacity: 0.7; letter-spacing: 0.15em;
+        color: var(--text-secondary); opacity: 0.9; letter-spacing: 0.15em;
+        z-index: 10;
       }
 
       /* BANNER */
@@ -95,53 +94,97 @@
       .sidebar-logo:hover { filter: drop-shadow(0 0 14px rgba(92, 225, 230, 0.8)); }
       .site-desc { font-family: var(--font-body); font-size: 0.88em; color: var(--text-secondary); line-height: 1.6; }
 
-      /* CONTENT SECTION */
+      /* CONTENT SECTION & TYPOGRAPHY MỚI */
       section { width: calc(100% - 310px) !important; margin: 0 !important; padding: 0 !important; }
-      h1, h2, h3, h4, h5, h6 { 
-        font-family: var(--font-display); color: #ffffff !important; text-transform: uppercase;
+      
+      /* Tiêu đề Head màu Cyan */
+      section h1, section h2, section h3, section h4, section h5, section h6 { 
+        font-family: var(--font-display); color: var(--accent-tho) !important; text-transform: uppercase;
         letter-spacing: 0.02em; margin-top: 1.4em; margin-bottom: 0.6em; font-weight: 800;
       }
       section > h1:first-child, section > h2:first-child, section > h3:first-child { margin-top: 0; }
-      h2 { font-size: 1.45em; border-bottom: 2px solid var(--border-color); padding-bottom: 8px; }
-      h3 { font-size: 1.15em; color: var(--accent-tho) !important; }
-      p { line-height: 1.72; margin-bottom: 18px; font-size: 0.95em; letter-spacing: -0.01em; }
-      li { line-height: 1.68; margin-bottom: 8px; font-size: 0.95em; }
-      strong, b { color: #ffffff !important; font-weight: 700; }
-      a { color: var(--accent-tho) !important; text-decoration: none; }
-      a:hover { text-decoration: underline; }
+      section h2 { font-size: 1.45em; border-bottom: 2px solid var(--border-color); padding-bottom: 8px; }
+      section h3 { font-size: 1.15em; }
+      
+      section p, section li { line-height: 1.72; margin-bottom: 18px; font-size: 0.95em; letter-spacing: -0.01em; color: #ffffff; }
+      
+      /* Nhấn mạnh (Bold) màu Đỏ */
+      section strong, section b { color: var(--accent-red) !important; font-weight: 700; }
+      
+      /* In nghiêng (Italic) màu Vàng */
+      section em, section i { color: var(--accent-yellow) !important; font-style: italic; }
+      
+      section a { color: var(--accent-tho) !important; text-decoration: none; border-bottom: 1px dashed var(--accent-tho); }
+      section a:hover { text-decoration: none; border-bottom-style: solid; }
 
+      /* BẢO MẬT REDACTED */
+      .redacted {
+        background-color: #ffffff; color: #ffffff;
+        padding: 0 4px; transition: all 0.3s ease; user-select: none;
+      }
+      .redacted:hover { background-color: transparent; color: #ffffff; user-select: auto; }
+
+      /* BLOCKQUOTE BẢO LƯU */
       blockquote { 
         font-family: var(--font-mono); color: var(--text-secondary) !important; 
         background: rgba(92, 225, 230, 0.03); border-left: 3px solid var(--accent-tho) !important; 
         padding: 12px 18px; margin: 24px 0; font-size: 0.88em;
       }
 
-      /* INDEX MENU */
-      .index-box { margin-top: 25px; border-top: 1px solid var(--border-color); padding-top: 18px; }
+      /* CODE BLOCKS TÙY CHỈNH */
+      pre {
+        background: #0d1117 !important;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-left: 3px solid var(--accent-yellow);
+        padding: 15px; overflow-x: auto; margin: 20px 0;
+        box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+      }
+      code {
+        font-family: var(--font-mono); color: var(--accent-yellow);
+        background: rgba(255, 204, 0, 0.08); padding: 2px 6px; font-size: 0.85em;
+      }
+      pre code { background: transparent; color: #e6edf3; padding: 0; }
+
+      /* FBC SEARCH BOX */
+      .fbc-search {
+        display: flex; align-items: center;
+        background: rgba(10, 14, 20, 0.8);
+        border: 1px solid rgba(255, 51, 51, 0.2); border-left: 3px solid var(--accent-red);
+        padding: 10px 14px; margin: 25px 0 15px 0; transition: all 0.2s ease;
+      }
+      .fbc-search:focus-within { border-color: var(--accent-red); box-shadow: 0 0 15px rgba(255, 51, 51, 0.15); }
+      .fbc-search i { color: var(--accent-red); font-size: 1.1em; margin-right: 12px; }
+      .fbc-search input {
+        width: 100%; background: transparent; border: none; color: #ffffff;
+        font-family: var(--font-mono); font-size: 0.85em; outline: none; text-transform: uppercase;
+      }
+      .fbc-search input::placeholder { color: rgba(255,255,255,0.3); letter-spacing: 0.05em; }
+
+      /* INDEX MENU GIAO DIỆN MỚI */
+      .index-box { border-top: 1px solid var(--border-color); padding-top: 18px; }
       .index-box h3 { font-family: var(--font-mono); font-size: 0.85em; color: var(--accent-tho) !important; margin-bottom: 12px; letter-spacing: 0.15em; }
       .index-box ul { list-style: none; padding: 0; margin: 0; }
-      .index-box li { margin-bottom: 2px; }
+      .index-box li { margin-bottom: 4px; }
       .index-box a {
-        font-family: var(--font-mono); display: block; padding: 8px 12px;
+        font-family: var(--font-mono); display: block; padding: 10px 12px;
         font-size: 0.82em; letter-spacing: 0.06em; color: var(--text-secondary) !important;
         border-left: 2px solid transparent; transition: all 0.15s ease-in-out; cursor: pointer;
       }
       .index-box a:hover {
-        color: #ffffff !important; background: rgba(92, 225, 230, 0.05);
-        border-left: 2px solid rgba(92, 225, 230, 0.4); text-decoration: none;
+        color: #ffffff !important; background: rgba(255, 51, 51, 0.05);
+        border-left: 2px solid rgba(255, 51, 51, 0.4); text-decoration: none;
       }
+      
+      /* MỤC ACTIVE: NỀN ĐỎ CHỮ TRẮNG */
       .index-box a.active {
-        color: #ffffff !important; background: var(--accent-glow);
-        border-left: 2px solid var(--accent-tho); font-weight: 700;
-        box-shadow: inset 1px 0 8px rgba(92, 225, 230, 0.1);
+        color: #ffffff !important; background: var(--accent-red) !important;
+        border-left: 2px solid #ffffff !important; font-weight: 700;
+        box-shadow: 0 0 15px rgba(255, 51, 51, 0.4);
       }
 
-      /* UTILITIES CLASSSES DÀNH CHO MARKDOWN */
       .c-red { color: var(--accent-red) !important; }
       .c-yellow { color: var(--accent-yellow) !important; }
       .c-cyan { color: var(--accent-tho) !important; }
-      .box-alert { background: rgba(255, 51, 51, 0.05); border-left: 3px solid var(--accent-red) !important; padding: 12px 18px; margin: 20px 0; font-size: 0.9em; }
-      .box-warn { background: rgba(255, 204, 0, 0.05); border-left: 3px solid var(--accent-yellow) !important; padding: 12px 18px; margin: 20px 0; font-size: 0.9em; }
 
       .sidebar-footer {
         margin-top: 30px; padding-top: 15px; border-top: 1px solid var(--border-color);
@@ -153,7 +196,7 @@
       
       @media (max-width: 900px) {
         .wrapper { width: 95%; margin: 15px auto; padding: 20px; flex-direction: column; }
-        .wrapper::after { display: none; }
+        .top-terminal-tag { display: none; }
         header, section { width: 100% !important; position: static !important; }
         header { margin-bottom: 30px !important; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; }
       }
@@ -166,7 +209,12 @@
   <body>
     <div class="wrapper">
 
-      <!-- BANNER (ĐÃ SỬA LỖI LIQUID) -->
+      <!-- TOP TERMINAL TAG -->
+      <div class="top-terminal-tag">
+        // TERMINAL: <span class="c-red">SOLARIS-3</span> // PROTOCOL: <span class="c-yellow">THO_RESONANCE</span>
+      </div>
+
+      <!-- BANNER -->
       {% if page.banner or site.banner %}
         {% unless page.layout == 'report' %}
         <div class="full-banner">
@@ -195,6 +243,13 @@
         {% endif %}
 
         {% unless page.layout == 'post' or page.layout == 'report' %}
+         
+         <!-- SEARCH BOX (CONTROL AESTHETIC) -->
+         <div class="fbc-search">
+           <i class="fas fa-search"></i>
+           <input type="text" id="site-search" placeholder="SEARCH DATABASE...">
+         </div>
+
          <div class="index-box">
            <h3>// DIRECTORY</h3>
            <ul>
@@ -204,8 +259,7 @@
              <li><a href="{{ "/another-game.html" | relative_url }}" class="{% if page.url == '/another-game.html' %}active{% endif %}">04. ANOTHER GAME</a></li>
              <li><a href="{{ "/about.html" | relative_url }}" class="{% if page.url == '/about.html' %}active{% endif %}">05. ABOUT THO</a></li>
              <li><a href="{{ "/feedback.html" | relative_url }}" class="{% if page.url == '/feedback.html' %}active{% endif %}">06. THO FEEDBACK</a></li>
-             <!-- NÚT KÍCH HOẠT QR POP-UP -->
-             <li><a onclick="document.getElementById('qr-modal').style.display='flex'" style="color: var(--accent-yellow) !important; border-left-color: rgba(255, 204, 0, 0.4);">07. GIẢM ĐÓI GIẢM NGHÈO THO</a></li>
+             <li><a onclick="document.getElementById('qr-modal').style.display='flex'" style="color: var(--accent-yellow) !important; border-left-color: rgba(255, 204, 0, 0.4);">07. SUPPLY DEPOT</a></li>
            </ul>
          </div>
         {% endunless %}
@@ -222,16 +276,12 @@
       
     </div>
 
-    <!-- MÀN HÌNH POP-UP VIETQR BỊ ẨN -->
+    <!-- MÀN HÌNH POP-UP VIETQR -->
     <div id="qr-modal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(7, 9, 14, 0.95); z-index: 9999; justify-content: center; align-items: center; backdrop-filter: blur(5px);">
       <div style="background: var(--card-bg); border: 1px solid var(--accent-yellow); padding: 40px; max-width: 320px; width: 85%; text-align: center; box-shadow: 0 0 40px rgba(255,204,0,0.15); position: relative;">
-        <!-- Nút Tắt -->
         <button onclick="document.getElementById('qr-modal').style.display='none'" style="position: absolute; top: 15px; right: 15px; background: transparent; border: none; color: var(--text-secondary); font-family: var(--font-mono); font-size: 1.2em; cursor: pointer;">[X]</button>
-        
-        <h3 style="color: var(--accent-yellow) !important; margin-top: 0; font-family: var(--font-mono); font-size: 1em; letter-spacing: 0.1em;">// DONATE THO</h3>
-        
+        <h3 style="color: var(--accent-yellow) !important; margin-top: 0; font-family: var(--font-mono); font-size: 1em; letter-spacing: 0.1em;">// INITIATE TRANSFER</h3>
         <img src="{{ site.donate_qr | default: '/vietqr.png' | relative_url }}" alt="VietQR" style="width: 100%; max-width: 200px; border: 2px solid var(--accent-yellow); padding: 5px; background: #ffffff; margin: 20px 0;">
-
         <div style="font-family: var(--font-mono); font-size: 0.82em; color: var(--text-secondary); line-height: 1.6; text-align: center; background: rgba(255, 204, 0, 0.03); padding: 12px; border: 1px dashed rgba(255, 204, 0, 0.3);">
           <p style="margin: 0; color: var(--accent-yellow);">[SCAN TO COMPLETE RESONANCE TRANSFER]</p>
           <p style="margin: 4px 0 0 0; font-size: 0.9em; opacity: 0.8;">Tri Giả quét mã để tiếp tế năng lượng trực tiếp đến THO.</p>
