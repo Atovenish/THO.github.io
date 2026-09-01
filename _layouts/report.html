@@ -1,31 +1,139 @@
 ---
 layout: default
 ---
-<!-- KHUNG GIAO DIỆN SÁNG CHUẨN HUAXU ACADEMY -->
-<div class="resonator-report" style="background: #ebf0f4; color: #2c3e50; padding: 45px; border: 1px solid #bdc3c7; border-left: 4px solid var(--accent-tho); position: relative; border-radius: 2px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+<style>
+  .resonator-report {
+    background: #040609; 
+    border: 1px solid rgba(92, 225, 230, 0.2);
+    border-left: 4px solid var(--accent-red);
+    padding: 40px;
+    font-family: var(--font-body);
+    position: relative;
+    border-radius: 2px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+  }
+
+  /* HEADER BÁO CÁO */
+  .report-header {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .report-header-left { flex: 1; }
+  .report-tag {
+    font-family: var(--font-mono);
+    color: var(--accent-red);
+    font-size: 0.82em;
+    margin: 0 0 8px 0;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .report-title {
+    color: #ffffff !important;
+    font-family: var(--font-display) !important;
+    font-size: 2.2em !important;
+    margin: 0 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  /* AVATAR KHUNG FBC */
+  .report-avatar-box {
+    width: 130px;
+    flex-shrink: 0;
+    border: 1px solid var(--accent-tho);
+    background: rgba(10, 14, 20, 0.9);
+    padding: 4px;
+    box-shadow: 0 0 15px rgba(92,225,230,0.15);
+  }
+  .report-avatar-box img {
+    width: 100%;
+    display: block;
+    filter: grayscale(20%) contrast(110%);
+  }
+
+  /* GHI ĐÈ CSS NỘI DUNG CHỮ TRONG REPORT */
+  .resonator-report p {
+    color: #e6edf3 !important;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+  }
+  .resonator-report h2, .resonator-report h3 {
+    color: var(--accent-tho) !important;
+    font-family: var(--font-display) !important;
+    border-bottom: 1px solid rgba(92,225,230,0.15);
+    padding-bottom: 6px;
+    margin-top: 1.8em;
+  }
+  .resonator-report blockquote {
+    background: rgba(92, 225, 230, 0.03);
+    border-left: 3px solid var(--accent-tho) !important;
+    color: #ffffff !important;
+    font-family: var(--font-mono);
+    padding: 12px 18px;
+    margin: 20px 0;
+  }
+  .resonator-report blockquote p { color: #ffffff !important; margin: 0; }
+
+  /* BỘ THÔNG SỐ (STATS BAR) DƯỚI BÁO CÁO (TÙY CHỌN) */
+  .report-stats {
+    display: flex;
+    justify-content: flex-start;
+    gap: 40px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+    margin-top: 35px;
+  }
+  .report-stat-block { display: flex; flex-direction: column; }
+  .report-stat-val { font-family: var(--font-display); font-size: 1.6em; font-weight: 800; line-height: 1; margin-bottom: 5px; }
+  .report-stat-label { font-family: var(--font-mono); font-size: 0.65em; color: var(--text-secondary); letter-spacing: 0.05em; }
+
+  @media (max-width: 768px) {
+    .report-header { flex-direction: column-reverse; }
+    .report-avatar-box { width: 100px; }
+    .report-stats { justify-content: space-between; gap: 0; }
+  }
+</style>
+
+<div class="resonator-report">
   
-  <header style="border-bottom: 1px solid #95a5a6; padding-bottom: 15px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: flex-start;">
-    <div style="flex: 1; padding-right: 20px;">
-      <p style="font-family: var(--font-mono); color: #7f8c8d; font-size: 0.85em; margin: 0 0 5px 0; letter-spacing: 0.1em;">// ARCHIVES: {{ page.report_type | default: "Forte Examination Report" | upcase }}</p>
-      <h1 style="color: #1a252f !important; font-family: 'Times New Roman', Times, serif; font-size: 2.4em; margin: 0;">{{ page.title }}</h1>
+  <header class="report-header">
+    <div class="report-header-left">
+      <p class="report-tag">// ARCHIVES: {{ page.report_type | default: "Forte Examination Report" }}</p>
+      <h1 class="report-title">{{ page.title }}</h1>
     </div>
     
     {% if page.avatar %}
-    <div style="width: 140px; flex-shrink: 0; border: 2px solid #bdc3c7; background: #fff; padding: 4px; box-shadow: 5px 5px 15px rgba(0,0,0,0.1);">
-      <img src="{{ page.avatar | relative_url }}" alt="Resonator Avatar" style="width: 100%; display: block;">
+    <div class="report-avatar-box">
+      <img src="{{ page.avatar | relative_url }}" alt="Resonator Avatar">
     </div>
     {% endif %}
   </header>
 
-  <!-- Ghi đè CSS chỉ cho phần nội dung chữ trong thẻ div này -->
-  <style>
-    .resonator-report p { color: #34495e !important; line-height: 1.8; margin-bottom: 20px; font-weight: 500; }
-    .resonator-report h2, .resonator-report h3 { color: #2c3e50 !important; border-bottom: none; font-family: 'Times New Roman', Times, serif; margin-top: 1.5em; }
-    .resonator-report blockquote { background: #e0e6ed; border-left: 3px solid #7f8c8d !important; color: #2c3e50 !important; }
-  </style>
-
   <div class="report-content">
     {{ content }}
   </div>
+
+  {% if page.stat1_val %}
+  <div class="report-stats">
+    <div class="report-stat-block">
+      <span class="report-stat-val c-cyan">{{ page.stat1_val }}</span>
+      <span class="report-stat-label">{{ page.stat1_label }}</span>
+    </div>
+    <div class="report-stat-block">
+      <span class="report-stat-val c-yellow">{{ page.stat2_val }}</span>
+      <span class="report-stat-label">{{ page.stat2_label }}</span>
+    </div>
+    <div class="report-stat-block">
+      <span class="report-stat-val c-red">{{ page.stat3_val }}</span>
+      <span class="report-stat-label">{{ page.stat3_label }}</span>
+    </div>
+  </div>
+  {% endif %}
 
 </div>
