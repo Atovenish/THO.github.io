@@ -5,11 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <!-- Google Fonts Stack -->
+    <!-- Google Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800;900&family=Overpass:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-    <!-- Thư viện Font Awesome (Giúp hiển thị icon Facebook, YouTube...) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -24,7 +23,6 @@
         --accent-tho: #5ce1e6;         
         --accent-red: #ff3333;         
         --accent-yellow: #ffcc00;      
-        
         --accent-glow: rgba(92, 225, 230, 0.12);
 
         --font-display: "ITC Avant Garde Gothic", "Avant Garde", "League Spartan", "Century Gothic", -apple-system, sans-serif;
@@ -49,34 +47,20 @@
         transform: translateZ(0);
       }
       
+      /* WRAPPER TỔNG: Chỉ dùng để dàn trang (Flexbox), không chứa viền hay nền nữa */
       .wrapper { 
-        max-width: 1140px; width: 90%; 
-        margin: 40px auto; padding: 40px;
-        background-color: var(--card-bg) !important; 
-        backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); 
-        border: 1px solid var(--border-color); border-radius: 2px;
-        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85); 
-        display: flex; flex-wrap: wrap; justify-content: space-between;
-        position: relative; transform: translateZ(0);
+        max-width: 1200px; width: 95%; 
+        margin: 40px auto; 
+        display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px;
+        position: relative;
       }
 
-      .top-terminal-tag {
-        position: absolute; top: 12px; right: 20px;
-        font-family: var(--font-mono); font-size: 0.68em;
-        color: var(--text-secondary); opacity: 0.9; letter-spacing: 0.15em;
-        z-index: 10;
-      }
-
-      .full-banner { width: 100%; margin-bottom: 35px; order: -1; }
-      .full-banner img {
-        width: 100%; border: 1px solid var(--border-color);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-        max-height: 380px; object-fit: cover; display: block;
-      }
-
+      /* PANEL ĐIỀU HƯỚNG (SIDEBAR CỐ ĐỊNH) */
       header { 
-        width: 260px !important; position: sticky !important; top: 20px;
+        width: 260px !important; 
+        position: sticky !important; top: 40px; 
         align-self: flex-start; margin: 0 !important;
+        height: max-content; /* Giúp tính năng sticky hoạt động chuẩn */
       }
       header h1 {
         font-family: var(--font-display); font-weight: 800; font-size: 1.55em;
@@ -91,8 +75,36 @@
       .sidebar-logo:hover { filter: drop-shadow(0 0 14px rgba(92, 225, 230, 0.8)); }
       .site-desc { font-family: var(--font-body); font-size: 0.88em; color: var(--text-secondary); line-height: 1.6; }
 
-      /* CONTENT SECTION & TYPOGRAPHY */
-      section { width: calc(100% - 310px) !important; margin: 0 !important; padding: 0 !important; }
+      .social-links { margin-top: 15px; display: flex; gap: 15px; }
+      .social-links a { color: var(--text-secondary) !important; font-size: 1.25em; transition: all 0.2s ease; border: none !important; }
+      .social-links a:hover { color: var(--accent-tho) !important; text-shadow: 0 0 10px rgba(92,225,230,0.6); transform: translateY(-2px); }
+
+      /* PANEL DỮ LIỆU (NỘI DUNG CHÍNH) */
+      .content-panel {
+        width: calc(100% - 310px);
+        background-color: var(--card-bg) !important; 
+        backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); 
+        border: 1px solid var(--border-color); border-radius: 2px;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+        position: relative;
+        display: flex; flex-direction: column;
+        overflow: hidden;
+      }
+
+      .top-terminal-tag {
+        position: absolute; top: 12px; right: 20px;
+        font-family: var(--font-mono); font-size: 0.68em;
+        color: var(--text-secondary); opacity: 0.9; letter-spacing: 0.15em;
+        z-index: 10;
+      }
+
+      .full-banner { width: 100%; order: -1; }
+      .full-banner img {
+        width: 100%; border-bottom: 1px solid var(--border-color);
+        max-height: 380px; object-fit: cover; display: block;
+      }
+
+      section { padding: 40px !important; margin: 0 !important; width: 100% !important; box-sizing: border-box; }
       
       section h1, section h2, section h3, section h4, section h5, section h6 { 
         font-family: var(--font-display); color: var(--accent-tho) !important; text-transform: uppercase;
@@ -103,22 +115,14 @@
       section h3 { font-size: 1.15em; }
       
       section p, section li { line-height: 1.72; margin-bottom: 18px; font-size: 0.95em; letter-spacing: -0.01em; color: #ffffff; }
-      
       section strong, section b { color: var(--accent-red); font-weight: 700; }
       section em, section i { color: var(--accent-yellow); font-style: italic; }
-      
-      /* FIX LỖI LINK: CHỈ ÁP DỤNG MÀU CYAN CHO LINK TRONG VĂN BẢN (P, LI), KHÔNG ẢNH HƯỞNG ĐẾN NÚT BẤM ABOUT.MD */
       section p a, section li a { color: var(--accent-tho); text-decoration: none; border-bottom: 1px dashed var(--accent-tho); transition: all 0.2s ease; }
       section p a:hover, section li a:hover { text-decoration: none; border-bottom-style: solid; text-shadow: 0 0 8px rgba(92,225,230,0.5); }
 
-      /* REDACTED */
-      .redacted {
-        background-color: #ffffff; color: #ffffff;
-        padding: 0 4px; transition: all 0.3s ease; user-select: none;
-      }
+      .redacted { background-color: #ffffff; color: #ffffff; padding: 0 4px; transition: all 0.3s ease; user-select: none; }
       .redacted:hover { background-color: transparent; color: #ffffff; user-select: auto; }
 
-      /* BLOCKQUOTE */
       blockquote { 
         font-family: var(--font-mono); color: #ffffff; 
         background: rgba(92, 225, 230, 0.03); border-left: 3px solid var(--accent-tho); 
@@ -126,36 +130,24 @@
       }
       blockquote p { color: inherit !important; }
 
-      /* CODE BLOCKS */
       pre {
-        background: #0d1117 !important;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-left: 3px solid var(--accent-yellow);
-        padding: 15px; overflow-x: auto; margin: 20px 0;
+        background: #0d1117 !important; border: 1px solid rgba(255, 255, 255, 0.05);
+        border-left: 3px solid var(--accent-yellow); padding: 15px; overflow-x: auto; margin: 20px 0;
         box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
       }
-      code {
-        font-family: var(--font-mono); color: var(--accent-yellow);
-        background: rgba(255, 204, 0, 0.08); padding: 2px 6px; font-size: 0.85em; border-radius: 2px;
-      }
+      code { font-family: var(--font-mono); color: var(--accent-yellow); background: rgba(255, 204, 0, 0.08); padding: 2px 6px; font-size: 0.85em; border-radius: 2px; }
       pre code { background: transparent; color: #e6edf3; padding: 0; }
 
-      /* TÌM KIẾM FBC */
       .fbc-search {
-        display: flex; align-items: center;
-        background: rgba(10, 14, 20, 0.8);
+        display: flex; align-items: center; background: rgba(10, 14, 20, 0.8);
         border: 1px solid rgba(255, 51, 51, 0.2); border-left: 3px solid var(--accent-red);
         padding: 10px 14px; margin: 25px 0 15px 0; transition: all 0.2s ease;
       }
       .fbc-search:focus-within { border-color: var(--accent-red); box-shadow: 0 0 15px rgba(255, 51, 51, 0.15); }
       .fbc-search i { color: var(--accent-red); font-size: 1.1em; margin-right: 12px; }
-      .fbc-search input {
-        width: 100%; background: transparent; border: none; color: #ffffff;
-        font-family: var(--font-mono); font-size: 0.85em; outline: none; text-transform: uppercase;
-      }
+      .fbc-search input { width: 100%; background: transparent; border: none; color: #ffffff; font-family: var(--font-mono); font-size: 0.85em; outline: none; text-transform: uppercase; }
       .fbc-search input::placeholder { color: rgba(255,255,255,0.3); letter-spacing: 0.05em; }
 
-      /* INDEX MENU */
       .index-box { border-top: 1px solid var(--border-color); padding-top: 18px; }
       .index-box h3 { font-family: var(--font-mono); font-size: 0.85em; color: var(--accent-tho) !important; margin-bottom: 12px; letter-spacing: 0.15em; }
       .index-box ul { list-style: none; padding: 0; margin: 0; }
@@ -165,17 +157,9 @@
         font-size: 0.82em; letter-spacing: 0.06em; color: var(--text-secondary) !important;
         border-left: 2px solid transparent; transition: all 0.15s ease-in-out; cursor: pointer;
       }
-      .index-box a:hover {
-        color: #ffffff !important; background: rgba(255, 51, 51, 0.05);
-        border-left: 2px solid rgba(255, 51, 51, 0.4); text-decoration: none;
-      }
-      .index-box a.active {
-        color: #ffffff !important; background: var(--accent-red) !important;
-        border-left: 2px solid #ffffff !important; font-weight: 700;
-        box-shadow: 0 0 15px rgba(255, 51, 51, 0.4);
-      }
+      .index-box a:hover { color: #ffffff !important; background: rgba(255, 51, 51, 0.05); border-left: 2px solid rgba(255, 51, 51, 0.4); text-decoration: none; }
+      .index-box a.active { color: #ffffff !important; background: var(--accent-red) !important; border-left: 2px solid #ffffff !important; font-weight: 700; box-shadow: 0 0 15px rgba(255, 51, 51, 0.4); }
 
-      /* CSS ÉP MÀU TÙY CHỈNH (MARKDOWN) */
       .c-red, .c-red * { color: var(--accent-red) !important; }
       .c-yellow, .c-yellow * { color: var(--accent-yellow) !important; }
       .c-cyan, .c-cyan * { color: var(--accent-tho) !important; }
@@ -189,10 +173,11 @@
       #qr-modal { display: none; }
       
       @media (max-width: 900px) {
-        .wrapper { width: 95%; margin: 15px auto; padding: 20px; flex-direction: column; }
+        .wrapper { flex-direction: column; margin: 15px auto; width: 95%; }
         .top-terminal-tag { display: none; }
-        header, section { width: 100% !important; position: static !important; }
-        header { margin-bottom: 30px !important; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; }
+        header { width: 100% !important; position: static !important; margin-bottom: 30px !important; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; }
+        .content-panel { width: 100%; }
+        section { padding: 25px !important; }
       }
     </style>
 
@@ -203,18 +188,7 @@
   <body>
     <div class="wrapper">
 
-      <div class="top-terminal-tag">
-        // TERMINAL: <span class="c-red">SOLARIS-3</span> // PROTOCOL: <span class="c-yellow">THO_RESONANCE</span>
-      </div>
-
-      {% if page.banner or site.banner %}
-        {% unless page.layout == 'report' %}
-        <div class="full-banner">
-          <img src="{{ page.banner | default: site.banner | relative_url }}" alt="Banner">
-        </div>
-        {% endunless %}
-      {% endif %}
-      
+      <!-- ================= SIDEBAR ================= -->
       <header>
         {% if site.logo %}
           <a href="{{ "/" | relative_url }}">
@@ -226,6 +200,17 @@
 
         {% unless page.layout == 'post' or page.layout == 'report' %}
           <p class="site-desc">{{ site.description }}</p>
+          <div class="social-links">
+            {% if site.facebook_username %}
+              <a href="https://facebook.com/{{ site.facebook_username }}" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+            {% endif %}
+            {% if site.youtube_username %}
+              <a href="https://youtube.com/@{{ site.youtube_username }}" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+            {% endif %}
+            {% if site.github_username %}
+              <a href="https://github.com/{{ site.github_username }}" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            {% endif %}
+          </div>
         {% endunless %}
 
         {% if page.layout == 'post' or page.layout == 'report' %}
@@ -261,12 +246,28 @@
         </div>
       </header>
       
-      <section>
-        {{ content }}
-      </section>
+      <!-- ================= MAIN CONTENT PANEL ================= -->
+      <div class="content-panel">
+        <div class="top-terminal-tag">
+          // TERMINAL: <span class="c-red">SOLARIS-3</span> // PROTOCOL: <span class="c-yellow">THO_RESONANCE</span>
+        </div>
+
+        {% if page.banner or site.banner %}
+          {% unless page.layout == 'report' %}
+          <div class="full-banner">
+            <img src="{{ page.banner | default: site.banner | relative_url }}" alt="Banner">
+          </div>
+          {% endunless %}
+        {% endif %}
+        
+        <section>
+          {{ content }}
+        </section>
+      </div>
       
     </div>
 
+    <!-- QR MODAL -->
     <div id="qr-modal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(7, 9, 14, 0.95); z-index: 9999; justify-content: center; align-items: center; backdrop-filter: blur(5px);">
       <div style="background: var(--card-bg); border: 1px solid var(--accent-yellow); padding: 40px; max-width: 320px; width: 85%; text-align: center; box-shadow: 0 0 40px rgba(255,204,0,0.15); position: relative;">
         <button onclick="document.getElementById('qr-modal').style.display='none'" style="position: absolute; top: 15px; right: 15px; background: transparent; border: none; color: var(--text-secondary); font-family: var(--font-mono); font-size: 1.2em; cursor: pointer;">[X]</button>
