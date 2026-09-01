@@ -30,6 +30,24 @@
         --font-mono: "JetBrains Mono", monospace;
       }
 
+      /* TÙY CHỈNH THANH CUỘN (SCROLLBAR) DẠNG SÓNG CỘNG HƯỞNG */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg-color);
+        border-left: 1px solid rgba(255,255,255,0.03);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--accent-tho);
+        box-shadow: 0 0 8px var(--accent-tho);
+        border-radius: 0px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--accent-red);
+        box-shadow: 0 0 12px var(--accent-red);
+      }
+
       body { 
         background-color: var(--bg-color) !important; 
         color: var(--text-primary) !important; 
@@ -133,6 +151,17 @@
         font-family: var(--font-mono); font-size: 0.68em;
         color: var(--text-secondary); opacity: 0.9; letter-spacing: 0.15em;
         z-index: 10;
+      }
+
+      /* HIỆU ỨNG SÓNG TẦN SỐ (FREQUENCY WAVE PULSE) */
+      @keyframes frequency-wave {
+        0% { opacity: 0.6; text-shadow: 0 0 2px rgba(92,225,230,0.2); }
+        50% { opacity: 1; text-shadow: 0 0 10px rgba(92,225,230,0.8), 0 0 20px rgba(92,225,230,0.4); }
+        100% { opacity: 0.6; text-shadow: 0 0 2px rgba(92,225,230,0.2); }
+      }
+
+      .top-terminal-tag span {
+        animation: frequency-wave 3s infinite ease-in-out;
       }
 
       .full-banner { width: 100%; order: -1; }
@@ -275,7 +304,7 @@
              <li><a href="{{ "/another-game.html" | relative_url }}" class="{% if page.url == '/another-game.html' %}active{% endif %}">04. ANOTHER GAME</a></li>
              <li><a href="{{ "/about.html" | relative_url }}" class="{% if page.url == '/about.html' %}active{% endif %}">05. ABOUT THO</a></li>
              <li><a href="{{ "/feedback.html" | relative_url }}" class="{% if page.url == '/feedback.html' %}active{% endif %}">06. THO FEEDBACK</a></li>
-             <li><a onclick="document.getElementById('qr-modal').style.display='flex'" style="color: var(--accent-yellow) !important; border-left-color: rgba(255, 204, 0, 0.4); cursor: pointer;">07. DONATE THO </a></li>
+             <li><a onclick="document.getElementById('qr-modal').style.display='flex'" style="color: var(--accent-yellow) !important; border-left-color: rgba(255, 204, 0, 0.4); cursor: pointer;">07. SUPPLY DEPOT</a></li>
            </ul>
          </div>
         {% endunless %}
