@@ -47,42 +47,64 @@
         transform: translateZ(0);
       }
       
-      /* WRAPPER TỔNG: Chỉ dùng để dàn trang (Flexbox), không chứa viền hay nền nữa */
+      /* WRAPPER TỔNG: ÉP KHUÔN FLEXBOX CHỐNG RỚT DÒNG */
       .wrapper { 
-        max-width: 1200px; width: 95%; 
+        max-width: 1250px; 
+        width: 95%; 
         margin: 40px auto; 
-        display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px;
+        display: flex; 
+        flex-wrap: nowrap; /* Cấm rớt dòng trên Desktop */
+        align-items: flex-start;
+        gap: 30px;
         position: relative;
       }
 
-      /* PANEL ĐIỀU HƯỚNG (SIDEBAR CỐ ĐỊNH) */
+      /* PANEL ĐIỀU HƯỚNG (SIDEBAR) */
       header { 
-        width: 320px !important; 
-        padding: 35px !important; 
-        box-sizing: border-box !important;
-        background-color: var(--card-bg) !important; 
-        backdrop-filter: blur(14px) !important; 
-        -webkit-backdrop-filter: blur(14px) !important; 
-        border: 1px solid var(--border-color) !important; 
-        border-radius: 2px !important;
-        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85) !important;
-        position: sticky !important; 
-        top: 40px; 
-        align-self: flex-start; 
-        margin: 0 !important;
+        flex: 0 0 320px; /* Khóa cứng chiều rộng 320px */
+        width: 320px;
+        padding: 35px; box-sizing: border-box;
+        background-color: var(--card-bg); 
+        backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); 
+        border: 1px solid var(--border-color); border-radius: 2px;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+        position: sticky; top: 40px; 
+        margin: 0;
         height: max-content; 
       }
+      
       header h1 {
         font-family: var(--font-display); font-weight: 800; font-size: 1.55em;
         letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 15px 0;
       }
-      header h1 a { color: #ffffff !important; text-decoration: none; }
+      header h1 a { color: #ffffff !important; text-decoration: none; display: inline-block; }
 
       .sidebar-logo {
         max-width: 140px; margin-bottom: 15px; display: block;
-        filter: drop-shadow(0 0 6px rgba(92, 225, 230, 0.3)); transition: filter 0.3s ease;
+        filter: drop-shadow(0 0 6px rgba(92, 225, 230, 0.3)); transition: all 0.3s ease;
       }
-      .sidebar-logo:hover { filter: drop-shadow(0 0 14px rgba(92, 225, 230, 0.8)); }
+
+      /* HIỆU ỨNG GLITCH */
+      .glitch-logo:hover { animation: glitch-anim-img 0.2s infinite; }
+      @keyframes glitch-anim-img {
+        0% { filter: drop-shadow(3px 0 0 var(--accent-red)) drop-shadow(-3px 0 0 var(--accent-yellow)); transform: translate(1px, 1px); }
+        50% { filter: drop-shadow(-3px 0 0 var(--accent-red)) drop-shadow(3px 0 0 var(--accent-tho)); transform: translate(-1px, -1px); }
+        100% { filter: drop-shadow(3px 0 0 var(--accent-yellow)) drop-shadow(-3px 0 0 var(--accent-red)); transform: translate(1px, -1px); }
+      }
+
+      .glitch-text:hover {
+        text-shadow: 2px 0 var(--accent-red), -2px 0 var(--accent-yellow);
+        animation: glitch-skew 0.3s infinite linear alternate-reverse;
+      }
+      @keyframes glitch-skew {
+        0% { transform: skew(0deg); }
+        20% { transform: skew(-5deg); }
+        40% { transform: skew(5deg); }
+        60% { transform: skew(-2deg); }
+        80% { transform: skew(2deg); }
+        100% { transform: skew(0deg); }
+      }
+
       .site-desc { font-family: var(--font-body); font-size: 0.88em; color: var(--text-secondary); line-height: 1.6; }
 
       .social-links { margin-top: 15px; display: flex; gap: 15px; }
@@ -91,8 +113,9 @@
 
       /* PANEL DỮ LIỆU (NỘI DUNG CHÍNH) */
       .content-panel {
-        width: calc(100% - 310px);
-        background-color: var(--card-bg) !important; 
+        flex: 1 1 auto; /* Tự động điền đầy không gian còn lại */
+        min-width: 0; /* Ngăn chặn tràn content */
+        background-color: var(--card-bg); 
         backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); 
         border: 1px solid var(--border-color); border-radius: 2px;
         box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
@@ -182,11 +205,12 @@
 
       #qr-modal { display: none; }
       
+      /* MOBILE RESPONSIVE */
       @media (max-width: 900px) {
-        .wrapper { flex-direction: column; margin: 15px auto; width: 95%; }
+        .wrapper { flex-direction: column; flex-wrap: wrap; margin: 15px auto; width: 95%; gap: 20px; }
         .top-terminal-tag { display: none; }
-        header { width: 100% !important; position: static !important; margin-bottom: 30px !important; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; }
-        .content-panel { width: 100%; }
+        header { width: 100% !important; flex: none; position: static !important; }
+        .content-panel { width: 100% !important; flex: none; }
         section { padding: 25px !important; }
       }
     </style>
@@ -198,15 +222,15 @@
   <body>
     <div class="wrapper">
 
-      <!-- ================= SIDEBAR ================= -->
+      <!-- ================= SIDEBAR CỐ ĐỊNH ================= -->
       <header>
         {% if site.logo %}
           <a href="{{ "/" | relative_url }}">
-            <img src="{{ site.logo | relative_url }}" alt="Logo" class="sidebar-logo" />
+            <img src="{{ site.logo | relative_url }}" alt="Logo" class="sidebar-logo glitch-logo" />
           </a>
         {% endif %}
 
-        <h1><a href="{{ "/" | relative_url }}">{{ site.title | default: "THE HIDEOUS ONE" }}</a></h1>
+        <h1><a href="{{ "/" | relative_url }}" class="glitch-text">{{ site.title | default: "THE HIDEOUS ONE" }}</a></h1>
 
         {% unless page.layout == 'post' or page.layout == 'report' %}
           <p class="site-desc">{{ site.description }}</p>
@@ -246,7 +270,7 @@
              <li><a href="{{ "/another-game.html" | relative_url }}" class="{% if page.url == '/another-game.html' %}active{% endif %}">04. ANOTHER GAME</a></li>
              <li><a href="{{ "/about.html" | relative_url }}" class="{% if page.url == '/about.html' %}active{% endif %}">05. ABOUT THO</a></li>
              <li><a href="{{ "/feedback.html" | relative_url }}" class="{% if page.url == '/feedback.html' %}active{% endif %}">06. THO FEEDBACK</a></li>
-             <li><a onclick="document.getElementById('qr-modal').style.display='flex'" style="color: var(--accent-yellow) !important; border-left-color: rgba(255, 204, 0, 0.4);">07. SUPPLY DEPOT</a></li>
+             <li><a onclick="document.getElementById('qr-modal').style.display='flex'" style="color: var(--accent-yellow) !important; border-left-color: rgba(255, 204, 0, 0.4); cursor: pointer;">07. SUPPLY DEPOT</a></li>
            </ul>
          </div>
         {% endunless %}
@@ -256,10 +280,10 @@
         </div>
       </header>
       
-      <!-- ================= MAIN CONTENT PANEL ================= -->
+      <!-- ================= PANEL DỮ LIỆU ĐỘC LẬP ================= -->
       <div class="content-panel">
         <div class="top-terminal-tag">
-          // TERMINAL: <span class="c-red">SOLARIS-3</span> // PROTOCOL: <span class="c-yellow">THO_RESONANCE</span>
+          // TERMINAL: <span class="c-red glitch-text">SOLARIS-3</span> // PROTOCOL: <span class="c-yellow">THO_RESONANCE</span>
         </div>
 
         {% if page.banner or site.banner %}
@@ -277,14 +301,14 @@
       
     </div>
 
-    <!-- QR MODAL -->
+    <!-- QR MODAL TIẾP TẾ NĂNG LƯỢNG -->
     <div id="qr-modal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(7, 9, 14, 0.95); z-index: 9999; justify-content: center; align-items: center; backdrop-filter: blur(5px);">
       <div style="background: var(--card-bg); border: 1px solid var(--accent-yellow); padding: 40px; max-width: 320px; width: 85%; text-align: center; box-shadow: 0 0 40px rgba(255,204,0,0.15); position: relative;">
         <button onclick="document.getElementById('qr-modal').style.display='none'" style="position: absolute; top: 15px; right: 15px; background: transparent; border: none; color: var(--text-secondary); font-family: var(--font-mono); font-size: 1.2em; cursor: pointer;">[X]</button>
         <h3 style="color: var(--accent-yellow) !important; margin-top: 0; font-family: var(--font-mono); font-size: 1em; letter-spacing: 0.1em;">// INITIATE TRANSFER</h3>
         <img src="{{ site.donate_qr | default: '/vietqr.png' | relative_url }}" alt="VietQR" style="width: 100%; max-width: 200px; border: 2px solid var(--accent-yellow); padding: 5px; background: #ffffff; margin: 20px 0;">
         <div style="font-family: var(--font-mono); font-size: 0.82em; color: var(--text-secondary); line-height: 1.6; text-align: center; background: rgba(255, 204, 0, 0.03); padding: 12px; border: 1px dashed rgba(255, 204, 0, 0.3);">
-          <p style="margin: 0; color: var(--accent-yellow);">[SCAN TO COMPLETE DONATE TRANSFER]</p>
+          <p style="margin: 0; color: var(--accent-yellow);">[SCAN TO COMPLETE RESONANCE TRANSFER]</p>
           <p style="margin: 4px 0 0 0; font-size: 0.9em; opacity: 0.8;">Tri Giả quét mã để tiếp tế năng lượng trực tiếp đến THO.</p>
         </div>
       </div>
