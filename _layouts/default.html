@@ -36,7 +36,7 @@
         margin: 0; padding: 0;
         font-family: var(--font-body);
         -webkit-font-smoothing: antialiased;
-        font-size: 18px !important; /* Phóng to toàn bộ text trên trang lên khoảng 115% */
+        font-size: 18px !important; 
       }
 
       body::before {
@@ -50,7 +50,7 @@
       
       /* WRAPPER TỔNG: ÉP KHUÔN FLEXBOX NẰM NGANG VÀ SÁT NHAU */
       .wrapper { 
-        max-width: 1450px !important; /* Tăng giới hạn chiều rộng để Main Panel to ra */
+        max-width: 1450px !important; 
         width: 95% !important; 
         margin: 40px auto !important; 
         display: flex !important; 
@@ -260,9 +260,10 @@
         {% endif %}
 
         {% unless page.layout == 'post' or page.layout == 'report' %}
-         <div class="fbc-search">
+         <div class="fbc-search" style="position: relative;">
            <i class="fas fa-search"></i>
-           <input type="text" id="site-search" placeholder="SEARCH DATABASE...">
+           <input type="text" id="search-input" placeholder="SEARCH DATABASE...">
+           <ul id="search-results" style="position: absolute; top: 105%; left: 0; width: 100%; background: rgba(10, 14, 20, 0.95); border: 1px solid var(--border-color); list-style: none; padding: 0; margin: 0; max-height: 250px; overflow-y: auto; z-index: 999; display: none; box-shadow: 0 10px 25px rgba(0,0,0,0.8);"></ul>
          </div>
 
          <div class="index-box">
@@ -274,7 +275,7 @@
              <li><a href="{{ "/another-game.html" | relative_url }}" class="{% if page.url == '/another-game.html' %}active{% endif %}">04. ANOTHER GAME</a></li>
              <li><a href="{{ "/about.html" | relative_url }}" class="{% if page.url == '/about.html' %}active{% endif %}">05. ABOUT THO</a></li>
              <li><a href="{{ "/feedback.html" | relative_url }}" class="{% if page.url == '/feedback.html' %}active{% endif %}">06. THO FEEDBACK</a></li>
-             <li><a onclick="document.getElementById('qr-modal').style.display='flex'" style="color: var(--accent-yellow) !important; border-left-color: rgba(255, 204, 0, 0.4); cursor: pointer;">07. SUPPLY DEPOT</a></li>
+             <li><a onclick="document.getElementById('qr-modal').style.display='flex'" style="color: var(--accent-yellow) !important; border-left-color: rgba(255, 204, 0, 0.4); cursor: pointer;">07. DONATE THO </a></li>
            </ul>
          </div>
         {% endunless %}
@@ -319,5 +320,31 @@
     </div>
 
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+    
+    <!-- Thư viện SimpleJekyllSearch -->
+    <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+    <script>
+      SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('search-results'),
+        json: '{{ "/search.json" | relative_url }}',
+        searchResultTemplate: '<li style="border-bottom: 1px solid rgba(92,225,230,0.1);"><a href="{url}" style="font-family: var(--font-mono); font-size: 0.8em; display: block; padding: 10px 12px; color: var(--accent-tho) !important; text-decoration: none;">// {title}</a></li>',
+        noResultsText: '<li style="font-family: var(--font-mono); font-size: 0.8em; padding: 10px 12px; color: var(--accent-red);">// NO DATA FOUND</li>',
+        limit: 6,
+        fuzzy: false
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.fbc-search')) {
+          document.getElementById('search-results').style.display = 'none';
+        }
+      });
+      document.getElementById('search-input').addEventListener('focus', function() {
+        if(this.value.trim() !== '') document.getElementById('search-results').style.display = 'block';
+      });
+      document.getElementById('search-input').addEventListener('input', function() {
+        document.getElementById('search-results').style.display = 'block';
+      });
+    </script>
   </body>
 </html>
