@@ -1,0 +1,152 @@
+---
+layout: default
+---
+<style>
+  .theory-container {
+    background: #040609; 
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 30px;
+    font-family: var(--font-body);
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    height: 100%;
+  }
+  
+  /* THANH TRẠNG THÁI TRÊN & DƯỚI */
+  .theory-bar {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.72em;
+    color: var(--text-secondary);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .theory-bar.top { border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; }
+  .theory-bar.bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 12px; margin-top: auto; }
+
+  /* BỐ CỤC 2 CỘT */
+  .theory-body {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 40px;
+  }
+  .theory-left {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+  }
+  .theory-right {
+    flex: 1 1 50%;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.1);
+    min-height: 400px;
+  }
+
+  /* TYPOGRAPHY CỘT TRÁI */
+  .theory-status {
+    color: var(--accent-red);
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    margin-bottom: 15px;
+    letter-spacing: 0.05em;
+  }
+  .theory-title {
+    font-family: var(--font-display);
+    font-size: 2.8em;
+    color: #ffffff;
+    border-left: 5px solid var(--accent-tho);
+    padding-left: 15px;
+    margin: 0 0 25px 0;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+  .theory-content {
+    font-size: 0.95em;
+    line-height: 1.7;
+    color: #d1d5db;
+    flex-grow: 1;
+  }
+  
+  /* BỘ CHỈ SỐ (STATS) */
+  .theory-stats {
+    display: flex;
+    justify-content: flex-start;
+    gap: 50px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+    margin-top: 30px;
+  }
+  .stat-block { display: flex; flex-direction: column; }
+  .stat-val { font-family: var(--font-display); font-size: 2em; font-weight: 800; line-height: 1; margin-bottom: 5px; }
+  .stat-label { font-family: var(--font-mono); font-size: 0.65em; color: var(--text-secondary); letter-spacing: 0.05em; }
+
+  /* HÌNH ẢNH CỘT PHẢI */
+  .theory-img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    position: absolute; top: 0; left: 0;
+  }
+  .theory-img-label {
+    position: absolute; bottom: 15px; left: 15px;
+    background: #000000; border: 1px solid rgba(255,255,255,0.2);
+    color: #ffffff; font-family: var(--font-mono); font-size: 0.65em;
+    padding: 6px 10px; letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 900px) {
+    .theory-body { flex-direction: column; }
+    .theory-right { min-height: 300px; }
+    .theory-stats { justify-content: space-between; gap: 0; }
+  }
+</style>
+
+<div class="theory-container">
+  
+  <div class="theory-bar top">
+    <span>{{ page.top_left | default: "SEC: 00" }}</span>
+    <span class="c-red">{{ page.top_right | default: "FILE: UNKNOWN" }}</span>
+  </div>
+
+  <div class="theory-body">
+    <div class="theory-left">
+      <div class="theory-status">> {{ page.status_text | default: "DECRYPTING ORIGIN FILE..." }}</div>
+      <h1 class="theory-title">{{ page.title }}</h1>
+      
+      <div class="theory-content">
+        {{ content }}
+      </div>
+
+      {% if page.stat1_val %}
+      <div class="theory-stats">
+        <div class="stat-block">
+          <span class="stat-val c-cyan">{{ page.stat1_val }}</span>
+          <span class="stat-label">{{ page.stat1_label }}</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-val c-yellow">{{ page.stat2_val }}</span>
+          <span class="stat-label">{{ page.stat2_label }}</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-val c-red">{{ page.stat3_val }}</span>
+          <span class="stat-label">{{ page.stat3_label }}</span>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="theory-right">
+      <img src="{{ page.image | relative_url }}" alt="Visual Log" class="theory-img">
+      {% if page.image_label %}
+      <div class="theory-img-label">{{ page.image_label }}</div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="theory-bar bottom">
+    <span>{{ page.bottom_left | default: "ORIGIN FILE // UNKNOWN" }}</span>
+    <span>{{ page.bottom_right | default: "// STATUS: CLASSIFIED" }}</span>
+  </div>
+
+</div>
