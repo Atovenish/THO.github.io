@@ -5,12 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <!-- Google Fonts Stack tương thích 1:1 với Avant Garde (League Spartan) & Interstate (Overpass / Inter) -->
+    <!-- Google Fonts Stack -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800;900&family=Overpass:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -20,17 +18,16 @@
         --border-color: rgba(92, 225, 230, 0.15);
         --text-primary: #e6edf3;
         --text-secondary: #7d8b99;
+        
+        /* HỆ THỐNG MÀU SẮC SOLARIS-3 */
         --accent-tho: #5ce1e6;         /* Cyan The Hideous One */
+        --accent-red: #ff3333;         /* Đỏ Cảnh báo / Overclock */
+        --accent-yellow: #ffcc00;      /* Vàng Hệ thống / Chú ý */
+        
         --accent-glow: rgba(92, 225, 230, 0.12);
 
-        /* HỆ FONT ĐẶC TẢ */
-        /* ITC Avant Garde Gothic Bold -> Dành cho Logo, H1, H2, H3 */
         --font-display: "ITC Avant Garde Gothic", "Avant Garde", "League Spartan", "Century Gothic", -apple-system, sans-serif;
-        
-        /* Interstate -> Dành cho Content, Body text, Danh sách */
         --font-body: "Interstate", "Overpass", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-        
-        /* Terminal & Directory Index */
         --font-mono: "JetBrains Mono", monospace;
       }
 
@@ -38,13 +35,11 @@
       body { 
         background-color: var(--bg-color) !important; 
         color: var(--text-primary) !important; 
-        margin: 0;
-        padding: 0;
+        margin: 0; padding: 0;
         font-family: var(--font-body);
         -webkit-font-smoothing: antialiased;
       }
 
-      /* NỀN TĨNH BẢO VỆ GPU */
       body::before {
         content: "";
         position: fixed; 
@@ -54,210 +49,113 @@
         background-size: cover !important;
         background-position: center !important;
         transform: translateZ(0);
-        will-change: transform;
       }
       
-      /* FLOATING CARD - BRUTALIST SHARP GEOMETRY */
       .wrapper { 
-        max-width: 1140px;
-        width: 90%; 
-        margin: 40px auto; 
-        padding: 40px;
+        max-width: 1140px; width: 90%; 
+        margin: 40px auto; padding: 40px;
         background-color: var(--card-bg) !important; 
-        backdrop-filter: blur(14px); 
-        -webkit-backdrop-filter: blur(14px); 
-        border: 1px solid var(--border-color); 
-        border-radius: 2px;
+        backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); 
+        border: 1px solid var(--border-color); border-radius: 2px;
         box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85); 
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        position: relative;
-        transform: translateZ(0);
+        display: flex; flex-wrap: wrap; justify-content: space-between;
+        position: relative; transform: translateZ(0);
       }
 
-      /* TOP TERMINAL TAG */
       .wrapper::after {
         content: "// TERMINAL: SOLARIS-3 // PROTOCOL: THO_RESONANCE";
-        position: absolute;
-        top: 12px;
-        right: 20px;
-        font-family: var(--font-mono);
-        font-size: 0.68em;
-        color: var(--accent-tho);
-        opacity: 0.7;
-        letter-spacing: 0.15em;
+        position: absolute; top: 12px; right: 20px;
+        font-family: var(--font-mono); font-size: 0.68em;
+        color: var(--accent-tho); opacity: 0.7; letter-spacing: 0.15em;
       }
 
       /* BANNER */
-      .full-banner {
-        width: 100%;
-        margin-bottom: 35px;
-        order: -1; 
-      }
+      .full-banner { width: 100%; margin-bottom: 35px; order: -1; }
       .full-banner img {
-        width: 100%;
-        border-radius: 0px; 
-        border: 1px solid var(--border-color);
+        width: 100%; border: 1px solid var(--border-color);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-        max-height: 380px;
-        object-fit: cover;
-        display: block;
+        max-height: 380px; object-fit: cover; display: block;
       }
 
       /* SIDEBAR */
       header { 
-        width: 260px !important; 
-        position: sticky !important;
-        top: 20px;
-        align-self: flex-start;
-        float: none !important; 
-        margin: 0 !important;
+        width: 260px !important; position: sticky !important; top: 20px;
+        align-self: flex-start; margin: 0 !important;
       }
-
       header h1 {
-        font-family: var(--font-display);
-        font-weight: 800;
-        font-size: 1.55em;
-        letter-spacing: -0.02em; /* Avant Garde đặc trưng có tracking nén nhẹ hoặc dãn hẳn */
-        text-transform: uppercase;
-        margin: 0 0 15px 0;
+        font-family: var(--font-display); font-weight: 800; font-size: 1.55em;
+        letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 15px 0;
       }
       header h1 a { color: #ffffff !important; text-decoration: none; }
 
       .sidebar-logo {
-        max-width: 140px;
-        margin-bottom: 15px;
-        display: block;
-        filter: drop-shadow(0 0 6px rgba(92, 225, 230, 0.3));
-        transition: filter 0.3s ease;
+        max-width: 140px; margin-bottom: 15px; display: block;
+        filter: drop-shadow(0 0 6px rgba(92, 225, 230, 0.3)); transition: filter 0.3s ease;
       }
-      .sidebar-logo:hover {
-        filter: drop-shadow(0 0 14px rgba(92, 225, 230, 0.8));
-      }
+      .sidebar-logo:hover { filter: drop-shadow(0 0 14px rgba(92, 225, 230, 0.8)); }
+      .site-desc { font-family: var(--font-body); font-size: 0.88em; color: var(--text-secondary); line-height: 1.6; }
 
-      .site-desc {
-        font-family: var(--font-body);
-        font-size: 0.88em; 
-        color: var(--text-secondary);
-        line-height: 1.6;
-      }
-
-      /* NỘI DUNG CHÍNH (SECTION) */
-      section { 
-        width: calc(100% - 310px) !important; 
-        float: none !important; 
-        margin: 0 !important;
-        padding: 0 !important;
-      }
-
-      /* TYPOGRAPHY ITC AVANT GARDE CHO TOÀN BỘ HEADING */
+      /* CONTENT SECTION */
+      section { width: calc(100% - 310px) !important; margin: 0 !important; padding: 0 !important; }
       h1, h2, h3, h4, h5, h6 { 
-        font-family: var(--font-display); 
-        color: #ffffff !important; 
-        text-transform: uppercase;
-        letter-spacing: 0.02em;
-        margin-top: 1.4em; 
-        margin-bottom: 0.6em; 
-        font-weight: 800;
+        font-family: var(--font-display); color: #ffffff !important; text-transform: uppercase;
+        letter-spacing: 0.02em; margin-top: 1.4em; margin-bottom: 0.6em; font-weight: 800;
       }
       section > h1:first-child, section > h2:first-child, section > h3:first-child { margin-top: 0; }
-      
-      h2 { 
-        font-size: 1.45em; 
-        border-bottom: 2px solid var(--border-color); 
-        padding-bottom: 8px; 
-      }
+      h2 { font-size: 1.45em; border-bottom: 2px solid var(--border-color); padding-bottom: 8px; }
       h3 { font-size: 1.15em; color: var(--accent-tho) !important; }
-
-      /* NỘI DUNG NHỎ: INTERSTATE */
-      p { 
-        font-family: var(--font-body);
-        line-height: 1.72; 
-        margin-bottom: 18px; 
-        font-size: 0.95em; 
-        letter-spacing: -0.01em;
-      }
-      li { 
-        font-family: var(--font-body);
-        line-height: 1.68; 
-        margin-bottom: 8px; 
-        font-size: 0.95em;
-      }
+      p { line-height: 1.72; margin-bottom: 18px; font-size: 0.95em; letter-spacing: -0.01em; }
+      li { line-height: 1.68; margin-bottom: 8px; font-size: 0.95em; }
       strong, b { color: #ffffff !important; font-weight: 700; }
       a { color: var(--accent-tho) !important; text-decoration: none; }
       a:hover { text-decoration: underline; }
 
-      /* BLOCKQUOTE */
       blockquote { 
-        font-family: var(--font-mono);
-        color: var(--text-secondary) !important; 
-        background: rgba(92, 225, 230, 0.03);
-        border-left: 3px solid var(--accent-tho) !important; 
-        padding: 12px 18px; 
-        margin: 24px 0;
-        font-size: 0.88em;
+        font-family: var(--font-mono); color: var(--text-secondary) !important; 
+        background: rgba(92, 225, 230, 0.03); border-left: 3px solid var(--accent-tho) !important; 
+        padding: 12px 18px; margin: 24px 0; font-size: 0.88em;
       }
 
       /* INDEX MENU */
-      .index-box {
-        margin-top: 25px; 
-        border-top: 1px solid var(--border-color); 
-        padding-top: 18px;
-      }
-      .index-box h3 { 
-        font-family: var(--font-mono);
-        font-size: 0.85em; 
-        color: var(--accent-tho) !important; 
-        margin-bottom: 12px; 
-        letter-spacing: 0.15em; 
-      }
+      .index-box { margin-top: 25px; border-top: 1px solid var(--border-color); padding-top: 18px; }
+      .index-box h3 { font-family: var(--font-mono); font-size: 0.85em; color: var(--accent-tho) !important; margin-bottom: 12px; letter-spacing: 0.15em; }
       .index-box ul { list-style: none; padding: 0; margin: 0; }
       .index-box li { margin-bottom: 2px; }
       .index-box a {
-        font-family: var(--font-mono);
-        display: block;
-        padding: 8px 12px;
-        border-radius: 0px;
-        font-size: 0.82em;
-        letter-spacing: 0.06em;
-        color: var(--text-secondary) !important;
-        border-left: 2px solid transparent;
-        transition: all 0.15s ease-in-out;
+        font-family: var(--font-mono); display: block; padding: 8px 12px;
+        font-size: 0.82em; letter-spacing: 0.06em; color: var(--text-secondary) !important;
+        border-left: 2px solid transparent; transition: all 0.15s ease-in-out; cursor: pointer;
       }
       .index-box a:hover {
-        color: #ffffff !important;
-        background: rgba(92, 225, 230, 0.05);
-        border-left: 2px solid rgba(92, 225, 230, 0.4);
-        text-decoration: none;
+        color: #ffffff !important; background: rgba(92, 225, 230, 0.05);
+        border-left: 2px solid rgba(92, 225, 230, 0.4); text-decoration: none;
       }
       .index-box a.active {
-        color: #ffffff !important;
-        background: var(--accent-glow);
-        border-left: 2px solid var(--accent-tho);
-        font-weight: 700;
-        text-decoration: none;
+        color: #ffffff !important; background: var(--accent-glow);
+        border-left: 2px solid var(--accent-tho); font-weight: 700;
         box-shadow: inset 1px 0 8px rgba(92, 225, 230, 0.1);
       }
 
-      /* FOOTER */
+      /* UTILITIES CLASSSES DÀNH CHO MARKDOWN */
+      .c-red { color: var(--accent-red) !important; }
+      .c-yellow { color: var(--accent-yellow) !important; }
+      .c-cyan { color: var(--accent-tho) !important; }
+      .box-alert { background: rgba(255, 51, 51, 0.05); border-left: 3px solid var(--accent-red) !important; padding: 12px 18px; margin: 20px 0; font-size: 0.9em; }
+      .box-warn { background: rgba(255, 204, 0, 0.05); border-left: 3px solid var(--accent-yellow) !important; padding: 12px 18px; margin: 20px 0; font-size: 0.9em; }
+
       .sidebar-footer {
-        margin-top: 30px;
-        padding-top: 15px;
-        border-top: 1px solid var(--border-color);
-        font-family: var(--font-mono);
-        font-size: 0.72em;
-        letter-spacing: 0.05em;
-        color: var(--text-secondary);
+        margin-top: 30px; padding-top: 15px; border-top: 1px solid var(--border-color);
+        font-family: var(--font-mono); font-size: 0.72em; letter-spacing: 0.05em; color: var(--text-secondary);
       }
 
-      /* MOBILE */
+      /* QR MODAL CƠ BẢN */
+      #qr-modal { display: none; }
+      
       @media (max-width: 900px) {
         .wrapper { width: 95%; margin: 15px auto; padding: 20px; flex-direction: column; }
         .wrapper::after { display: none; }
         header, section { width: 100% !important; position: static !important; }
         header { margin-bottom: 30px !important; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; }
-        .sidebar-footer { border-top: none; padding-top: 0; }
       }
     </style>
 
@@ -268,7 +166,7 @@
   <body>
     <div class="wrapper">
 
-      <!-- BANNER -->
+      <!-- BANNER (ĐÃ SỬA LỖI LIQUID) -->
       {% if page.banner or site.banner %}
         {% unless page.layout == 'report' %}
         <div class="full-banner">
@@ -281,7 +179,6 @@
       <header>
         <h1><a href="{{ "/" | relative_url }}">{{ site.title | default: "THE HIDEOUS ONE" }}</a></h1>
 
-        <!-- CHỈ HIỆN LOGO VÀ INFO Ở TRANG DANH MỤC -->
         {% unless page.layout == 'post' or page.layout == 'report' %}
           {% if site.logo %}
             <img src="{{ site.logo | relative_url }}" alt="Logo" class="sidebar-logo" />
@@ -289,7 +186,6 @@
           <p class="site-desc">{{ site.description }}</p>
         {% endunless %}
 
-        <!-- NÚT QUAY LẠI CHỈ HIỆN Ở BÀI VIẾT (POST) -->
         {% if page.layout == 'post' or page.layout == 'report' %}
           <div style="margin-top: 30px; margin-bottom: 30px;">
             <a href="{{ "/" | relative_url }}" style="font-family: var(--font-mono); font-size: 0.85em; color: var(--accent-tho) !important; padding: 10px 15px; border: 1px solid var(--border-color); background: rgba(92,225,230,0.05); display: inline-block; text-decoration: none; letter-spacing: 0.1em; transition: all 0.2s ease; box-shadow: inset 0 0 8px rgba(92,225,230,0.1);">
@@ -298,7 +194,6 @@
           </div>
         {% endif %}
 
-        <!-- INDEX CHỈ HIỆN Ở TRANG DANH MỤC -->
         {% unless page.layout == 'post' or page.layout == 'report' %}
          <div class="index-box">
            <h3>// DIRECTORY</h3>
@@ -309,6 +204,8 @@
              <li><a href="{{ "/another-game.html" | relative_url }}" class="{% if page.url == '/another-game.html' %}active{% endif %}">04. ANOTHER GAME</a></li>
              <li><a href="{{ "/about.html" | relative_url }}" class="{% if page.url == '/about.html' %}active{% endif %}">05. ABOUT THO</a></li>
              <li><a href="{{ "/feedback.html" | relative_url }}" class="{% if page.url == '/feedback.html' %}active{% endif %}">06. THO FEEDBACK</a></li>
+             <!-- NÚT KÍCH HOẠT QR POP-UP -->
+             <li><a onclick="document.getElementById('qr-modal').style.display='flex'" style="color: var(--accent-yellow) !important; border-left-color: rgba(255, 204, 0, 0.4);">07. SUPPLY DEPOT</a></li>
            </ul>
          </div>
         {% endunless %}
@@ -324,6 +221,24 @@
       </section>
       
     </div>
+
+    <!-- MÀN HÌNH POP-UP VIETQR BỊ ẨN -->
+    <div id="qr-modal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(7, 9, 14, 0.95); z-index: 9999; justify-content: center; align-items: center; backdrop-filter: blur(5px);">
+      <div style="background: var(--card-bg); border: 1px solid var(--accent-yellow); padding: 40px; max-width: 320px; width: 85%; text-align: center; box-shadow: 0 0 40px rgba(255,204,0,0.15); position: relative;">
+        <!-- Nút Tắt -->
+        <button onclick="document.getElementById('qr-modal').style.display='none'" style="position: absolute; top: 15px; right: 15px; background: transparent; border: none; color: var(--text-secondary); font-family: var(--font-mono); font-size: 1.2em; cursor: pointer;">[X]</button>
+        
+        <h3 style="color: var(--accent-yellow) !important; margin-top: 0; font-family: var(--font-mono); font-size: 1em; letter-spacing: 0.1em;">// DONATE THO</h3>
+        
+        <img src="{{ site.donate_qr | default: '/vietqr.png' | relative_url }}" alt="VietQR" style="width: 100%; max-width: 200px; border: 2px solid var(--accent-yellow); padding: 5px; background: #ffffff; margin: 20px 0;">
+
+        <div style="font-family: var(--font-mono); font-size: 0.82em; color: var(--text-secondary); line-height: 1.6; text-align: center; background: rgba(255, 204, 0, 0.03); padding: 12px; border: 1px dashed rgba(255, 204, 0, 0.3);">
+          <p style="margin: 0; color: var(--accent-yellow);">[SCAN TO COMPLETE RESONANCE TRANSFER]</p>
+          <p style="margin: 4px 0 0 0; font-size: 0.9em; opacity: 0.8;">Tri Giả quét mã để tiếp tế năng lượng trực tiếp đến THO.</p>
+        </div>
+      </div>
+    </div>
+
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
   </body>
 </html>
