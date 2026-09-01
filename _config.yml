@@ -3,6 +3,10 @@ description: "Hi, I'm THO (The Hideous One). Here I write about stuff around me.
 logo: "/assets/img/THO_logo.png"
 show_downloads: false
 banner: "/assets/img/THO_thumb.jpg"
+# DONATE CONFIG
+# SUPPLY DEPOT / VIETQR
+donate_qr: "/vietqr.png"
+donate_label: "//DONATE THO"
 # ==========================================
 # CẤU HÌNH GIAO DIỆN VÀ ĐƯỜNG DẪN
 # ==========================================
