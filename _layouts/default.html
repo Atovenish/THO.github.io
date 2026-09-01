@@ -270,10 +270,10 @@
 
       <!-- BANNER -->
       {% if page.banner or site.banner %}
-      <div class="full-banner">
-        <img src="{{ page.banner | default: site.banner | relative_url }}" alt="Banner">
-      </div>
-      {% endunless %}
+       <div class="full-banner">
+         <img src="{{ page.banner | default: site.banner | relative_url }}" alt="Banner">
+       </div>
+       {% endunless %}
       {% endif %}
       
       <!-- SIDEBAR -->
@@ -299,17 +299,17 @@
 
         <!-- INDEX CHỈ HIỆN Ở TRANG DANH MỤC -->
         {% unless page.layout == 'post' or page.layout == 'report' %}
-        <div class="index-box">
-          <h3>// DIRECTORY</h3>
-          <ul>
-            <li><a href="{{ "/" | relative_url }}" class="{% if page.url == '/' or page.url == '/index.html' %}active{% endif %}">01. MAIN</a></li>
-            <li><a href="{{ "/personal.html" | relative_url }}" class="{% if page.url == '/personal.html' %}active{% endif %}">02. PERSONAL</a></li>
-            <li><a href="{{ "/wuwa-theory.html" | relative_url }}" class="{% if page.url == '/wuwa-theory.html' %}active{% endif %}">03. WUTHERING WAVE THEORY</a></li>
-            <li><a href="{{ "/another-game.html" | relative_url }}" class="{% if page.url == '/another-game.html' %}active{% endif %}">04. ANOTHER GAME</a></li>
-            <li><a href="{{ "/about.html" | relative_url }}" class="{% if page.url == '/about.html' %}active{% endif %}">05. ABOUT THO</a></li>
-            <li><a href="{{ "/feedback.html" | relative_url }}" class="{% if page.url == '/feedback.html' %}active{% endif %}">06. THO FEEDBACK</a></li>
-          </ul>
-        </div>
+         <div class="index-box">
+           <h3>// DIRECTORY</h3>
+           <ul>
+             <li><a href="{{ "/" | relative_url }}" class="{% if page.url == '/' or page.url == '/index.html' %}active{% endif %}">01. MAIN</a></li>
+             <li><a href="{{ "/personal.html" | relative_url }}" class="{% if page.url == '/personal.html' %}active{% endif %}">02. PERSONAL</a></li>
+             <li><a href="{{ "/wuwa-theory.html" | relative_url }}" class="{% if page.url == '/wuwa-theory.html' %}active{% endif %}">03. WUTHERING WAVE THEORY</a></li>
+             <li><a href="{{ "/another-game.html" | relative_url }}" class="{% if page.url == '/another-game.html' %}active{% endif %}">04. ANOTHER GAME</a></li>
+             <li><a href="{{ "/about.html" | relative_url }}" class="{% if page.url == '/about.html' %}active{% endif %}">05. ABOUT THO</a></li>
+             <li><a href="{{ "/feedback.html" | relative_url }}" class="{% if page.url == '/feedback.html' %}active{% endif %}">06. THO FEEDBACK</a></li>
+           </ul>
+         </div>
         {% endunless %}
 
         <div class="sidebar-footer">
