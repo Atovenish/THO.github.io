@@ -3,6 +3,7 @@ layout: report
 title: "SHOREKEEPER // ARCHIVE RECORD"
 report_type: "Forte Examination & Resonance Analysis"
 avatar: "/assets/img/Shorekeeper-avatar.png"
+categories: [wuwa-theory]
 
 stat1_val: "INSTANCE 2"
 stat1_label: "RESONANCE LEVEL"
