@@ -296,7 +296,7 @@
             <!-- Khung Live Dropdown (Giữ nguyên nếu bạn đang có script live search) -->
             <ul id="search-results" style="position: absolute; top: 105%; left: 0; width: 100%; background: rgba(10, 14, 20, 0.95); border: 1px solid var(--border-color); list-style: none; padding: 0; margin: 0; max-height: 250px; overflow-y: auto; z-index: 999; display: none; box-shadow: 0 10px 25px rgba(0,0,0,0.8);"></ul>
           </div> 
-        
+                
           <!-- SCRIPT ĐIỀU HƯỚNG TÌM KIẾM TRUY XUẤT DOSSIER -->
           <script>
             document.addEventListener("DOMContentLoaded", function() {
@@ -304,14 +304,13 @@
               
               if (searchInput) {
                 searchInput.addEventListener('keypress', function(e) {
-                  // Khi Tri giả ấn phím Enter (mã phím 13)
                   if (e.key === 'Enter') {
                     e.preventDefault(); 
                     const query = this.value.trim();
                     
-                    // Nếu có nhập chữ, bẻ lái URL sang trang Kết quả lớn
                     if (query) {
-                      window.location.href = '/search/?q=' + encodeURIComponent(query);
+                      // Bổ sung {{ site.baseurl }} để sửa lỗi 404
+                      window.location.href = '{{ site.baseurl }}/search/?q=' + encodeURIComponent(query);
                     }
                   }
                 });
