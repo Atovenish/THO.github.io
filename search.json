@@ -3,10 +3,12 @@ layout: none
 ---
 [
   {% for post in site.posts %}
+    {% capture custom_tags %}{{ post.tags | join: ' ' }} {% if post.layout == 'report' %}archive_record resonator archive{% elsif post.layout == 'post' or post.layout == 'slide_theory' %}lore_theory lore theory{% endif %}{% endcapture %}
     {
       "title": {{ post.title | jsonify }},
       "url": {{ post.url | relative_url | jsonify }},
       "date": {{ post.date | date: "%Y-%m-%d" | jsonify }},
+      "tags": {{ custom_tags | strip | jsonify }},
       "content": {{ post.content | strip_html | strip_newlines | jsonify }}
     }{% unless forloop.last %},{% endunless %}
   {% endfor %}
