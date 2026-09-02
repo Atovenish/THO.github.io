@@ -56,7 +56,7 @@ title: "Wuthering Waves Theory"
 
     {% assign sector2_count = 0 %}
     {% for post in wuwa_posts %}
-      {% if post.layout == 'resonator' %}
+      {% if post.layout == 'report' %}
         {% assign sector2_count = sector2_count | plus: 1 %}
         <!-- Viền trái đổi thành Đỏ -->
         <div style="padding: 14px 16px; margin-bottom: 12px; background: rgba(255,255,255,0.02); border-left: 2px solid #ff3344; border-top: 1px solid var(--border-color); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); transition: all 0.3s ease;">
