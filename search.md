@@ -1,0 +1,100 @@
+---
+layout: default
+title: "TERMINAL SEARCH"
+permalink: /search/
+---
+
+<div class="search-interface" style="margin-top: 25px;">
+  <h3 style="color: var(--accent-tho); font-family: var(--font-mono); letter-spacing: 1px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 20px;">
+    > QUERY RESULTS // <span id="search-keyword" style="color: #fff;">...</span>
+  </h3>
+
+  <div style="display: flex; gap: 15px; margin-bottom: 20px; font-family: var(--font-mono); font-size: 0.85em;">
+    <span style="color: var(--text-secondary);">FILTER:</span>
+    <a href="#" id="sort-new" style="color: var(--accent-tho); text-decoration: none;">[ NEWEST FIRST ]</a>
+    <a href="#" id="sort-old" style="color: var(--text-secondary); text-decoration: none;">[ OLDEST FIRST ]</a>
+  </div>
+
+  <div id="search-results" class="archive-list">
+    <p style="font-family: var(--font-mono); font-size: 0.85em; color: var(--text-secondary);">> SCANNING DATABASE...</p>
+  </div>
+</div>
+
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const query = urlParams.get('q') ? urlParams.get('q').toLowerCase() : '';
+  document.getElementById('search-keyword').textContent = query.toUpperCase() || "BLANK";
+  
+  let searchData = [];
+  let isNewestFirst = true;
+
+  fetch('/search.json')
+    .then(response => response.json())
+    .then(data => {
+      // Lọc dữ liệu khớp với tiêu đề, tag hoặc nội dung
+      searchData = data.filter(post => 
+        (post.title && post.title.toLowerCase().includes(query)) || 
+        (post.tags && post.tags.toLowerCase().includes(query)) ||
+        (post.content && post.content.toLowerCase().includes(query))
+      );
+      renderResults();
+    })
+    .catch(error => {
+      document.getElementById('search-results').innerHTML = '<p style="color: #ff3344;">> ERROR: CORRUPTED DATA LINK.</p>';
+    });
+
+  function renderResults() {
+    const container = document.getElementById('search-results');
+    if (searchData.length === 0) {
+      container.innerHTML = '<p style="font-family: var(--font-mono); font-size: 0.85em; color: #ff3344;">> // NO DATA FOUND</p>';
+      return;
+    }
+
+    // Thuật toán sắp xếp theo ngày
+    searchData.sort((a, b) => {
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      return isNewestFirst ? dateB - dateA : dateA - dateB;
+    });
+
+    // Render HTML y hệt layout Sector
+    let html = '';
+    searchData.forEach(post => {
+      // Phân loại màu viền dựa trên tag ngầm
+      const isRecord = post.tags.includes('archive_record');
+      const borderColor = isRecord ? '#ff3344' : 'var(--accent-tho)';
+      const tagText = isRecord ? '// ARCHIVE RECORD' : '// LORE_THEORY';
+      const tagColor = isRecord ? '#ff3344' : '#facc15';
+
+      html += `
+        <div style="padding: 14px 16px; margin-bottom: 12px; background: rgba(255,255,255,0.02); border-left: 2px solid ${borderColor}; border-top: 1px solid var(--border-color); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); transition: all 0.3s ease;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span style="font-family: var(--font-mono); font-size: 0.78em; color: var(--text-secondary);">${post.date}</span>
+            <span style="font-family: var(--font-mono); font-size: 0.78em; color: ${tagColor}; font-weight: bold;">${tagText}</span>
+          </div>
+          <h3 style="margin: 0 0 6px 0; font-size: 1.1em; text-transform: uppercase;">
+            <a href="${post.url}" style="color: #ffffff; text-decoration: none;">${post.title}</a>
+          </h3>
+        </div>
+      `;
+    });
+    container.innerHTML = html;
+  }
+
+  // Bắt sự kiện click nút Filter
+  document.getElementById('sort-new').addEventListener('click', (e) => {
+    e.preventDefault();
+    isNewestFirst = true;
+    e.target.style.color = 'var(--accent-tho)';
+    document.getElementById('sort-old').style.color = 'var(--text-secondary)';
+    renderResults();
+  });
+
+  document.getElementById('sort-old').addEventListener('click', (e) => {
+    e.preventDefault();
+    isNewestFirst = false;
+    e.target.style.color = 'var(--accent-tho)';
+    document.getElementById('sort-new').style.color = 'var(--text-secondary)';
+    renderResults();
+  });
+</script>
