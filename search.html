@@ -28,7 +28,7 @@ permalink: /search/
   let searchData = [];
   let isNewestFirst = true;
 
-  fetch('/search.json')
+  fetch('{{ site.baseurl }}/search.json')
     .then(response => response.json())
     .then(data => {
       // Lọc dữ liệu khớp với tiêu đề, tag hoặc nội dung
