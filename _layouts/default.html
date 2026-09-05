@@ -319,18 +319,20 @@
           </script>
         {% endunless %}
 
-         <div class="index-box">
-           <h3>// DIRECTORY</h3>
-           <ul>
-             <li><a href="{{ "/" | relative_url }}" class="{% if page.url == '/' or page.url == '/index.html' %}active{% endif %}">01. MAIN</a></li>
-             <li><a href="{{ "/personal.html" | relative_url }}" class="{% if page.url == '/personal.html' %}active{% endif %}">02. PERSONAL</a></li>
-             <li><a href="{{ "/wuwa-theory.html" | relative_url }}" class="{% if page.url == '/wuwa-theory.html' %}active{% endif %}">03. WUTHERING WAVE THEORY</a></li>
-             <li><a href="{{ "/another-game.html" | relative_url }}" class="{% if page.url == '/another-game.html' %}active{% endif %}">04. ANOTHER GAME</a></li>
-             <li><a href="{{ "/about.html" | relative_url }}" class="{% if page.url == '/about.html' %}active{% endif %}">05. ABOUT THO</a></li>
-             <li><a href="{{ "/feedback.html" | relative_url }}" class="{% if page.url == '/feedback.html' %}active{% endif %}">06. THO FEEDBACK</a></li>
-             <li><a onclick="document.getElementById('qr-modal').style.display='flex'" style="color: var(--accent-yellow) !important; border-left-color: rgba(255, 204, 0, 0.4); cursor: pointer;">07. DONATE THO</a></li>
-           </ul>
-         </div>
+          <div class="index-box">
+            <h3>// DIRECTORY</h3>
+            <ul>
+              <li><a href="{{ "/" | relative_url }}" class="{% if page.url == '/' or page.url == '/index.html' %}active{% endif %}">01. MAIN</a></li>
+              <li><a href="{{ "/personal.html" | relative_url }}" class="{% if page.url == '/personal.html' %}active{% endif %}">02. PERSONAL</a></li>
+              <li><a href="{{ "/wuwa-theory.html" | relative_url }}" class="{% if page.url == '/wuwa-theory.html' %}active{% endif %}">03. WUTHERING WAVE THEORY</a></li>
+              <!-- THÊM LOGIC ACTIVE VÀ ĐỔI SỐ THỨ TỰ THÀNH 04 -->
+              <li><a href="{{ "/resonator.html" | relative_url }}" class="{% if page.url == '/resonator.html' %}active{% endif %}" style="color: #ff3344;">04. RESONATOR ARCHIVE</a></li>
+              <li><a href="{{ "/another-game.html" | relative_url }}" class="{% if page.url == '/another-game.html' %}active{% endif %}">05. ANOTHER GAME</a></li>
+              <li><a href="{{ "/about.html" | relative_url }}" class="{% if page.url == '/about.html' %}active{% endif %}">06. ABOUT THO</a></li>
+              <li><a href="{{ "/feedback.html" | relative_url }}" class="{% if page.url == '/feedback.html' %}active{% endif %}">07. THO FEEDBACK</a></li>
+              <li><a onclick="document.getElementById('qr-modal').style.display='flex'" style="color: var(--accent-yellow) !important; border-left-color: rgba(255, 204, 0, 0.4); cursor: pointer;">08. DONATE THO</a></li>
+            </ul>
+          </div>
 
       <div class="sidebar-footer" style="margin-top: 25px; padding-top: 15px; border-top: 1px solid var(--border-color);">
         <p style="margin: 0 0 8px 0; font-size: 0.9em;">TERMINAL: SOLARIS-3 // ARCHIVE: THO</p>
