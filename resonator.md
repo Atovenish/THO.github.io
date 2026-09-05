@@ -14,18 +14,18 @@ title: "Resonator Archive"
 
 <div class="archive-list" style="margin-top: 25px;">
   <h3 style="color: var(--accent-tho); font-family: var(--font-mono); letter-spacing: 1px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 20px;">
-    > DIRECTORY // RESONATOR/MUTA RECORDS
+    > DIRECTORY // RESONATOR ARCHIVE
   </h3>
 
-  <!-- TÌM BÀI VIẾT DỰA TRÊN TAG "resonator" HOẶC "muta" -->
-  {% assign resonator_posts = site.posts | where_exp: "item", "item.tags contains 'resonator' or item.tags contains 'muta'" %}
+  <!-- CHỈ QUÉT BÀI VIẾT CÓ LAYOUT: REPORT -->
+  {% assign resonator_posts = site.posts | where: "layout", "report" %}
   {% assign raw_tags = "" %}
   
   {% for post in resonator_posts %}
     {% for tag in post.tags %}
       {% assign tag_lower = tag | downcase %}
-      <!-- Bỏ qua các tag hệ thống để nó không in ra thành nút bấm -->
-      {% if tag_lower != "archive_record" and tag_lower != "resonator" and tag_lower != "muta" %}
+      <!-- Loại bỏ tag hệ thống khỏi nút bấm -->
+      {% if tag_lower != "archive_record" and tag_lower != "resonator" %}
         {% assign raw_tags = raw_tags | append: tag_lower | append: "," %}
       {% endif %}
     {% endfor %}
@@ -33,7 +33,6 @@ title: "Resonator Archive"
   
   {% assign unique_tags = raw_tags | split: "," | uniq | sort %}
 
-  <!-- THANH BỘ LỌC TỰ ĐỘNG -->
   <div class="filter-bar" style="margin-bottom: 30px; font-family: var(--font-mono); font-size: 0.85em;">
     <span style="color: var(--text-secondary); margin-right: 15px;">> CLASSIFICATION:</span>
     <div class="filter-group" style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;">
@@ -46,7 +45,6 @@ title: "Resonator Archive"
     </div>
   </div>
 
-  <!-- LƯỚI NHÂN VẬT -->
   <div class="resonator-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 15px;">
     {% for post in resonator_posts %}
       {% assign post_tags = post.tags | join: ' ' | downcase %}
