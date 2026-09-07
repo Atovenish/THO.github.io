@@ -24,3 +24,6 @@ markdown: kramdown
 kramdown:
   input: GFM
   toc_levels: 1..6
+
+timezone: Asia/Ho_Chi_Minh
+future: true
