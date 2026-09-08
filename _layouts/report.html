@@ -162,8 +162,10 @@ layout: default
       <span class="info-val">██████</span>
     </div>
     <div class="info-box">
-      <span class="info-label">RECORD SEGMENT</span>
-      <span class="info-val">{{ page.record_segment | default: "A.A-000" }}</span>
+      <div class="segment-label">RECORD SEGMENT</div>
+      <div class="segment-value" style="color: var(--accent-tho); font-family: var(--font-mono);">
+        {{ page.segment_id | default: "UNKNOWN-000" }}
+      </div>
     </div>
   </div>
 
