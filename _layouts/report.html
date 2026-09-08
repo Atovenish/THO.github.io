@@ -5,7 +5,7 @@ layout: default
   .resonator-report {
     background: #040609 !important; 
     border: 1px solid rgba(92, 225, 230, 0.2);
-    border-left: 4px solid var(--accent-red);
+    border-left: 4px solid var(--accent-red, #ff3344);
     padding: 35px;
     font-family: var(--font-body);
     position: relative;
@@ -47,33 +47,37 @@ layout: default
     gap: 2px;
     background: rgba(255,255,255,0.1);
     border: 1px solid rgba(255,255,255,0.1);
-    margin-bottom: 25px;
+    margin-bottom: 35px;
   }
   .info-box {
     background: #0a0e14;
-    padding: 10px 15px;
+    padding: 15px 20px;
   }
-  .info-label {
+  .info-label, .segment-label, .recorder-label {
     display: block;
     font-family: var(--font-mono);
     font-size: 0.65em;
     color: var(--text-secondary);
     letter-spacing: 0.08em;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
   }
-  .info-val {
+  .info-val, .segment-value, .recorder-value {
     font-family: var(--font-mono);
     font-size: 0.9em;
     color: var(--accent-tho);
     font-weight: 600;
+    text-transform: uppercase;
   }
 
-  /* BỐ CỤC 2 CỘT: TEXT BÊN TRÁI, ẢNH BÊN PHẢI */
+  /* BỐ CỤC 2 CỘT: TEXT BÊN TRÁI, ẢNH BÊN PHẢI (PANEL 1) */
   .report-body-grid {
     display: flex;
-    gap: 30px;
+    gap: 35px;
     align-items: flex-start;
   }
+  
+  /* ĐỊNH DẠNG CHUNG CHO CHỮ (ÁP DỤNG CẢ PANEL 1 VÀ 2) */
   .report-text-content {
     flex: 1 1 auto;
     min-width: 0;
@@ -83,6 +87,7 @@ layout: default
     line-height: 1.8;
     margin-bottom: 18px;
     font-size: 0.95em;
+    text-align: justify;
   }
   .report-text-content h2, .report-text-content h3 {
     color: var(--accent-tho) !important;
@@ -90,6 +95,7 @@ layout: default
     border-bottom: 1px solid rgba(92,225,230,0.15);
     padding-bottom: 6px;
     margin-top: 1.5em;
+    text-transform: uppercase;
   }
   .report-text-content blockquote {
     background: rgba(92, 225, 230, 0.03);
@@ -99,10 +105,19 @@ layout: default
     padding: 12px 18px;
     margin: 20px 0;
   }
+  /* Fix ảnh hiển thị đẹp trong bài viết */
+  .report-text-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 25px auto;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 2px;
+  }
 
   /* KHUNG ẢNH CHÂN DUNG BÊN PHẢI */
   .report-portrait-box {
-    width: 260px;
+    width: 300px;
     flex-shrink: 0;
     border: 1px solid var(--accent-tho);
     background: #0a0e14;
@@ -113,67 +128,80 @@ layout: default
     width: 100%;
     display: block;
     filter: contrast(105%);
+    border-bottom: 1px solid var(--accent-tho);
   }
   .portrait-caption {
     font-family: var(--font-mono);
     font-size: 0.65em;
     color: var(--text-secondary);
     text-align: center;
-    margin-top: 8px;
+    margin-top: 10px;
     letter-spacing: 0.05em;
   }
 
-  /* BỘ THÔNG SỐ (STATS) DƯỚI CÙNG */
+  /* BỘ THÔNG SỐ (STATS) DƯỚI CÙNG PANEL 1 */
   .report-stats {
     display: flex;
     justify-content: flex-start;
     gap: 40px;
     border-top: 1px solid rgba(255,255,255,0.1);
-    padding-top: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 25px 0;
     margin-top: 35px;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
   }
-  .report-stat-block { display: flex; flex-direction: column; }
-  .report-stat-val { font-family: var(--font-display); font-size: 1.6em; font-weight: 800; line-height: 1; margin-bottom: 5px; }
-  .report-stat-label { font-family: var(--font-mono); font-size: 0.65em; color: var(--text-secondary); letter-spacing: 0.05em; }
+  .report-stat-block { display: flex; flex-direction: column; min-width: 150px; }
+  .report-stat-val { font-family: var(--font-display); font-size: 1.6em; font-weight: 800; line-height: 1; margin-bottom: 8px; text-transform: uppercase; }
+  .report-stat-label { font-family: var(--font-mono); font-size: 0.65em; color: var(--text-secondary); letter-spacing: 0.05em; text-transform: uppercase; }
+  
+  /* MÀU CHO CHỈ SỐ HUD */
+  .c-cyan { color: var(--accent-tho); }
+  .c-yellow { color: #facc15; }
+  .c-red { color: #ff3344; }
 
+  /* BỐ CỤC ĐIỆN THOẠI */
   @media (max-width: 900px) {
     .report-body-grid { flex-direction: column-reverse; }
-    .report-portrait-box { width: 100%; }
+    .report-portrait-box { width: 100%; max-width: 400px; margin: 0 auto; }
     .report-info-grid { grid-template-columns: 1fr; }
   }
 </style>
 
 <div class="resonator-report">
   
+  <!-- BAR & TITLE -->
   <div class="report-meta-bar">
     <span>// ARCHIVES: {{ page.report_type | default: "Forte Examination & Resonance Analysis" }}</span>
-    <span>SEGMENT: {{ page.record_segment | default: "A.A-001" }}</span>
+    <span>SEGMENT: {{ page.segment_id | default: "A.A-001" }}</span>
   </div>
-
   <h1 class="report-main-title">{{ page.title }}</h1>
 
+  <!-- INFO GRID -->
   <div class="report-info-grid">
     <div class="info-box">
       <span class="info-label">SUBJECT</span>
-      <span class="info-val">{{ page.subject | default: page.title }}</span>
+      <span class="info-val">{{ page.title | split: "//" | first | strip }} // ARCHIVE RECORD</span>
     </div>
     <div class="info-box">
-      <div class="recorder-label" style="font-size: 0.7em; color: var(--text-secondary); letter-spacing: 2px;">RECORDER</div>
-      <div class="recorder-value" style="color: var(--accent-tho); font-family: var(--font-mono); margin-top: 5px; font-weight: bold; text-transform: uppercase;">
-        {{ page.recorder | default: "██████" }}
-      </div>
+      <span class="recorder-label">RECORDER</span>
+      <span class="recorder-value">{{ page.recorder | default: "██████" }}</span>
     </div>
     <div class="info-box">
-      <div class="segment-label">RECORD SEGMENT</div>
-      <div class="segment-value" style="color: var(--accent-tho); font-family: var(--font-mono);">
-        {{ page.segment_id | default: "UNKNOWN-000" }}
-      </div>
+      <span class="segment-label">RECORD SEGMENT</span>
+      <span class="segment-value">{{ page.segment_id | default: "UNKNOWN-000" }}</span>
     </div>
   </div>
 
+  <!-- TÁCH NỘI DUNG RA LÀM 2 PANEL THÔNG QUA THẺ CẮT -->
+  {% assign content_parts = content | split: '<!-- split -->' %}
+
+  <!-- ===============================
+       PANEL 1: NỘI DUNG TRÁI - ẢNH PHẢI
+       =============================== -->
   <div class="report-body-grid">
     <div class="report-text-content">
-      {{ content }}
+      {{ content_parts[0] }}
     </div>
 
     {% if page.avatar %}
@@ -184,6 +212,9 @@ layout: default
     {% endif %}
   </div>
 
+  <!-- ===============================
+       BỘ HUD STATS Ở GIỮA
+       =============================== -->
   {% if page.stat1_val %}
   <div class="report-stats">
     <div class="report-stat-block">
@@ -198,6 +229,15 @@ layout: default
       <span class="report-stat-val c-red">{{ page.stat3_val }}</span>
       <span class="report-stat-label">{{ page.stat3_label }}</span>
     </div>
+  </div>
+  {% endif %}
+
+  <!-- ===============================
+       PANEL 2: MỞ RỘNG TRÀN 100%
+       =============================== -->
+  {% if content_parts[1] %}
+  <div class="report-text-content" style="width: 100%;">
+    {{ content_parts[1] }}
   </div>
   {% endif %}
 
