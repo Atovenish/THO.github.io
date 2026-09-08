@@ -158,8 +158,10 @@ layout: default
       <span class="info-val">{{ page.subject | default: page.title }}</span>
     </div>
     <div class="info-box">
-      <span class="info-label">RECORDER</span>
-      <span class="info-val">██████</span>
+      <div class="recorder-label" style="font-size: 0.7em; color: var(--text-secondary); letter-spacing: 2px;">RECORDER</div>
+      <div class="recorder-value" style="color: var(--accent-tho); font-family: var(--font-mono); margin-top: 5px; font-weight: bold; text-transform: uppercase;">
+        {{ page.recorder | default: "██████" }}
+      </div>
     </div>
     <div class="info-box">
       <div class="segment-label">RECORD SEGMENT</div>
