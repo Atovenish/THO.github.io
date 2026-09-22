@@ -1,0 +1,222 @@
+{
+  "main": {
+    "id": "bf54b6bac7545fd4",
+    "type": "split",
+    "children": [
+      {
+        "id": "0e6bd625c59a01b4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7d121ff48745c49a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "_posts/2026-09-22-Tacet Field.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-09-22-Tacet Field"
+            }
+          }
+        ],
+        "stacked": true
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b0653fa0432549a6",
+    "type": "split",
+    "children": [
+      {
+        "id": "a5e89ce453cd4ad5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "39e113e3a9ac33dc",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "399a79da9b91d0b9",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#Ebony",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "bfb7ccf9b6ae3935",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "0312027b194cac2a",
+    "type": "split",
+    "children": [
+      {
+        "id": "c976defbc71a4d36",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e4d30a766e0eedf9",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Wuthering Wave/Hé Civilization/Tethys System.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Tethys System"
+            }
+          },
+          {
+            "id": "92fef59662a732f3",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Daily/2024-10-20.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 2024-10-20"
+            }
+          },
+          {
+            "id": "cfaa8b88336dc962",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "5977f2601dc0b2f2",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Daily/2024-10-20.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 2024-10-20"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "callout-manager:Insert Callout": false,
+      "obsidian-git:Open Git source control": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "7d121ff48745c49a",
+  "lastOpenFiles": [
+    "_posts/2026-09-22-Remnant.md",
+    "_posts/2026-09-22-Tacet Field.md",
+    "_posts/2026-09-08-Res JR.md",
+    "_posts/2026-08-29-Res SHO.md",
+    "_posts/2026-08-29-Res ROV.md",
+    "_posts/2026-08-29-Res GOD.md",
+    "_posts/2026-08-29-another.md",
+    "_posts/2026-05-04-K626.md",
+    "THO.github.io/vietqr.png",
+    "wuwa-theory.md",
+    "vietqr.png",
+    "thumbnail.png",
+    "THO_thumb.jpg",
+    "search.json",
+    "search.html",
+    "resonator.md",
+    "README.md",
+    "personal.md",
+    "LICENSE",
+    "jekyll-theme-minimal.gemspec",
+    "index.md",
+    "HandsOn-2-2-LikelihoodFitting.ipynb",
+    "HandsOn-1-ROOTandPyROOT.ipynb",
+    "Gemfile",
+    "feedback.md",
+    "another-game.md",
+    "about.md",
+    "_config.yml",
+    "script/validate-html",
+    "script/bootstrap",
+    "docs/SUPPORT.md",
+    "docs/CONTRIBUTING.md",
+    "docs/CODE_OF_CONDUCT.md",
+    "assets/img/resonator/Jingran/JR-eye.png",
+    "assets/img/resonator/Jingran/Jingran.png",
+    "assets/img/resonator/Jingran/a.md",
+    "assets/img/resonator/Jingran/Cat god.png",
+    "assets/img/resonator/Jingran/Cat.png",
+    "assets/fonts/Noto-Sans-italic/Noto-Sans-italic.svg",
+    "assets/fonts/Noto-Sans-regular/Noto-Sans-regular.svg",
+    "assets/img/SOMNOIRE/a.md",
+    "assets/img/resonator/a.md",
+    "_posts/2026-09-01-Somnoire.md",
+    "_posts/2026-09-08-Endless.md",
+    "THO.github.io/wuwa-theory.md",
+    "THO.github.io/resonator.md",
+    "Somnoire.canvas"
+  ]
+}

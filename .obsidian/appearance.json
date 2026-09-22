@@ -1,0 +1,9 @@
+{
+  "cssTheme": "Everforest Enchanted",
+  "accentColor": "#bae3d7",
+  "theme": "obsidian",
+  "enabledCssSnippets": [
+    "image-background"
+  ],
+  "showViewHeader": false
+}
