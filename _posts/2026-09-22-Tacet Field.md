@@ -1,5 +1,5 @@
 ---
-layout: slide_theory
+layout: post
 title: "TACET FIELD // SOLARIS"
 report_type: "Environmental Threat & Resonance Analysis"
 segment_id: "T.F-001"
