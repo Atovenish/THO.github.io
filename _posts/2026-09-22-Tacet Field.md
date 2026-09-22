@@ -1,24 +1,18 @@
 ---
 layout: slide_theory
-title: TACET FIELD // SOLARIS
-report_type: Environmental Threat & Resonance Analysis
-avatar: |-
-  
-  https://res.cloudinary.com/yuyv2sdj/image/upload/v1790082854/image_2026-09-22_201414882.png
-segment_id: T.F-001
-recorder: THO // HUAXU ACADEMY
-tags:
-  - Archive_Record
-  - Tacet_Field
-  - Solaris
-categories:
-  - wuwa-theory
-stat1_val: ANOMALOUS
-stat1_label: WAVEWORN STATUS
-stat2_val: VARIABLE
-stat2_label: DORMANT CYCLE
-stat3_val: SEVERE
-stat3_label: OVERCLOCK RISK
+title: "TACET FIELD // SOLARIS"
+report_type: "Environmental Threat & Resonance Analysis"
+avatar: "https://res.cloudinary.com/yuyv2sdj/image/upload/q_auto,f_auto/v1790082854/image_2026-09-22_201414882.png"
+segment_id: "T.F-001"
+recorder: "THO // HUAXU ACADEMY"
+tags: [Archive_Record, Tacet_Field, Solaris]
+categories: [wuwa-theory]
+stat1_val: "ANOMALOUS"
+stat1_label: "WAVEWORN STATUS"
+stat2_val: "VARIABLE"
+stat2_label: "DORMANT CYCLE"
+stat3_val: "SEVERE"
+stat3_label: "OVERCLOCK RISK"
 ---
 
 > **[ ACCESSING CLASSIFIED DATABASE... ]**  
@@ -48,18 +42,23 @@ Thông thường, Tacet Field không sản sinh TDs một cách liên tục. Ch�
 ### // QUY TRÌNH THANH TẨY VÀ GIẢ THUYẾT KHÔNG GIAN
 
 Các Resonator có khả năng tương tác và kích hoạt Tacet Field ngay tại tâm của dấu ấn. Việc tiêu diệt thành công các bãi TDs bảo vệ sẽ giúp *thanh lọc tạm thời* vùng không gian này. Thông qua quá trình phân rã của TDs, Các Resonator thu hồi [Remnant Crystal]({% post_url 2026-09-22-Remnant %}){: style="color: #facc15; text-decoration: underline; text-underline-offset: 3px; font-weight: bold; text-shadow: 0 0 5px rgba(250, 204, 21, 0.5);" } từ tâm Tacet Mark – nguồn vật liệu nâng cấp thiết yếu có nguồn gốc từ chính các thực thể này.
+
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://res.cloudinary.com/yuyv2sdj/image/upload/v1790083689/abb02a4d-d98c-498a-9ef1-598a73192c0c.png" alt="Paradimensional Tacet Field" style="border: 1px solid var(--border-color); border-radius: 4px;">
+  <img src="https://res.cloudinary.com/yuyv2sdj/image/upload/q_auto,f_auto/v1790083689/abb02a4d-d98c-498a-9ef1-598a73192c0c.png" alt="Paradimensional Tacet Field" style="border: 1px solid var(--border-color); border-radius: 4px;">
   <p style="font-family: var(--font-mono); font-size: 0.85em; color: var(--text-secondary);">// LOG 01: Tacet Bloom chứa Tacet Crystal</p>
 </div>
+
 ### // REMARK
+
 > **[REMARK_v1]**  
 > Các nhà khoa học hàng đầu tin rằng, điểm kỳ dị tại tâm của dấu ấn Tacet Mark cùng với các cấu trúc *Dây cộng hưởng màu trắng (White Resonance Cord)* không chỉ đơn thuần là mỏ neo năng lượng. Chúng rất có thể là ranh giới dẫn dắt chúng ta tiến vào một chiều không gian dị thường khác. Các Tacet Field được ghi nhận tại khu vực Ragunna hiện đang là bằng chứng rõ nét nhất cho giả thuyết rạn nứt không gian này.
 
-> [**REMARK_v1**]
+> **[REMARK_v2]**
 > Các nhà khoa học đã khám phá rằng ở các khu của Rinascita (Ragunna và Septimont) xuất hiện các Tacet Field dị thường. Chúng là những Tacet Field mọc trồi từ dưới đất và cho phép di chuyển vào trong khu vực nền vàng (Thứ các nhà khoa học tin rằng đây là nơi không gian dị thường được nghiên cứu). Họ cho rằng các <strong style="color: #ff3344;">Tacet Field</strong> tồn tại ở những chiều không gian biệt lập (*Paradimensional TF*) chứa nặng các dạng năng lượng vàng từ <strong style="color: #ff3344;">Remnant</strong>. 
+
 <div style="text-align: center; margin: 20px 0;">
   <img src="https://res.cloudinary.com/yuyv2sdj/image/upload/q_auto,f_auto/v1790083411/a08f312c-2f40-4eea-b2d4-bcf89fc815ff.png" alt="Paradimensional Tacet Field" style="border: 1px solid var(--border-color); border-radius: 4px;">
   <p style="font-family: var(--font-mono); font-size: 0.85em; color: var(--text-secondary);">// LOG 02: Hình ảnh ghi nhận Tacet Field ở khu Pilgrim Sail, Ragunna</p>
 </div>
+
 > **[ OFFLINE // RECORD ENDS ]**
