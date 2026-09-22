@@ -47,7 +47,7 @@ Thông thường, Tacet Field không sản sinh TDs một cách liên tục. Ch�
 
 ### // QUY TRÌNH THANH TẨY VÀ GIẢ THUYẾT KHÔNG GIAN
 
-Các Resonator có khả năng tương tác và kích hoạt Tacet Field ngay tại tâm của dấu ấn. Việc tiêu diệt thành công các bãi TDs bảo vệ sẽ giúp *thanh lọc tạm thời* vùng không gian này. Thông qua quá trình phân rã của TDs, Các Resonator thu hồi [Remnant Crystal]({% post_url 2026-09-20-remnant-analysis %}){: style="color: #facc15; text-decoration: underline; text-underline-offset: 3px; font-weight: bold; text-shadow: 0 0 5px rgba(250, 204, 21, 0.5);" } từ tâm Tacet Mark – nguồn vật liệu nâng cấp thiết yếu có nguồn gốc từ chính các thực thể này.
+Các Resonator có khả năng tương tác và kích hoạt Tacet Field ngay tại tâm của dấu ấn. Việc tiêu diệt thành công các bãi TDs bảo vệ sẽ giúp *thanh lọc tạm thời* vùng không gian này. Thông qua quá trình phân rã của TDs, Các Resonator thu hồi [Remnant Crystal]({% post_url 2026-09-22-Remnant %}){: style="color: #facc15; text-decoration: underline; text-underline-offset: 3px; font-weight: bold; text-shadow: 0 0 5px rgba(250, 204, 21, 0.5);" } từ tâm Tacet Mark – nguồn vật liệu nâng cấp thiết yếu có nguồn gốc từ chính các thực thể này.
 <div style="text-align: center; margin: 20px 0;">
   <img src="https://res.cloudinary.com/yuyv2sdj/image/upload/v1790083689/abb02a4d-d98c-498a-9ef1-598a73192c0c.png" alt="Paradimensional Tacet Field" style="border: 1px solid var(--border-color); border-radius: 4px;">
   <p style="font-family: var(--font-mono); font-size: 0.85em; color: var(--text-secondary);">// LOG 01: Tacet Bloom chứa Tacet Crystal</p>
