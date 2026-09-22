@@ -1,7 +1,8 @@
 ---
-layout: post
+layout: report
 title: "TACET FIELD // SOLARIS"
 report_type: "Environmental Threat & Resonance Analysis"
+avatar: "https://res.cloudinary.com/yuyv2sdj/image/upload/q_auto,f_auto/v1790082854/image_2026-09-22_201414882.png"
 segment_id: "T.F-001"
 recorder: "THO // HUAXU ACADEMY"
 tags: [Archive_Record, Tacet_Field, Solaris]
@@ -43,7 +44,7 @@ Thông thường, Tacet Field không sản sinh TDs một cách liên tục. Ch�
 Các Resonator có khả năng tương tác và kích hoạt Tacet Field ngay tại tâm của dấu ấn. Việc tiêu diệt thành công các bãi TDs bảo vệ sẽ giúp *thanh lọc tạm thời* vùng không gian này. Thông qua quá trình phân rã của TDs, Các Resonator thu hồi [Remnant Crystal]({% post_url 2026-09-22-Remnant %}){: style="color: #facc15; text-decoration: underline; text-underline-offset: 3px; font-weight: bold; text-shadow: 0 0 5px rgba(250, 204, 21, 0.5);" } từ tâm Tacet Mark – nguồn vật liệu nâng cấp thiết yếu có nguồn gốc từ chính các thực thể này.
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://res.cloudinary.com/yuyv2sdj/image/upload/q_auto,f_auto/v1790083689/abb02a4d-d98c-498a-9ef1-598a73192c0c.png" alt="Paradimensional Tacet Field" style="border: 1px solid var(--border-color); border-radius: 4px;">
+  <img src="https://res.cloudinary.com/yuyv2sdj/image/upload/q_auto,f_auto/v1790083689/abb02a4d-d98c-498a-9ef1-598a73192c0c.png" alt="Tacet Bloom" style="border: 1px solid var(--border-color); border-radius: 4px;">
   <p style="font-family: var(--font-mono); font-size: 0.85em; color: var(--text-secondary);">// LOG 01: Tacet Bloom chứa Tacet Crystal</p>
 </div>
 
