@@ -17,8 +17,8 @@ title: "Resonator Archive"
     > DIRECTORY // RESONATOR ARCHIVE
   </h3>
 
-  <!-- CHỈ QUÉT BÀI VIẾT CÓ LAYOUT: REPORT -->
-  {% assign resonator_posts = site.posts | where: "layout", "report" %}
+  <!-- CHỈ QUÉT BÀI VIẾT THUỘC CATEGORY: RESONATOR-ARCHIVE -->
+  {% assign resonator_posts = site.posts | where_exp: "post", "post.categories contains 'resonator-archive'" %}
   {% assign raw_tags = "" %}
   
   {% for post in resonator_posts %}
@@ -52,7 +52,8 @@ title: "Resonator Archive"
 
       <a href="{{ post.url | relative_url }}" class="res-card" data-tags="{{ post_tags }}" style="text-decoration: none;">
         <div class="res-img-wrapper" style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); position: relative; overflow: hidden; aspect-ratio: 1/1;">
-          <img src="{{ post.avatar | relative_url | default: '/assets/img/default-avatar.png' }}" alt="{{ char_name }}" style="width: 100%; height: 100%; object-fit: cover; object-position: top; transition: all 0.3s ease; filter: grayscale(80%) contrast(1.2);">
+          <!-- Bỏ relative_url ở avatar để link Cloudinary hoạt động chính xác -->
+          <img src="{{ post.avatar | default: '/assets/img/default-avatar.png' }}" alt="{{ char_name }}" style="width: 100%; height: 100%; object-fit: cover; object-position: top; transition: all 0.3s ease; filter: grayscale(80%) contrast(1.2);">
           <div class="res-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-left: 2px solid transparent; transition: all 0.3s ease;"></div>
         </div>
         <div class="res-label" style="background: #000; border: 1px solid var(--border-color); border-top: none; padding: 8px 5px; text-align: center; color: #fff; font-family: var(--font-mono); font-size: 0.75em; text-transform: uppercase; letter-spacing: 1px;">
