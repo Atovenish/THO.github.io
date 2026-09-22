@@ -12,7 +12,7 @@ tags:
   - Tacet_Field
   - Solaris
 categories:
-  - lore-theory
+  - wuwa-theory
 stat1_val: ANOMALOUS
 stat1_label: WAVEWORN STATUS
 stat2_val: VARIABLE
