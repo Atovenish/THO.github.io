@@ -79,9 +79,9 @@ Dưới đây là đường dẫn liên quan về THO:
     <i class="fa-solid fa-chevron-right arrow-icon"></i>
   </a>
 
-  <a href="https://discord.com/invite/tang-luu-tru-tethys-chi-khu-tho-1226214503432323145" target="_blank" class="linktree-btn btn-dc">
+  <a href="https://discord.com/invite/tho-archive-iv" target="_blank" class="linktree-btn btn-dc">
     <i class="fa-brands fa-discord brand-icon"></i>
-    Tầng lưu trữ Tethys - THO
+    THO's Archive
     <i class="fa-solid fa-chevron-right arrow-icon"></i>
   </a>
 
@@ -91,9 +91,9 @@ Dưới đây là đường dẫn liên quan về THO:
     <i class="fa-solid fa-chevron-right arrow-icon"></i>
   </a>
   
-  <a href="https://www.facebook.com/TheHeresyOne" target="_blank" class="linktree-btn btn-fb">
+  <a href="https://www.facebook.com/TheHeterodoxOne?locale=vi_VN" target="_blank" class="linktree-btn btn-fb">
     <i class="fa-brands fa-facebook brand-icon"></i>
-    The Heresy One
+    The Heterodox One
     <i class="fa-solid fa-chevron-right arrow-icon"></i>
   </a>
   
