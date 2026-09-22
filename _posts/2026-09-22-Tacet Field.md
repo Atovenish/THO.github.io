@@ -2,7 +2,6 @@
 layout: slide_theory
 title: "TACET FIELD // SOLARIS"
 report_type: "Environmental Threat & Resonance Analysis"
-avatar: "https://res.cloudinary.com/yuyv2sdj/image/upload/q_auto,f_auto/v1790082854/image_2026-09-22_201414882.png"
 segment_id: "T.F-001"
 recorder: "THO // HUAXU ACADEMY"
 tags: [Archive_Record, Tacet_Field, Solaris]
