@@ -79,7 +79,7 @@ Dưới đây là đường dẫn liên quan về THO:
     <i class="fa-solid fa-chevron-right arrow-icon"></i>
   </a>
 
-  <a href="https://discord.com/invite/tho-archive-iv" target="_blank" class="linktree-btn btn-dc">
+  <a href="[https://discord.com/invite/tho-archive-iv](https://discord.com/invite/tho-s-archive-1226214503432323145)" target="_blank" class="linktree-btn btn-dc">
     <i class="fa-brands fa-discord brand-icon"></i>
     THO's Archive
     <i class="fa-solid fa-chevron-right arrow-icon"></i>
