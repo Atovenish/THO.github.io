@@ -17,18 +17,20 @@ title: "Resonator Archive"
     > DIRECTORY // RESONATOR ARCHIVE
   </h3>
 
-  <!-- CHỈ QUÉT BÀI VIẾT THUỘC CATEGORY: RESONATOR-ARCHIVE -->
-  {% assign resonator_posts = site.posts | where_exp: "post", "post.categories contains 'resonator-archive'" %}
+  <!-- BƯỚC 1: LẤY TOÀN BỘ BÀI REPORT -->
+  {% assign report_posts = site.posts | where: "layout", "report" %}
   {% assign raw_tags = "" %}
   
-  {% for post in resonator_posts %}
-    {% for tag in post.tags %}
-      {% assign tag_lower = tag | downcase %}
-      <!-- Loại bỏ tag hệ thống khỏi nút bấm -->
-      {% if tag_lower != "archive_record" and tag_lower != "resonator" %}
-        {% assign raw_tags = raw_tags | append: tag_lower | append: "," %}
-      {% endif %}
-    {% endfor %}
+  <!-- BƯỚC 2: TẠO NÚT BẤM (CHẶN BÀI WUWA-THEORY TRÀN VÀO) -->
+  {% for post in report_posts %}
+    {% unless post.categories contains "wuwa-theory" %}
+      {% for tag in post.tags %}
+        {% assign tag_lower = tag | downcase %}
+        {% if tag_lower != "archive_record" and tag_lower != "resonator" %}
+          {% assign raw_tags = raw_tags | append: tag_lower | append: "," %}
+        {% endif %}
+      {% endfor %}
+    {% endunless %}
   {% endfor %}
   
   {% assign unique_tags = raw_tags | split: "," | uniq | sort %}
@@ -46,20 +48,22 @@ title: "Resonator Archive"
   </div>
 
   <div class="resonator-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 15px;">
-    {% for post in resonator_posts %}
-      {% assign post_tags = post.tags | join: ' ' | downcase %}
-      {% assign char_name = post.title | split: " //" | first %}
+    <!-- BƯỚC 3: HIỂN THỊ THẺ NHÂN VẬT (CHẶN HIỂN THỊ WUWA-THEORY) -->
+    {% for post in report_posts %}
+      {% unless post.categories contains "wuwa-theory" %}
+        {% assign post_tags = post.tags | join: ' ' | downcase %}
+        {% assign char_name = post.title | split: " //" | first %}
 
-      <a href="{{ post.url | relative_url }}" class="res-card" data-tags="{{ post_tags }}" style="text-decoration: none;">
-        <div class="res-img-wrapper" style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); position: relative; overflow: hidden; aspect-ratio: 1/1;">
-          <!-- Bỏ relative_url ở avatar để link Cloudinary hoạt động chính xác -->
-          <img src="{{ post.avatar | default: '/assets/img/default-avatar.png' }}" alt="{{ char_name }}" style="width: 100%; height: 100%; object-fit: cover; object-position: top; transition: all 0.3s ease; filter: grayscale(80%) contrast(1.2);">
-          <div class="res-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-left: 2px solid transparent; transition: all 0.3s ease;"></div>
-        </div>
-        <div class="res-label" style="background: #000; border: 1px solid var(--border-color); border-top: none; padding: 8px 5px; text-align: center; color: #fff; font-family: var(--font-mono); font-size: 0.75em; text-transform: uppercase; letter-spacing: 1px;">
-          {{ char_name }}
-        </div>
-      </a>
+        <a href="{{ post.url | relative_url }}" class="res-card" data-tags="{{ post_tags }}" style="text-decoration: none;">
+          <div class="res-img-wrapper" style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); position: relative; overflow: hidden; aspect-ratio: 1/1;">
+            <img src="{{ post.avatar | default: '/assets/img/default-avatar.png' }}" alt="{{ char_name }}" style="width: 100%; height: 100%; object-fit: cover; object-position: top; transition: all 0.3s ease; filter: grayscale(80%) contrast(1.2);">
+            <div class="res-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-left: 2px solid transparent; transition: all 0.3s ease;"></div>
+          </div>
+          <div class="res-label" style="background: #000; border: 1px solid var(--border-color); border-top: none; padding: 8px 5px; text-align: center; color: #fff; font-family: var(--font-mono); font-size: 0.75em; text-transform: uppercase; letter-spacing: 1px;">
+            {{ char_name }}
+          </div>
+        </a>
+      {% endunless %}
     {% endfor %}
   </div>
 </div>
