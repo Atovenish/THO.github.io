@@ -2,81 +2,37 @@
 layout: default
 title: "Wuthering Waves Theory"
 ---
+<style>
+  .sector-card { display: block; background: rgba(4, 6, 9, 0.8); border: 1px solid rgba(92, 225, 230, 0.2); border-left: 4px solid var(--accent-tho); padding: 25px; margin-bottom: 20px; text-decoration: none; transition: all 0.3s ease; border-radius: 2px; }
+  .sector-card:hover { background: rgba(92, 225, 230, 0.05); border-color: var(--accent-tho); box-shadow: 0 0 15px rgba(92, 225, 230, 0.2); transform: translateX(5px); }
+  
+  .sector-card.s2 { border-left-color: #ff3344; border-color: rgba(255, 51, 68, 0.2); }
+  .sector-card.s2:hover { background: rgba(255, 51, 68, 0.05); border-color: #ff3344; box-shadow: 0 0 15px rgba(255, 51, 68, 0.2); }
+</style>
 
-## // 03. WUTHERING WAVE THEORY
-> *"Phân tích thế giới quan Solaris-3, giải mã Tacet Discords, Resonator Fortes và hệ thống vũ trụ học."*
+<h2 style="color: #fff; font-family: var(--font-display); text-transform: uppercase; border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
+  // 03. WUTHERING WAVE THEORY
+</h2>
+<blockquote style="border-left: 3px solid var(--accent-tho); padding-left: 15px; color: var(--text-secondary); font-style: italic; margin-bottom: 35px; background: rgba(255,255,255,0.02); padding: 15px;">
+  "Phân tích thế giới quan Solaris-3, giải mã Tacet Discords, Resonator Fortes và hệ thống vũ trụ học."
+</blockquote>
 
-{% assign wuwa_posts = site.posts | where_exp: "item", "item.categories contains 'wuwa-theory'" %}
+<!-- PANEL 1 BẤM ĐỂ CHUYỂN TRANG -->
+<a href="{{ '/sector-01/' | relative_url }}" class="sector-card">
+  <h3 style="color: var(--accent-tho); font-family: var(--font-mono); margin: 0 0 10px 0; font-size: 1.2em; letter-spacing: 1px;">
+    > SECTOR 01 // WORLD COSMOLOGY & LORE
+  </h3>
+  <p style="color: var(--text-secondary); margin: 0; font-size: 0.9em; line-height: 1.6;">
+    Truy cập kho dữ liệu về thế giới quan, các thực thể Endless, Somnoire và các giả thuyết vũ trụ học.
+  </p>
+</a>
 
-<div class="archive-list" style="margin-top: 25px;">
-
-  <!-- ==========================================
-       SECTOR 01 // WORLD COSMOLOGY & LORE 
-       ========================================== -->
-  <div class="sector-block" style="margin-bottom: 40px;">
-    <h3 style="color: var(--accent-tho); font-family: var(--font-mono); letter-spacing: 1px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 20px;">
-      > SECTOR 01 // WORLD COSMOLOGY & LORE
-    </h3>
-    
-    {% assign sector1_count = 0 %}
-    {% for post in wuwa_posts %}
-      <!-- Điều kiện: Phải là post/slide VÀ KHÔNG CÓ tag archive_record -->
-      {% if post.layout == 'post' or post.layout == 'slide_theory' %}
-        {% unless post.tags contains 'archive_record' %}
-          {% assign sector1_count = sector1_count | plus: 1 %}
-          <div style="padding: 14px 16px; margin-bottom: 12px; background: rgba(255,255,255,0.02); border-left: 2px solid var(--accent-tho); border-top: 1px solid var(--border-color); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); transition: all 0.3s ease;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <span style="font-family: var(--font-mono); font-size: 0.78em; color: var(--accent-tho);">LOG_{{ post.date | date: "%Y%m%d" }} // {{ post.date | date: "%d/%m/%Y" }}</span>
-              <span style="font-family: var(--font-mono); font-size: 0.78em; color: #facc15; font-weight: bold; text-shadow: 0 0 5px rgba(250, 204, 21, 0.4);">// LORE_THEORY</span>
-            </div>
-            <h3 style="margin: 0 0 6px 0; font-size: 1.1em; text-transform: uppercase;">
-              <a href="{{ post.url | relative_url }}" style="color: #ffffff; text-decoration: none;">{{ post.title }}</a>
-            </h3>
-            {% if post.description %}
-              <p style="font-size: 0.85em; color: var(--text-secondary); margin: 0;">{{ post.description }}</p>
-            {% endif %}
-          </div>
-        {% endunless %}
-      {% endif %}
-    {% endfor %}
-    
-    {% if sector1_count == 0 %}
-      <p style="font-family: var(--font-mono); font-size: 0.85em; color: var(--text-secondary);">[NO LOGS REGISTERED IN SECTOR 01]</p>
-    {% endif %}
-  </div>
-
-  <!-- ==========================================
-       SECTOR 02 // ARCHIVE RECORDS (NPCs, Factions, Locations)
-       ========================================== -->
-  <div class="sector-block">
-    <h3 style="color: #ff3344; font-family: var(--font-mono); letter-spacing: 1px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 20px;">
-      > SECTOR 02 // ARCHIVE RECORDS
-    </h3>
-
-    {% assign sector2_count = 0 %}
-    {% for post in wuwa_posts %}
-      <!-- Điều kiện: Phải là post/slide VÀ CÓ CHỨA tag archive_record -->
-      {% if post.layout == 'post' or post.layout == 'slide_theory' %}
-        {% if post.tags contains 'archive_record' %}
-          {% assign sector2_count = sector2_count | plus: 1 %}
-          <div style="padding: 14px 16px; margin-bottom: 12px; background: rgba(255,255,255,0.02); border-left: 2px solid #ff3344; border-top: 1px solid var(--border-color); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); transition: all 0.3s ease;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <span style="font-family: var(--font-mono); font-size: 0.78em; color: var(--text-secondary);">LOG_{{ post.date | date: "%Y%m%d" }} // {{ post.date | date: "%d/%m/%Y" }}</span>
-              <span style="font-family: var(--font-mono); font-size: 0.78em; color: #ff3344; font-weight: bold; text-shadow: 0 0 5px rgba(255, 51, 68, 0.4);">// ARCHIVE RECORD</span>
-            </div>
-            <h3 style="margin: 0 0 6px 0; font-size: 1.1em; text-transform: uppercase;">
-              <a href="{{ post.url | relative_url }}" style="color: #ffffff; text-decoration: none;">{{ post.title }}</a>
-            </h3>
-            {% if post.description %}
-              <p style="font-size: 0.85em; color: var(--text-secondary); margin: 0;">{{ post.description }}</p>
-            {% endif %}
-          </div>
-        {% endif %}
-      {% endif %}
-    {% endfor %}
-
-    {% if sector2_count == 0 %}
-      <p style="font-family: var(--font-mono); font-size: 0.85em; color: var(--text-secondary);">[NO LOGS REGISTERED IN SECTOR 02]</p>
-    {% endif %}
-  </div>
-</div>
+<!-- PANEL 2 BẤM ĐỂ CHUYỂN TRANG -->
+<a href="{{ '/sector-02/' | relative_url }}" class="sector-card s2">
+  <h3 style="color: #ff3344; font-family: var(--font-mono); margin: 0 0 10px 0; font-size: 1.2em; letter-spacing: 1px;">
+    > SECTOR 02 // ARCHIVE RECORDS
+  </h3>
+  <p style="color: var(--text-secondary); margin: 0; font-size: 0.9em; line-height: 1.6;">
+    Hồ sơ tuyệt mật về các Tacet Field, Dị thể, Thế lực và các báo cáo phân tích hiện tượng Sóng mòn.
+  </p>
+</a>
