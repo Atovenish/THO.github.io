@@ -206,7 +206,8 @@ layout: default
 
     {% if page.avatar %}
     <div class="report-portrait-box">
-      <img src="{{ page.avatar | relative_url }}" alt="Resonator Portrait">
+      <!-- Đã gỡ bỏ relative_url tại đây -->
+      <img src="{{ page.avatar }}" alt="Resonator Portrait">
       <div class="portrait-caption">VISUAL LOG // SUBJECT RECORD</div>
     </div>
     {% endif %}
