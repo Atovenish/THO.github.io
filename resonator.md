@@ -17,11 +17,11 @@ title: "Resonator Archive"
     > DIRECTORY // RESONATOR ARCHIVE
   </h3>
 
-  <!-- BƯỚC 1: LẤY TOÀN BỘ BÀI REPORT -->
+  <!-- BƯỚC 1: LẤY MỌI BÀI VIẾT LÀ REPORT -->
   {% assign report_posts = site.posts | where: "layout", "report" %}
   {% assign raw_tags = "" %}
   
-  <!-- BƯỚC 2: TẠO NÚT BẤM (CHẶN BÀI WUWA-THEORY TRÀN VÀO) -->
+  <!-- BƯỚC 2: QUÉT TAG TẠO NÚT (DÙNG "UNLESS" ĐỂ CHẶN BÀI WUWA-THEORY) -->
   {% for post in report_posts %}
     {% unless post.categories contains "wuwa-theory" %}
       {% for tag in post.tags %}
@@ -48,7 +48,8 @@ title: "Resonator Archive"
   </div>
 
   <div class="resonator-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 15px;">
-    <!-- BƯỚC 3: HIỂN THỊ THẺ NHÂN VẬT (CHẶN HIỂN THỊ WUWA-THEORY) -->
+    
+    <!-- BƯỚC 3: HIỂN THỊ CARD NHÂN VẬT (DÙNG "UNLESS" ĐỂ CHẶN BÀI WUWA-THEORY TRÀN XUỐNG) -->
     {% for post in report_posts %}
       {% unless post.categories contains "wuwa-theory" %}
         {% assign post_tags = post.tags | join: ' ' | downcase %}
@@ -56,6 +57,7 @@ title: "Resonator Archive"
 
         <a href="{{ post.url | relative_url }}" class="res-card" data-tags="{{ post_tags }}" style="text-decoration: none;">
           <div class="res-img-wrapper" style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); position: relative; overflow: hidden; aspect-ratio: 1/1;">
+            <!-- Link ảnh đã an toàn cho Cloudinary -->
             <img src="{{ post.avatar | default: '/assets/img/default-avatar.png' }}" alt="{{ char_name }}" style="width: 100%; height: 100%; object-fit: cover; object-position: top; transition: all 0.3s ease; filter: grayscale(80%) contrast(1.2);">
             <div class="res-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-left: 2px solid transparent; transition: all 0.3s ease;"></div>
           </div>
@@ -65,6 +67,7 @@ title: "Resonator Archive"
         </a>
       {% endunless %}
     {% endfor %}
+    
   </div>
 </div>
 
