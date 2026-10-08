@@ -35,7 +35,7 @@ title: "THO's PROTOCOLS"
       > TETHYS SCHOLAR EXAM
     </h3>
     <p style="font-size: 0.9em; color: var(--text-secondary); margin-bottom: 25px; line-height: 1.6; padding: 0 15px;">
-      Bài kiểm tra đánh giá năng lực Đại Tri Giả Tethys. Hoàn thành bài thi để cấp quyền truy cập dữ liệu tuyệt mật.
+      Bài kiểm tra đánh giá năng lực Đại Tri Giả Tethys. Hoàn thành bài thi để cấp quyền truy cập.
     </p>
 
     <!-- Nút dẫn tới trang Full Page Exam -->
