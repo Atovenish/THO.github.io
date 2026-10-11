@@ -17,7 +17,7 @@ title: "THO's PROTOCOLS"
       > THO FEEDBACK
     </h3>
     <p style="font-size: 0.9em; color: var(--text-secondary); margin-bottom: 25px; line-height: 1.6; padding: 0 15px;">
-      Kênh gửi về các góp ý và nhận xét đến THO. Cảm ơn Tri Giả đã quan tâm, chúc Tri Giả có Foibem.
+      Kênh gửi về các góp ý và nhận xét hoặc QnA đến THO. Cảm ơn Tri Giả đã quan tâm, chúc Tri Giả có Foibem.
     </p>
     
     <!-- Nút mở Pop-up Feedback -->
