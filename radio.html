@@ -17,7 +17,6 @@ permalink: /radio/
       height: 100vh; width: 100vw; padding: 10px; box-sizing: border-box;
     }
 
-    /* Khung chứa chính tối ưu hóa không gian */
     .radio-container { 
       display: flex; flex-direction: column; justify-content: space-between;
       width: 100%; max-width: 400px; height: 145px;
@@ -26,7 +25,7 @@ permalink: /radio/
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
     }
     
-    /* 1. HEADER: Tiêu đề & Sóng âm */
+    /* 1. HEADER */
     .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed rgba(92, 225, 230, 0.3); padding-bottom: 6px; }
     .title-box { display: flex; flex-direction: column; overflow: hidden; padding-right: 10px; }
     .title { font-size: 13px; font-weight: bold; color: #fff; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -41,7 +40,7 @@ permalink: /radio/
     .spectrum-box.playing .bar:nth-child(5) { animation: bounce 0.8s infinite alternate 0.15s; }
     @keyframes bounce { 0% { height: 2px; } 100% { height: 15px; } }
 
-    /* 2. MIDDLE CONTROLS: Nút điều khiển đặt ở giữa */
+    /* 2. CONTROLS ROW */
     .controls-row { display: flex; justify-content: center; align-items: center; gap: 15px; }
     
     .skip-btn { background: none; border: 1px solid rgba(92, 225, 230, 0.3); color: #5ce1e6; width: 26px; height: 26px; border-radius: 4px; font-size: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; padding: 0; }
@@ -55,7 +54,7 @@ permalink: /radio/
     .play-btn.playing .icon-pause { display: block; margin-left: 0; }
     .play-btn:active { transform: scale(0.9); }
 
-    /* 3. PROGRESS ROW: Thanh tiến trình kéo dài tuyệt đối */
+    /* 3. PROGRESS ROW */
     .progress-container { display: flex; flex-direction: column; gap: 2px; width: 100%; }
     .time-labels { display: flex; justify-content: space-between; font-size: 9px; color: #888; }
     
@@ -69,7 +68,6 @@ permalink: /radio/
       background: #5ce1e6; cursor: pointer; box-shadow: 0 0 6px rgba(92, 225, 230, 0.8);
     }
 
-    /* Ẩn Iframe Youtube */
     #hidden-player { position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
   </style>
 </head>
@@ -78,7 +76,6 @@ permalink: /radio/
   <div class="radio-wrapper">
     <div class="radio-container">
       
-      <!-- HEADER -->
       <div class="header">
         <div class="title-box">
           <div class="title">THO Transmission</div>
@@ -89,7 +86,6 @@ permalink: /radio/
         </div>
       </div>
 
-      <!-- CONTROLS ROW -->
       <div class="controls-row">
         <button id="prev-btn" class="skip-btn" title="Bài trước">⏮</button>
         <button id="play-btn" class="play-btn" title="Play/Pause">
@@ -99,7 +95,6 @@ permalink: /radio/
         <button id="next-btn" class="skip-btn" title="Bài tiếp theo">⏭</button>
       </div>
 
-      <!-- PROGRESS ROW -->
       <div class="progress-container">
         <div class="time-labels">
           <span id="current-time">0:00</span>
@@ -113,7 +108,6 @@ permalink: /radio/
 
   <div id="hidden-player"></div>
 
-  <!-- SCRIPT API -->
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
     var ytPlayer, progressInterval;
@@ -131,8 +125,19 @@ permalink: /radio/
     }
 
     function updateSliderColor() {
-      var pct = (seekSlider.value / seekSlider.max) * 100;
+      var pct = seekSlider.max > 0 ? (seekSlider.value / seekSlider.max) * 100 : 0;
       seekSlider.style.background = 'linear-gradient(to right, #5ce1e6 ' + pct + '%, #333 ' + pct + '%)';
+    }
+
+    // Hàm cập nhật lại độ dài tối đa của bài hát hiện tại
+    function updateDuration() {
+      if (ytPlayer && typeof ytPlayer.getDuration === 'function') {
+        var duration = ytPlayer.getDuration();
+        if (duration && !isNaN(duration) && duration > 0) {
+          seekSlider.max = duration;
+          totalTimeDisplay.innerText = formatTime(duration);
+        }
+      }
     }
 
     function onYouTubeIframeAPIReady() {
@@ -147,28 +152,25 @@ permalink: /radio/
         },
         events: {
           'onReady': function() {
-            var duration = ytPlayer.getDuration();
-            seekSlider.max = duration;
-            totalTimeDisplay.innerText = formatTime(duration);
+            updateDuration();
             ytPlayer.playVideo();
           },
           'onStateChange': function(e) {
+            // Khi trạng thái đổi (bao gồm cả lúc chuyển sang bài mới trong playlist)
+            updateDuration();
+
             if (e.data == YT.PlayerState.PLAYING) {
               isPlaying = true;
               playBtn.classList.add('playing');
               spectrum.classList.add('playing');
+              
               progressInterval = setInterval(function() {
+                updateDuration(); // Kiểm tra liên tục để ép sát thời lượng chuẩn của bài mới
                 if (!isDragging && ytPlayer && ytPlayer.getCurrentTime) {
                   var current = ytPlayer.getCurrentTime();
                   seekSlider.value = current;
                   currentTimeDisplay.innerText = formatTime(current);
                   updateSliderColor();
-                  
-                  var duration = ytPlayer.getDuration();
-                  if (seekSlider.max != duration) {
-                    seekSlider.max = duration;
-                    totalTimeDisplay.innerText = formatTime(duration);
-                  }
                 }
               }, 1000);
             } else {
@@ -189,11 +191,17 @@ permalink: /radio/
     });
 
     document.getElementById('next-btn').addEventListener('click', function() {
-      if (ytPlayer && typeof ytPlayer.nextVideo === 'function') ytPlayer.nextVideo();
+      if (ytPlayer && typeof ytPlayer.nextVideo === 'function') {
+        ytPlayer.nextVideo();
+        setTimeout(updateDuration, 1500); // Đợi 1.5s sau khi lệnh next chạy để cập nhật chuẩn thời lượng
+      }
     });
 
     document.getElementById('prev-btn').addEventListener('click', function() {
-      if (ytPlayer && typeof ytPlayer.previousVideo === 'function') ytPlayer.previousVideo();
+      if (ytPlayer && typeof ytPlayer.previousVideo === 'function') {
+        ytPlayer.previousVideo();
+        setTimeout(updateDuration, 1500); // Đợi 1.5s để cập nhật chuẩn thời lượng bài trước
+      }
     });
 
     seekSlider.addEventListener('input', function() {
