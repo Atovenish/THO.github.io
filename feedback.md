@@ -1,68 +1,50 @@
 ---
-layout: null
-permalink: /tethys-exam/
+layout: default
+title: "THO's PROTOCOLS"
 ---
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>[ DIRECTORY // TETHYS ] - BÀI KIỂM TRA ĐẠI TRI GIẢ</title>
-    <script async src="https://tally.so/widgets/embed.js"></script>
-    <style type="text/css">
-      html, body { margin: 0; height: 100%; overflow: hidden; background: #040609; }
-      
-      /* Lớp nền: Form Tally full màn hình */
-      .tally-iframe { position: absolute; top: 0; right: 0; bottom: 0; left: 0; border: 0; z-index: 1; width: 100%; height: 100%; }
-      
-      /* Lớp nổi: Bảng điều khiển nhạc phong cách Terminal */
-      .terminal-audio-widget {
-        position: fixed;
-        bottom: 25px;
-        left: 25px;
-        z-index: 9999; /* Luôn nổi trên cùng để không bị form che mất */
-        background: rgba(4, 6, 9, 0.9);
-        border: 1px solid rgba(92, 225, 230, 0.3);
-        border-left: 3px solid var(--accent-tho, #5ce1e6);
-        padding: 10px;
-        border-radius: 2px;
-        box-shadow: 0 0 20px rgba(92, 225, 230, 0.15);
-        transition: all 0.3s ease;
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-      }
-      
-      .terminal-audio-widget:hover {
-        border-color: var(--accent-tho, #5ce1e6);
-        box-shadow: 0 0 25px rgba(92, 225, 230, 0.3);
-      }
 
-      .audio-label {
-        font-family: monospace;
-        font-size: 11px;
-        color: #5ce1e6;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
+## // 06. TRANSMISSION PROTOCOLS
+> *"Kênh giao tiếp và hệ thống đánh giá năng lực của The Hideous One."*
 
-      /* Kích thước vừa vặn cho thanh điều khiển Youtube */
-      .youtube-player {
-        width: 250px;
-        height: 60px; 
-      }
-    </style>
-  </head>
-  <body>
+<!-- KHUNG LƯỚI CHIA 2 CỘT -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; margin-bottom: 40px;">
+
+  <!-- ==========================================
+       Ô SỐ 1: FEEDBACK BÌNH THƯỜNG (POP-UP)
+       ========================================== -->
+  <div style="text-align: center; padding: 40px 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-left: 3px solid #ff3344; box-shadow: inset 2px 0 10px rgba(255, 51, 68, 0.05);">
+    <h3 style="color: #ff3344; font-family: var(--font-mono); font-size: 1.2em; text-transform: uppercase; margin-top: 0;">
+      > THO FEEDBACK
+    </h3>
+    <p style="font-size: 0.9em; color: var(--text-secondary); margin-bottom: 25px; line-height: 1.6; padding: 0 15px;">
+      Kênh gửi về các góp ý và nhận xét hoặc QnA đến THO. Cảm ơn Tri Giả đã quan tâm, chúc Tri Giả có Foibem.
+    </p>
     
-    <!-- KHU VỰC 1: BÀI THI TALLY -->
-    <iframe class="tally-iframe" data-tally-src="https://tally.so/r/1A1arO" frameborder="0" marginheight="0" marginwidth="0" title="[ DIRECTORY // TETHYS ] - BÀI KIỂM TRA ĐẠI TRI GIẢ"></iframe>
+    <!-- Nút mở Pop-up Feedback -->
+    <button data-tally-open="2EG0Qg" data-tally-emoji-text="💬" data-tally-emoji-animation="wave" style="font-family: var(--font-mono); font-size: 0.9em; color: #ffffff; background: #ff3344; border: none; padding: 12px 24px; cursor: pointer; letter-spacing: 1px; box-shadow: 0 0 15px rgba(255, 51, 68, 0.4); transition: all 0.2s ease;">
+      // LAUNCH FEEDBACK
+    </button>
+  </div>
 
-    <!-- KHU VỰC 2: TRÌNH PHÁT NHẠC NỔI -->
-    <div class="terminal-audio-widget">
-      <span class="audio-label">> TETHYS_OST_TRANSMISSION</span>
-      <!-- BẠN HÃY THAY MÃ VIDEO YOUTUBE CỦA BẠN VÀO CHỖ NÀY -->
-      <iframe class="youtube-player" src="https://www.youtube.com/embed/MÃ_VIDEO_CỦA_BẠN?controls=1&fs=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media"></iframe>
-    </div>
 
-  </body>
-</html>
+  <!-- ==========================================
+       Ô SỐ 2: BÀI KIỂM TRA ĐẠI TRI GIẢ (FULL PAGE)
+       ========================================== -->
+  <div style="text-align: center; padding: 40px 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-left: 3px solid var(--accent-tho); box-shadow: inset 2px 0 10px rgba(92, 225, 230, 0.05);">
+    <h3 style="color: var(--accent-tho); font-family: var(--font-mono); font-size: 1.2em; text-transform: uppercase; margin-top: 0;">
+      > TETHYS SCHOLAR EXAM
+    </h3>
+    <p style="font-size: 0.9em; color: var(--text-secondary); margin-bottom: 25px; line-height: 1.6; padding: 0 15px;">
+      Bài kiểm tra đánh giá năng lực Đại Tri Giả Tethys. Hoàn thành bài thi để cấp quyền truy cập.
+    </p>
+
+    <!-- Nút dẫn tới trang Full Page Exam -->
+    <a href="{{ '/tethys-exam/' | relative_url }}" target="_blank" style="display: inline-block; font-family: var(--font-mono); font-size: 0.9em; color: #040609; font-weight: bold; background: var(--accent-tho); border: none; padding: 12px 24px; cursor: pointer; letter-spacing: 1px; text-decoration: none; box-shadow: 0 0 15px rgba(92, 225, 230, 0.4); transition: all 0.2s ease;">
+      // INITIATE EXAM
+    </a>
+  </div>
+
+</div>
+
+<!-- SCRIPT KÍCH HOẠT TALLY POP-UP -->
+<script async src="https://tally.so/widgets/embed.js"></script>
