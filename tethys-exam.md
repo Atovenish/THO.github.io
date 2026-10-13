@@ -44,10 +44,12 @@ permalink: /tethys-exam/
         letter-spacing: 1px;
       }
 
-      /* Kích thước video (giấu đi, chỉ hiện phần control bar) */
+    /* Tăng chiều cao lên 110px để UI YouTube hiển thị đầy đủ nút Play */
       .youtube-player {
-        width: 250px;
-        height: 60px; 
+        width: 260px;
+        height: 110px; 
+        border-radius: 4px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.5);
       }
     </style>
   </head>
@@ -58,7 +60,7 @@ permalink: /tethys-exam/
     <!-- Audio Widget - Thay thế MÃ_VIDEO_CỦA_BẠN -->
     <div class="terminal-audio-widget">
       <span class="audio-label">> TETHYS_OST_TRANSMISSION</span>
-      <iframe class="youtube-player" src="https://www.youtube.com/embed/E3aKsgr1mvk?controls=1&fs=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media"></iframe>
+      <iframe class="youtube-player" src="https://www.youtube.com/embed/E3aKsgr1mvk?controls=1&fs=0&modestbranding=1&rel=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>
     </div>
   </body>
 </html>
