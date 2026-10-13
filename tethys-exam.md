@@ -1,6 +1,6 @@
 ---
 layout: null
-title: "[ DIRECTORY // TETHYS ] - LORE ANALYSIS EXAMINATION"
+title: "[ DIRECTORY // TETHYS ] - BÀI KIỂM TRA ĐẠI TRI GIẢ"
 permalink: /tethys-exam/
 ---
 <!DOCTYPE html>
@@ -17,7 +17,7 @@ permalink: /tethys-exam/
       /* Lớp nền: Form Tally full màn hình */
       .tally-iframe { position: absolute; top: 0; right: 0; bottom: 65px; left: 0; border: 0; z-index: 1; width: 100%; height: calc(100% - 65px); }
       
-      /* Thanh điều khiển nhạc bám đáy màn hình (Mobile Friendly) */
+      /* Thanh điều khiển nhạc bám đáy màn hình */
       .custom-audio-bar {
         position: fixed;
         bottom: 0;
@@ -34,17 +34,28 @@ permalink: /tethys-exam/
         box-sizing: border-box;
       }
 
-      /* Ảnh Thumbnail giả lập */
-      .track-thumb {
+      /* =========================================
+         ẢNH THUMBNAIL CÓ CHỨA LINK YOUTUBE 
+         ========================================= */
+      .track-thumb-link {
+        display: inline-block;
         width: 45px;
         height: 45px;
-        background-color: #111;
-        background-image: url('https://res.cloudinary.com/tho/image/upload/v1234567/tethys_logo.jpg'); /* Đổi link ảnh thumbnail nếu muốn */
-        background-size: cover;
-        background-position: center;
+        margin-right: 15px;
         border-radius: 4px;
         border: 1px solid var(--accent-tho, #5ce1e6);
-        margin-right: 15px;
+        background-color: #111;
+        /* Gọi ảnh THO logo từ hệ thống file của Jekyll */
+        background-image: url('{{ "/assets/img/THO_logo.png" | relative_url }}'); 
+        background-size: cover;
+        background-position: center;
+        cursor: pointer;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+      }
+
+      .track-thumb-link:hover {
+        opacity: 0.8;
+        transform: scale(1.05);
       }
 
       /* Thông tin bài nhạc */
@@ -73,7 +84,9 @@ permalink: /tethys-exam/
         letter-spacing: 1px;
       }
 
-      /* Nút Play/Pause */
+      /* =========================================
+         NÚT PLAY/PAUSE (ĐÃ SỬA CĂN GIỮA) 
+         ========================================= */
       .play-btn {
         background: var(--accent-tho, #5ce1e6);
         color: #040609;
@@ -81,18 +94,35 @@ permalink: /tethys-exam/
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        font-size: 18px;
+        font-size: 16px; /* Giảm font nhẹ để icon nằm gọn gàng hơn */
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
         transition: transform 0.1s ease, box-shadow 0.2s ease;
         margin-left: 15px;
-        padding-left: 4px; /* Căn giữa icon play */
+        /* Reset toàn bộ padding để Flexbox tự ép icon vào tâm */
+        padding: 0; 
       }
 
-      .play-btn.playing {
-        padding-left: 0; /* Trả lại tâm cho icon pause */
+      /* Đặc trị cho icon Play (hình tam giác) thường hay bị lệch quang học về bên trái */
+      .play-btn .icon-play {
+        display: inline-block;
+        margin-left: 3px; 
+      }
+
+      .play-btn .icon-pause {
+        display: none;
+      }
+
+      /* Khi đang phát (Playing State) */
+      .play-btn.playing .icon-play {
+        display: none;
+      }
+
+      .play-btn.playing .icon-pause {
+        display: inline-block;
+        margin-left: 0; /* Icon pause (2 gạch) thường tự đối xứng */
       }
 
       .play-btn:active {
@@ -105,17 +135,26 @@ permalink: /tethys-exam/
   </head>
   <body>
     
-    <!-- BÀI THI TALLY (Trừ đi 65px chiều cao của thanh nhạc ở dưới cùng) -->
+    <!-- BÀI THI TALLY -->
     <iframe class="tally-iframe" data-tally-src="https://tally.so/r/1A1arO" frameborder="0" marginheight="0" marginwidth="0" title="{{ page.title }}"></iframe>
 
     <!-- THANH PHÁT NHẠC CUSTOM -->
     <div class="custom-audio-bar">
-      <div class="track-thumb"></div>
+      
+      <!-- Ảnh Thumbnail làm Link -->
+      <a href="https://www.youtube.com/watch?v=E3aKsgr1mvk" target="_blank" class="track-thumb-link" title="Mở bản gốc trên Youtube"></a>
+      
       <div class="track-info">
         <div class="track-title">1+ Hour Wuthering Waves OST Mix</div>
         <div class="track-artist">> TETHYS_TRANSMISSION</div>
       </div>
-      <button id="play-pause-btn" class="play-btn">▶</button>
+      
+      <!-- Nút Play với span bọc icon để chỉnh sửa quang học dễ hơn -->
+      <button id="play-pause-btn" class="play-btn">
+        <span class="icon-play">▶</span>
+        <span class="icon-pause">⏸</span>
+      </button>
+
     </div>
 
     <!-- Div rỗng để Youtube API nhúng video ẩn vào -->
@@ -128,16 +167,15 @@ permalink: /tethys-exam/
       var playBtn = document.getElementById('play-pause-btn');
       var isPlaying = false;
 
-      // Hàm này tự động chạy khi thư viện Youtube API tải xong
       function onYouTubeIframeAPIReady() {
         ytPlayer = new YT.Player('hidden-youtube-player', {
           height: '0',
           width: '0',
-          videoId: 'E3aKsgr1mvk', // ID video OST của bạn
+          videoId: 'E3aKsgr1mvk',
           playerVars: {
             'autoplay': 0,
             'controls': 0,
-            'playsinline': 1 // Quan trọng cho điện thoại
+            'playsinline': 1
           },
           events: {
             'onStateChange': onPlayerStateChange
@@ -145,7 +183,6 @@ permalink: /tethys-exam/
         });
       }
 
-      // Lắng nghe sự kiện click vào nút bấm của chúng ta
       playBtn.addEventListener('click', function() {
         if (ytPlayer && typeof ytPlayer.playVideo === 'function') {
           if (isPlaying) {
@@ -156,15 +193,12 @@ permalink: /tethys-exam/
         }
       });
 
-      // Đổi icon nút bấm dựa trên trạng thái thực tế của Youtube
       function onPlayerStateChange(event) {
         if (event.data == YT.PlayerState.PLAYING) {
           isPlaying = true;
-          playBtn.innerHTML = '⏸'; // Chuyển thành icon Pause
           playBtn.classList.add('playing');
         } else {
           isPlaying = false;
-          playBtn.innerHTML = '▶'; // Chuyển thành icon Play
           playBtn.classList.remove('playing');
         }
       }
