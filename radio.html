@@ -6,21 +6,46 @@ permalink: /radio/
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>TETHYS TRANSMISSION RADIO</title>
   <style>
-    html, body { margin: 0; padding: 0; background: #040609; color: #5ce1e6; font-family: monospace; height: 100%; overflow: hidden; user-select: none; }
-    .radio-container { display: flex; flex-direction: column; height: 100%; padding: 15px; box-sizing: border-box; border: 1px solid rgba(92, 225, 230, 0.3); border-left: 4px solid #5ce1e6; }
+    /* Reset & Base: Đảm bảo nền đen, chữ Cyan, cấm chọn văn bản */
+    html, body { margin: 0; padding: 0; background: #040609; color: #5ce1e6; font-family: monospace; height: 100vh; overflow: hidden; user-select: none; }
     
+    /* Vùng chứa chính: Ép giữa màn hình, giữ khung hình chữ nhật đẹp mắt */
+    .radio-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      width: 100vw;
+      padding: 15px;
+      box-sizing: border-box;
+    }
+
+    /* Container bên trong: Hình chữ nhật cố định kích thước tối đa */
+    .radio-container { 
+      display: flex; 
+      flex-direction: column; 
+      width: 100%;
+      max-width: 400px; /* Giới hạn chiều rộng trên màn hình lớn */
+      background: #040609;
+      padding: 15px; 
+      box-sizing: border-box; 
+      border: 1px solid rgba(92, 225, 230, 0.3); 
+      border-left: 4px solid #5ce1e6;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* Header: Chứa Tiêu đề và Sóng âm */
     .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; border-bottom: 1px dashed rgba(92, 225, 230, 0.3); padding-bottom: 10px; }
-    .title-box { display: flex; flex-direction: column; }
-    .title { font-size: 14px; font-weight: bold; color: #fff; margin-bottom: 4px; }
-    .subtitle { font-size: 10px; opacity: 0.7; letter-spacing: 1px; text-transform: uppercase; }
+    .title-box { display: flex; flex-direction: column; overflow: hidden; padding-right: 10px;}
+    .title { font-size: 14px; font-weight: bold; color: #fff; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+    .subtitle { font-size: 10px; opacity: 0.7; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
     
-    /* HỆ THỐNG SPECTRUM GIẢ LẬP BẰNG CSS */
-    .spectrum-box { display: flex; align-items: flex-end; gap: 2px; height: 20px; width: 40px; }
+    /* Spectrum Sóng âm */
+    .spectrum-box { display: flex; align-items: flex-end; gap: 2px; height: 20px; width: 40px; flex-shrink: 0;}
     .bar { width: 4px; background: #5ce1e6; height: 3px; border-radius: 1px; transition: height 0.1s; }
-    /* Khi trạng thái là .playing, các thanh bar sẽ nhảy theo các chu kỳ khác nhau */
     .spectrum-box.playing .bar:nth-child(1) { animation: bounce 0.6s infinite alternate; }
     .spectrum-box.playing .bar:nth-child(2) { animation: bounce 0.4s infinite alternate 0.2s; }
     .spectrum-box.playing .bar:nth-child(3) { animation: bounce 0.7s infinite alternate 0.1s; }
@@ -28,7 +53,14 @@ permalink: /radio/
     .spectrum-box.playing .bar:nth-child(5) { animation: bounce 0.8s infinite alternate 0.15s; }
     @keyframes bounce { 0% { height: 3px; } 100% { height: 20px; } }
 
-    .control-row { display: flex; align-items: center; gap: 15px; margin-top: auto; }
+    /* Control Row: Nút bấm và Thanh tiến trình */
+    .control-row { display: flex; align-items: center; gap: 15px; }
+    
+    .player-controls { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    
+    .skip-btn { background: none; border: 1px solid rgba(92, 225, 230, 0.3); color: #5ce1e6; width: 28px; height: 28px; border-radius: 4px; font-size: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s ease; padding: 0; }
+    .skip-btn:hover { background: rgba(92, 225, 230, 0.1); border-color: #5ce1e6; }
+    .skip-btn:active { transform: scale(0.9); }
     
     .play-btn { background: #5ce1e6; color: #040609; border: none; width: 45px; height: 45px; border-radius: 50%; font-size: 18px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.1s; flex-shrink: 0; padding: 0; }
     .play-btn .icon-play { margin-left: 4px; }
@@ -37,70 +69,56 @@ permalink: /radio/
     .play-btn.playing .icon-pause { display: block; margin-left: 0; }
     .play-btn:active { transform: scale(0.9); }
 
+    /* Thanh tiến trình */
     .progress-container { flex-grow: 1; display: flex; flex-direction: column; gap: 5px; }
     .time-labels { display: flex; justify-content: space-between; font-size: 10px; color: #888; }
-    .seek-slider { -webkit-appearance: none; width: 100%; height: 4px; background: #333; border-radius: 2px; outline: none; cursor: pointer; }
+    .seek-slider { -webkit-appearance: none; width: 100%; height: 4px; background: #333; border-radius: 2px; outline: none; cursor: pointer; margin: 0;}
     .seek-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 12px; height: 12px; border-radius: 50%; background: #5ce1e6; cursor: pointer; box-shadow: 0 0 8px rgba(92, 225, 230, 0.8); }
 
-    .status-text { text-align: center; font-size: 9px; margin-top: 15px; color: #666; letter-spacing: 1px; }
-    #hidden-player { position: absolute; left: -999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
-    /* Style mới cho cụm nút điều khiển */
-    .player-controls { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    /* Footer Text */
+    .status-text { text-align: center; font-size: 9px; margin-top: 15px; color: #666; letter-spacing: 1px; white-space: nowrap;}
     
-    .skip-btn { 
-      background: none; 
-      border: 1px solid rgba(92, 225, 230, 0.3); 
-      color: #5ce1e6; 
-      width: 28px; 
-      height: 28px; 
-      border-radius: 4px; 
-      font-size: 12px; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      cursor: pointer; 
-      transition: 0.2s ease; 
-      padding: 0;
-    }
-    .skip-btn:hover { background: rgba(92, 225, 230, 0.1); border-color: #5ce1e6; }
-    .skip-btn:active { transform: scale(0.9); }
+    /* Ẩn Iframe Youtube */
+    #hidden-player { position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
   </style>
 </head>
 <body>
-  <div class="radio-container">
-    <div class="header">
-      <div class="title-box">
-        <div class="title">THO Transmission/div>
-        <div class="subtitle">> AUDIO_SRC: from THO Playlist</div>
-      </div>
-      <!-- Khu vực sóng nhạc -->
-      <div id="spectrum" class="spectrum-box">
-        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
-      </div>
-    </div>
-    <div class="control-row">
-          <!-- Cụm 3 nút điều khiển (Prev - Play - Next) -->
-          <div class="player-controls">
-            <button id="prev-btn" class="skip-btn" title="Previous Track">⏮</button>
-            
-            <button id="play-btn" class="play-btn" title="Play/Pause">
-              <span class="icon-play">▶</span>
-              <span class="icon-pause">⏸</span>
-            </button>
-            
-            <button id="next-btn" class="skip-btn" title="Next Track">⏭</button>
-          </div>
-    
-          <!-- Thanh tiến trình -->
-          <div class="progress-container">
-            <div class="time-labels">
-              <span id="current-time">0:00</span>
-              <span id="total-time">0:00</span>
-            </div>
-            <input type="range" id="seek-slider" class="seek-slider" value="0" min="0" max="100" step="1">
-          </div>
+  
+  <div class="radio-wrapper">
+    <div class="radio-container">
+      
+      <div class="header">
+        <div class="title-box">
+          <div class="title">THO Transmission</div>
+          <div class="subtitle">> AUDIO_SRC: FROM THO PLAYLIST</div>
         </div>
-    <div class="status-text">[ KEEP THIS WINDOW OPEN TO MAINTAIN AUDIO LINK ]</div>
+        <div id="spectrum" class="spectrum-box">
+          <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        </div>
+      </div>
+
+      <div class="control-row">
+        <div class="player-controls">
+          <button id="prev-btn" class="skip-btn" title="Previous Track">⏮</button>
+          <button id="play-btn" class="play-btn" title="Play/Pause">
+            <span class="icon-play">▶</span>
+            <span class="icon-pause">⏸</span>
+          </button>
+          <button id="next-btn" class="skip-btn" title="Next Track">⏭</button>
+        </div>
+  
+        <div class="progress-container">
+          <div class="time-labels">
+            <span id="current-time">0:00</span>
+            <span id="total-time">0:00</span>
+          </div>
+          <input type="range" id="seek-slider" class="seek-slider" value="0" min="0" max="100" step="1">
+        </div>
+      </div>
+      
+      <div class="status-text">[ KEEP THIS WINDOW OPEN TO MAINTAIN AUDIO LINK ]</div>
+    </div>
+  </div>
 
   <div id="hidden-player"></div>
 
@@ -126,25 +144,25 @@ permalink: /radio/
     function onYouTubeIframeAPIReady() {
       ytPlayer = new YT.Player('hidden-player', {
         height: '1', width: '1',
-        // Xóa dòng videoId cũ đi, sử dụng cấu hình Playlist
+        // Đã sửa lại đúng cú pháp cho Playlist, vui lòng gắn ID thực tế của bạn vào
         playerVars: { 
           'autoplay': 1, 
           'controls': 0, 
           'playsinline': 1,
           'listType': 'playlist',
-          'list': 'PLDAIHOJ8ZsPo' // Ví dụ: PL1234567890abcdef
+          'list': 'PLDAIHOJ8ZsPo' // ĐẢM BẢO MÃ PLAYLIST NÀY TỒN TẠI VÀ ĐỂ CHẾ ĐỘ CÔNG KHAI
         },
         events: {
           'onReady': function() {
             seekSlider.max = ytPlayer.getDuration();
             document.getElementById('total-time').innerText = formatTime(ytPlayer.getDuration());
-            ytPlayer.playVideo(); // Cố gắng tự phát khi load xong
+            ytPlayer.playVideo(); 
           },
           'onStateChange': function(e) {
             if (e.data == YT.PlayerState.PLAYING) {
               isPlaying = true;
               playBtn.classList.add('playing');
-              spectrum.classList.add('playing'); // Bật sóng nhạc
+              spectrum.classList.add('playing'); 
               progressInterval = setInterval(function() {
                 if (!isDragging) {
                   seekSlider.value = ytPlayer.getCurrentTime();
@@ -155,7 +173,7 @@ permalink: /radio/
             } else {
               isPlaying = false;
               playBtn.classList.remove('playing');
-              spectrum.classList.remove('playing'); // Tắt sóng nhạc
+              spectrum.classList.remove('playing'); 
               clearInterval(progressInterval);
             }
           }
@@ -179,14 +197,13 @@ permalink: /radio/
       if (ytPlayer && ytPlayer.seekTo) ytPlayer.seekTo(this.value, true);
       isDragging = false;
     });
-    // Sự kiện chuyển bài tiếp theo
+
     document.getElementById('next-btn').addEventListener('click', function() {
       if (ytPlayer && typeof ytPlayer.nextVideo === 'function') {
         ytPlayer.nextVideo();
       }
     });
 
-    // Sự kiện lùi bài trước đó
     document.getElementById('prev-btn').addEventListener('click', function() {
       if (ytPlayer && typeof ytPlayer.previousVideo === 'function') {
         ytPlayer.previousVideo();
