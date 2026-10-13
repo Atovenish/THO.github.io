@@ -1,0 +1,151 @@
+---
+layout: null
+permalink: /radio/
+---
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TETHYS TRANSMISSION RADIO</title>
+  <style>
+    html, body { margin: 0; padding: 0; background: #040609; color: #5ce1e6; font-family: monospace; height: 100%; overflow: hidden; user-select: none; }
+    .radio-container { display: flex; flex-direction: column; height: 100%; padding: 15px; box-sizing: border-box; border: 1px solid rgba(92, 225, 230, 0.3); border-left: 4px solid #5ce1e6; }
+    
+    .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; border-bottom: 1px dashed rgba(92, 225, 230, 0.3); padding-bottom: 10px; }
+    .title-box { display: flex; flex-direction: column; }
+    .title { font-size: 14px; font-weight: bold; color: #fff; margin-bottom: 4px; }
+    .subtitle { font-size: 10px; opacity: 0.7; letter-spacing: 1px; text-transform: uppercase; }
+    
+    /* HỆ THỐNG SPECTRUM GIẢ LẬP BẰNG CSS */
+    .spectrum-box { display: flex; align-items: flex-end; gap: 2px; height: 20px; width: 40px; }
+    .bar { width: 4px; background: #5ce1e6; height: 3px; border-radius: 1px; transition: height 0.1s; }
+    /* Khi trạng thái là .playing, các thanh bar sẽ nhảy theo các chu kỳ khác nhau */
+    .spectrum-box.playing .bar:nth-child(1) { animation: bounce 0.6s infinite alternate; }
+    .spectrum-box.playing .bar:nth-child(2) { animation: bounce 0.4s infinite alternate 0.2s; }
+    .spectrum-box.playing .bar:nth-child(3) { animation: bounce 0.7s infinite alternate 0.1s; }
+    .spectrum-box.playing .bar:nth-child(4) { animation: bounce 0.5s infinite alternate 0.3s; }
+    .spectrum-box.playing .bar:nth-child(5) { animation: bounce 0.8s infinite alternate 0.15s; }
+    @keyframes bounce { 0% { height: 3px; } 100% { height: 20px; } }
+
+    .control-row { display: flex; align-items: center; gap: 15px; margin-top: auto; }
+    
+    .play-btn { background: #5ce1e6; color: #040609; border: none; width: 45px; height: 45px; border-radius: 50%; font-size: 18px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.1s; flex-shrink: 0; padding: 0; }
+    .play-btn .icon-play { margin-left: 4px; }
+    .play-btn .icon-pause { display: none; }
+    .play-btn.playing .icon-play { display: none; }
+    .play-btn.playing .icon-pause { display: block; margin-left: 0; }
+    .play-btn:active { transform: scale(0.9); }
+
+    .progress-container { flex-grow: 1; display: flex; flex-direction: column; gap: 5px; }
+    .time-labels { display: flex; justify-content: space-between; font-size: 10px; color: #888; }
+    .seek-slider { -webkit-appearance: none; width: 100%; height: 4px; background: #333; border-radius: 2px; outline: none; cursor: pointer; }
+    .seek-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 12px; height: 12px; border-radius: 50%; background: #5ce1e6; cursor: pointer; box-shadow: 0 0 8px rgba(92, 225, 230, 0.8); }
+
+    .status-text { text-align: center; font-size: 9px; margin-top: 15px; color: #666; letter-spacing: 1px; }
+    #hidden-player { position: absolute; left: -999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+  </style>
+</head>
+<body>
+  <div class="radio-container">
+    <div class="header">
+      <div class="title-box">
+        <div class="title">Wuthering Waves OST Mix</div>
+        <div class="subtitle">> AUDIO_SRC: SFX_SoulForXpression</div>
+      </div>
+      <!-- Khu vực sóng nhạc -->
+      <div id="spectrum" class="spectrum-box">
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+      </div>
+    </div>
+
+    <div class="control-row">
+      <button id="play-btn" class="play-btn">
+        <span class="icon-play">▶</span>
+        <span class="icon-pause">⏸</span>
+      </button>
+
+      <div class="progress-container">
+        <div class="time-labels">
+          <span id="current-time">0:00</span>
+          <span id="total-time">0:00</span>
+        </div>
+        <input type="range" id="seek-slider" class="seek-slider" value="0" min="0" max="100" step="1">
+      </div>
+    </div>
+    <div class="status-text">[ KEEP THIS WINDOW OPEN TO MAINTAIN AUDIO LINK ]</div>
+  </div>
+
+  <div id="hidden-player"></div>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    var ytPlayer, progressInterval;
+    var isPlaying = false, isDragging = false;
+    var playBtn = document.getElementById('play-btn');
+    var seekSlider = document.getElementById('seek-slider');
+    var spectrum = document.getElementById('spectrum');
+
+    function formatTime(time) {
+      if (isNaN(time)) return "0:00";
+      var m = Math.floor(time / 60), s = Math.floor(time % 60);
+      return m + ":" + (s < 10 ? "0" : "") + s;
+    }
+
+    function updateSliderColor() {
+      var pct = (seekSlider.value / seekSlider.max) * 100;
+      seekSlider.style.background = 'linear-gradient(to right, #5ce1e6 ' + pct + '%, #333 ' + pct + '%)';
+    }
+
+    function onYouTubeIframeAPIReady() {
+      ytPlayer = new YT.Player('hidden-player', {
+        height: '1', width: '1', videoId: 'E3aKsgr1mvk',
+        playerVars: { 'autoplay': 1, 'controls': 0, 'playsinline': 1 },
+        events: {
+          'onReady': function() {
+            seekSlider.max = ytPlayer.getDuration();
+            document.getElementById('total-time').innerText = formatTime(ytPlayer.getDuration());
+            ytPlayer.playVideo(); // Cố gắng tự phát khi load xong
+          },
+          'onStateChange': function(e) {
+            if (e.data == YT.PlayerState.PLAYING) {
+              isPlaying = true;
+              playBtn.classList.add('playing');
+              spectrum.classList.add('playing'); // Bật sóng nhạc
+              progressInterval = setInterval(function() {
+                if (!isDragging) {
+                  seekSlider.value = ytPlayer.getCurrentTime();
+                  document.getElementById('current-time').innerText = formatTime(seekSlider.value);
+                  updateSliderColor();
+                }
+              }, 1000);
+            } else {
+              isPlaying = false;
+              playBtn.classList.remove('playing');
+              spectrum.classList.remove('playing'); // Tắt sóng nhạc
+              clearInterval(progressInterval);
+            }
+          }
+        }
+      });
+    }
+
+    playBtn.addEventListener('click', function() {
+      if (ytPlayer && ytPlayer.playVideo) {
+        isPlaying ? ytPlayer.pauseVideo() : ytPlayer.playVideo();
+      }
+    });
+
+    seekSlider.addEventListener('input', function() {
+      isDragging = true;
+      document.getElementById('current-time').innerText = formatTime(this.value);
+      updateSliderColor();
+    });
+    
+    seekSlider.addEventListener('change', function() {
+      if (ytPlayer && ytPlayer.seekTo) ytPlayer.seekTo(this.value, true);
+      isDragging = false;
+    });
+  </script>
+</body>
+</html>
