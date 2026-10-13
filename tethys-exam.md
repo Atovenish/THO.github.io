@@ -84,20 +84,20 @@ permalink: /tethys-exam/
     
     <!-- Tiêu đề & Tác giả -->
     <div class="track-info">
-      <div class="track-title">1+ Hour Wuthering Waves OST Mix</div>
+      <div class="track-title">THO_playlist</div>
       <div class="track-artist">> TETHYS_TRANSMISSION</div>
     </div>
 
     <!-- Các nút điều khiển phía bên phải -->
     <div class="controls-right">
-      <button id="prev-btn" class="skip-btn" title="Bài trước">⏮</button>
+      <button id="prev-btn" class="skip-btn" title="Previous Track">⏮</button>
       
       <button id="play-btn" class="play-btn" title="Play/Pause">
         <span class="icon-play">▶</span>
         <span class="icon-pause">⏸</span>
       </button>
 
-      <button id="next-btn" class="skip-btn" title="Bài tiếp theo">⏭</button>
+      <button id="next-btn" class="skip-btn" title="Next Track">⏭</button>
     </div>
 
   </div>
