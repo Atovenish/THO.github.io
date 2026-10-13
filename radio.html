@@ -44,37 +44,63 @@ permalink: /radio/
 
     .status-text { text-align: center; font-size: 9px; margin-top: 15px; color: #666; letter-spacing: 1px; }
     #hidden-player { position: absolute; left: -999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+    /* Style mới cho cụm nút điều khiển */
+    .player-controls { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    
+    .skip-btn { 
+      background: none; 
+      border: 1px solid rgba(92, 225, 230, 0.3); 
+      color: #5ce1e6; 
+      width: 28px; 
+      height: 28px; 
+      border-radius: 4px; 
+      font-size: 12px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      cursor: pointer; 
+      transition: 0.2s ease; 
+      padding: 0;
+    }
+    .skip-btn:hover { background: rgba(92, 225, 230, 0.1); border-color: #5ce1e6; }
+    .skip-btn:active { transform: scale(0.9); }
   </style>
 </head>
 <body>
   <div class="radio-container">
     <div class="header">
       <div class="title-box">
-        <div class="title">Wuthering Waves OST Mix</div>
-        <div class="subtitle">> AUDIO_SRC: SFX_SoulForXpression</div>
+        <div class="title">THO Transmission/div>
+        <div class="subtitle">> AUDIO_SRC: from THO Playlist</div>
       </div>
       <!-- Khu vực sóng nhạc -->
       <div id="spectrum" class="spectrum-box">
         <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
       </div>
     </div>
-
     <div class="control-row">
-      <button id="play-btn" class="play-btn">
-        <span class="icon-play">▶</span>
-        <span class="icon-pause">⏸</span>
-      </button>
-
-      <div class="progress-container">
-        <div class="time-labels">
-          <span id="current-time">0:00</span>
-          <span id="total-time">0:00</span>
+          <!-- Cụm 3 nút điều khiển (Prev - Play - Next) -->
+          <div class="player-controls">
+            <button id="prev-btn" class="skip-btn" title="Previous Track">⏮</button>
+            
+            <button id="play-btn" class="play-btn" title="Play/Pause">
+              <span class="icon-play">▶</span>
+              <span class="icon-pause">⏸</span>
+            </button>
+            
+            <button id="next-btn" class="skip-btn" title="Next Track">⏭</button>
+          </div>
+    
+          <!-- Thanh tiến trình -->
+          <div class="progress-container">
+            <div class="time-labels">
+              <span id="current-time">0:00</span>
+              <span id="total-time">0:00</span>
+            </div>
+            <input type="range" id="seek-slider" class="seek-slider" value="0" min="0" max="100" step="1">
+          </div>
         </div>
-        <input type="range" id="seek-slider" class="seek-slider" value="0" min="0" max="100" step="1">
-      </div>
-    </div>
     <div class="status-text">[ KEEP THIS WINDOW OPEN TO MAINTAIN AUDIO LINK ]</div>
-  </div>
 
   <div id="hidden-player"></div>
 
@@ -99,8 +125,15 @@ permalink: /radio/
 
     function onYouTubeIframeAPIReady() {
       ytPlayer = new YT.Player('hidden-player', {
-        height: '1', width: '1', videoId: 'E3aKsgr1mvk',
-        playerVars: { 'autoplay': 1, 'controls': 0, 'playsinline': 1 },
+        height: '1', width: '1',
+        // Xóa dòng videoId cũ đi, sử dụng cấu hình Playlist
+        playerVars: { 
+          'autoplay': 1, 
+          'controls': 0, 
+          'playsinline': 1,
+          'listType': 'playlist',
+          'list': 'PLDAIHOJ8ZsPo' // Ví dụ: PL1234567890abcdef
+        },
         events: {
           'onReady': function() {
             seekSlider.max = ytPlayer.getDuration();
@@ -145,6 +178,19 @@ permalink: /radio/
     seekSlider.addEventListener('change', function() {
       if (ytPlayer && ytPlayer.seekTo) ytPlayer.seekTo(this.value, true);
       isDragging = false;
+    });
+    // Sự kiện chuyển bài tiếp theo
+    document.getElementById('next-btn').addEventListener('click', function() {
+      if (ytPlayer && typeof ytPlayer.nextVideo === 'function') {
+        ytPlayer.nextVideo();
+      }
+    });
+
+    // Sự kiện lùi bài trước đó
+    document.getElementById('prev-btn').addEventListener('click', function() {
+      if (ytPlayer && typeof ytPlayer.previousVideo === 'function') {
+        ytPlayer.previousVideo();
+      }
     });
   </script>
 </body>
