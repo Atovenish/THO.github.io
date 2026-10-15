@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/2026-09-22-Tacet Field.md",
+                "file": "_posts/2026-09-22-Remnant.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-09-22-Tacet Field"
+              "title": "2026-09-22-Remnant"
             }
           }
         ],
@@ -171,14 +171,26 @@
   },
   "active": "7d121ff48745c49a",
   "lastOpenFiles": [
-    "_posts/2026-09-22-Remnant.md",
     "_posts/2026-09-22-Tacet Field.md",
+    "_posts/2026-09-22-Remnant.md",
     "_posts/2026-09-08-Res JR.md",
-    "_posts/2026-08-29-Res SHO.md",
     "_posts/2026-08-29-Res ROV.md",
+    "_posts/2026-08-29-Res SHO.md",
+    "_posts/2026-09-08-Endless.md",
     "_posts/2026-08-29-Res GOD.md",
-    "_posts/2026-08-29-another.md",
     "_posts/2026-05-04-K626.md",
+    "_posts/2026-08-29-another.md",
+    "docs/SUPPORT.md",
+    "docs/CONTRIBUTING.md",
+    "docs/CODE_OF_CONDUCT.md",
+    "another-game.md",
+    "about.md",
+    "feedback.md",
+    "sector-01.md",
+    "sector-02.md",
+    "tethys-exam.md",
+    "_posts/2026-10-11-ControlRes.md",
+    "radio.html",
     "THO.github.io/vietqr.png",
     "wuwa-theory.md",
     "vietqr.png",
@@ -195,15 +207,8 @@
     "HandsOn-2-2-LikelihoodFitting.ipynb",
     "HandsOn-1-ROOTandPyROOT.ipynb",
     "Gemfile",
-    "feedback.md",
-    "another-game.md",
-    "about.md",
     "_config.yml",
     "script/validate-html",
-    "script/bootstrap",
-    "docs/SUPPORT.md",
-    "docs/CONTRIBUTING.md",
-    "docs/CODE_OF_CONDUCT.md",
     "assets/img/resonator/Jingran/JR-eye.png",
     "assets/img/resonator/Jingran/Jingran.png",
     "assets/img/resonator/Jingran/a.md",
@@ -212,11 +217,6 @@
     "assets/fonts/Noto-Sans-italic/Noto-Sans-italic.svg",
     "assets/fonts/Noto-Sans-regular/Noto-Sans-regular.svg",
     "assets/img/SOMNOIRE/a.md",
-    "assets/img/resonator/a.md",
-    "_posts/2026-09-01-Somnoire.md",
-    "_posts/2026-09-08-Endless.md",
-    "THO.github.io/wuwa-theory.md",
-    "THO.github.io/resonator.md",
     "Somnoire.canvas"
   ]
 }
