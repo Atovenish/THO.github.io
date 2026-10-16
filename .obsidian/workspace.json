@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/2026-10-16-Resonator.md",
+                "file": "_posts/2026-09-22-Tacet Field.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-10-16-Resonator"
+              "title": "2026-09-22-Tacet Field"
             }
           }
         ],
@@ -171,12 +171,13 @@
   },
   "active": "7d121ff48745c49a",
   "lastOpenFiles": [
-    "_posts/2026-09-08-Res JR.md",
-    "_posts/2026-10-16-Resonator.md",
+    "_posts/2026-09-22-Remnant.md",
     "_posts/2026-09-22-Tacet Field.md",
     "_posts/2026-10-11-ControlRes.md",
+    "_posts/2026-10-16-Resonator.md",
+    "assets/fonts/Noto-Sans-700/Noto-Sans-700.svg",
+    "_posts/2026-09-08-Res JR.md",
     "_posts/2026-09-08-Endless.md",
-    "_posts/2026-09-22-Remnant.md",
     "_posts/2026-08-29-Res ROV.md",
     "_posts/2026-08-29-Res SHO.md",
     "_posts/2026-08-29-Res GOD.md",
@@ -212,11 +213,9 @@
     "script/validate-html",
     "assets/img/resonator/Jingran/JR-eye.png",
     "assets/img/resonator/Jingran/Jingran.png",
-    "assets/img/resonator/Jingran/a.md",
     "assets/img/resonator/Jingran/Cat god.png",
     "assets/img/resonator/Jingran/Cat.png",
     "assets/fonts/Noto-Sans-italic/Noto-Sans-italic.svg",
-    "assets/fonts/Noto-Sans-regular/Noto-Sans-regular.svg",
     "Somnoire.canvas"
   ]
 }

@@ -52,9 +52,57 @@ Các Resonator có khả năng tương tác và kích hoạt Tacet Field ngay t�
 
 > **[REMARK_v1]**  
 > Các nhà khoa học hàng đầu tin rằng, điểm kỳ dị tại tâm của dấu ấn Tacet Mark cùng với các cấu trúc *Dây cộng hưởng màu trắng (White Resonance Cord)* không chỉ đơn thuần là mỏ neo năng lượng. Chúng rất có thể là ranh giới dẫn dắt chúng ta tiến vào một chiều không gian dị thường khác. Các Tacet Field được ghi nhận tại khu vực Ragunna hiện đang là bằng chứng rõ nét nhất cho giả thuyết rạn nứt không gian này.
+<style>
+  a.tho-ref {
+    color: #5ce1e6 !important;
+    background: rgba(92, 225, 230, 0.1);
+    border: 1px solid rgba(92, 225, 230, 0.4);
+    padding: 1px 6px;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.92em;
+    font-weight: bold;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    transition: all 0.2s ease;
+  }
+  a.tho-ref::after {
+    content: " ↗";
+    font-size: 0.85em;
+  }
+  a.tho-ref:hover {
+    background: #5ce1e6;
+    color: #040609 !important;
+    box-shadow: 0 0 12px rgba(92, 225, 230, 0.6);
+  }
+  a.tho-ref[data-preview]:hover::before {
+    content: "// TRÍCH XUẤT HỒ SƠ: " attr(data-preview);
+    position: absolute;
+    bottom: 135%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    background: #040609;
+    color: #aaaaaa;
+    border: 1px solid rgba(92, 225, 230, 0.5);
+    border-left: 3px solid #5ce1e6;
+    padding: 10px 12px;
+    font-size: 11px;
+    font-weight: normal;
+    line-height: 1.5;
+    white-space: normal;
+    z-index: 9999;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.95);
+    pointer-events: none;
+  }
+</style>
 
-> **[REMARK_v2]**
-> Các nhà khoa học đã khám phá rằng ở các khu của Rinascita (Ragunna và Septimont) xuất hiện các Tacet Field dị thường. Chúng là những Tacet Field mọc trồi từ dưới đất và cho phép di chuyển vào trong khu vực nền vàng (Thứ các nhà khoa học tin rằng đây là nơi không gian dị thường được nghiên cứu). Họ cho rằng các <strong style="color: #ff3344;">Tacet Field</strong> tồn tại ở những chiều không gian biệt lập (*Paradimensional TF*) chứa nặng các dạng năng lượng vàng từ <strong style="color: #ff3344;">Remnant</strong>. 
+<div style="border: 1px solid rgba(255, 204, 0, 0.4); border-left: 4px solid #ffcc00; background: rgba(4, 6, 9, 0.9); padding: 20px; margin: 20px 0; font-family: var(--font-mono, monospace);">
+  <div style="color: #888888; font-size: 0.82em; letter-spacing: 2px; margin-bottom: 8px;">// QUAN TRẮC THỰC ĐỊA // RINASCITA</div>
+  <p style="color: #aaaaaa; margin: 0; font-size: 0.95em; line-height: 1.65; border-left: 3px solid #ffcc00; padding-left: 12px;">
+    &gt; **[REMARK_v2]**:  Các nhà khoa học đã khám phá rằng ở các khu của Rinascita (Ragunna và Septimont) xuất hiện các Tacet Field dị thường. Chúng là những Tacet Field mọc trồi từ dưới đất và cho phép di chuyển vào trong khu vực nền vàng (Thứ các nhà khoa học tin rằng đây là nơi không gian dị thường được nghiên cứu). Họ cho rằng các Tacet Field tồn tại ở những chiều không gian biệt lập (Paradimensional TF) chứa nặng các dạng năng lượng vàng từ <a href="{{ site.baseurl }}{% post_url 2026-09-22-Remnant %}" class="tho-ref" data-preview="Hồ sơ [2026-09-22]: Phân tích chi tiết về năng lượng Remnant. Bấm để truy xuất bài viết.">Remnant</a>.
+  </p>
+</div>
 
 <div style="text-align: center; margin: 20px 0;">
   <img src="https://res.cloudinary.com/yuyv2sdj/image/upload/q_auto,f_auto/v1790083411/a08f312c-2f40-4eea-b2d4-bcf89fc815ff.png" alt="Paradimensional Tacet Field" style="border: 1px solid var(--border-color); border-radius: 4px;">
