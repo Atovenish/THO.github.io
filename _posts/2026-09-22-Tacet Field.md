@@ -98,9 +98,9 @@ Các Resonator có khả năng tương tác và kích hoạt Tacet Field ngay t�
 </style>
 
 <div style="border: 1px solid rgba(255, 204, 0, 0.4); border-left: 4px solid #ffcc00; background: rgba(4, 6, 9, 0.9); padding: 20px; margin: 20px 0; font-family: var(--font-mono, monospace);">
-  <div style="color: #888888; font-size: 0.82em; letter-spacing: 2px; margin-bottom: 8px;">// QUAN TRẮC THỰC ĐỊA // RINASCITA</div>
+  <div style="color: #888888; font-size: 0.82em; letter-spacing: 2px; margin-bottom: 8px;">//**[REMARK_v2]**:  QUAN TRẮC THỰC ĐỊA // RINASCITA</div>
   <p style="color: #aaaaaa; margin: 0; font-size: 0.95em; line-height: 1.65; border-left: 3px solid #ffcc00; padding-left: 12px;">
-    &gt; **[REMARK_v2]**:  Các nhà khoa học đã khám phá rằng ở các khu của Rinascita (Ragunna và Septimont) xuất hiện các Tacet Field dị thường. Chúng là những Tacet Field mọc trồi từ dưới đất và cho phép di chuyển vào trong khu vực nền vàng (Thứ các nhà khoa học tin rằng đây là nơi không gian dị thường được nghiên cứu). Họ cho rằng các Tacet Field tồn tại ở những chiều không gian biệt lập (Paradimensional TF) chứa nặng các dạng năng lượng vàng từ <a href="{{ site.baseurl }}{% post_url 2026-09-22-Remnant %}" class="tho-ref" data-preview="Hồ sơ [2026-09-22]: Phân tích chi tiết về năng lượng Remnant. Bấm để truy xuất bài viết.">Remnant</a>.
+    &gt; Các nhà khoa học đã khám phá rằng ở các khu của Rinascita (Ragunna và Septimont) xuất hiện các Tacet Field dị thường. Chúng là những Tacet Field mọc trồi từ dưới đất và cho phép di chuyển vào trong khu vực nền vàng (Thứ các nhà khoa học tin rằng đây là nơi không gian dị thường được nghiên cứu). Họ cho rằng các Tacet Field tồn tại ở những chiều không gian biệt lập (Paradimensional TF) chứa nặng các dạng năng lượng vàng từ <a href="{{ site.baseurl }}{% post_url 2026-09-22-Remnant %}" class="tho-ref" data-preview="Hồ sơ [2026-09-22]: Phân tích chi tiết về năng lượng Remnant. Bấm để truy xuất bài viết.">Remnant</a>.
   </p>
 </div>
 
